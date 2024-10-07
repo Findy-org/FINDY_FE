@@ -35,6 +35,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:16.0.1"],\
           ["@types/eslint-plugin-jsx-a11y", "npm:6.9.0"],\
+          ["@types/navermaps", "npm:3.7.8"],\
           ["@types/react", "npm:18.3.10"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vitejs/plugin-react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.3.2"],\
@@ -2173,6 +2174,15 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/geojson", [\
+      ["npm:7946.0.14", {\
+        "packageLocation": "./.yarn/cache/@types-geojson-npm-7946.0.14-cb659a9fdf-54f3997708.zip/node_modules/@types/geojson/",\
+        "packageDependencies": [\
+          ["@types/geojson", "npm:7946.0.14"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/graceful-fs", [\
       ["npm:4.1.9", {\
         "packageLocation": "./.yarn/cache/@types-graceful-fs-npm-4.1.9-ebd697fe83-235d2fc697.zip/node_modules/@types/graceful-fs/",\
@@ -2226,6 +2236,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/@types-json5-npm-0.0.29-f63a7916bd-6bf5337bc4.zip/node_modules/@types/json5/",\
         "packageDependencies": [\
           ["@types/json5", "npm:0.0.29"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["@types/navermaps", [\
+      ["npm:3.7.8", {\
+        "packageLocation": "./.yarn/cache/@types-navermaps-npm-3.7.8-4cf7b14fae-833040558a.zip/node_modules/@types/navermaps/",\
+        "packageDependencies": [\
+          ["@types/navermaps", "npm:3.7.8"],\
+          ["@types/geojson", "npm:7946.0.14"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4946,6 +4966,7 @@ const RAW_RUNTIME_STATE =
           ["@testing-library/dom", "npm:10.4.0"],\
           ["@testing-library/react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:16.0.1"],\
           ["@types/eslint-plugin-jsx-a11y", "npm:6.9.0"],\
+          ["@types/navermaps", "npm:3.7.8"],\
           ["@types/react", "npm:18.3.10"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vitejs/plugin-react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.3.2"],\
