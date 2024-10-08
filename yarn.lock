@@ -2089,6 +2089,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"autoprefixer@npm:^10.4.20":
+  version: 10.4.20
+  resolution: "autoprefixer@npm:10.4.20"
+  dependencies:
+    browserslist: "npm:^4.23.3"
+    caniuse-lite: "npm:^1.0.30001646"
+    fraction.js: "npm:^4.3.7"
+    normalize-range: "npm:^0.1.2"
+    picocolors: "npm:^1.0.1"
+    postcss-value-parser: "npm:^4.2.0"
+  peerDependencies:
+    postcss: ^8.1.0
+  bin:
+    autoprefixer: bin/autoprefixer
+  checksum: 10c0/e1f00978a26e7c5b54ab12036d8c13833fad7222828fc90914771b1263f51b28c7ddb5803049de4e77696cbd02bb25cfc3634e80533025bb26c26aacdf938940
+  languageName: node
+  linkType: hard
+
 "available-typed-arrays@npm:^1.0.7":
   version: 1.0.7
   resolution: "available-typed-arrays@npm:1.0.7"
@@ -2244,7 +2262,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.23.1":
+"browserslist@npm:^4.23.1, browserslist@npm:^4.23.3":
   version: 4.24.0
   resolution: "browserslist@npm:4.24.0"
   dependencies:
@@ -2339,6 +2357,13 @@ __metadata:
   version: 6.3.0
   resolution: "camelcase@npm:6.3.0"
   checksum: 10c0/0d701658219bd3116d12da3eab31acddb3f9440790c0792e0d398f0a520a6a4058018e546862b6fba89d7ae990efaeb97da71e1913e9ebf5a8b5621a3d55c710
+  languageName: node
+  linkType: hard
+
+"caniuse-lite@npm:^1.0.30001646":
+  version: 1.0.30001667
+  resolution: "caniuse-lite@npm:1.0.30001667"
+  checksum: 10c0/6bc8555a47603e1e76eaef9b185d6fdeeca7d9c20a283f7c32c971eb1b52ea3a80e6ec086920f088f06abe619240f1023a2d3a08b5b1f2f11df1475695e9f71c
   languageName: node
   linkType: hard
 
@@ -3603,6 +3628,7 @@ __metadata:
     "@types/react": "npm:^18.3.10"
     "@types/react-dom": "npm:^18.3.0"
     "@vitejs/plugin-react": "npm:^4.3.1"
+    autoprefixer: "npm:^10.4.20"
     axios: "npm:^1.7.7"
     eslint: "npm:^9.11.1"
     eslint-config-prettier: "npm:^9.1.0"
@@ -3617,6 +3643,7 @@ __metadata:
     globals: "npm:^15.9.0"
     husky: "npm:^9.1.6"
     jest: "npm:^29.7.0"
+    postcss: "npm:^8.4.47"
     prettier: "npm:^3.3.3"
     react: "npm:^18.3.1"
     react-dom: "npm:^18.3.1"
@@ -3684,6 +3711,13 @@ __metadata:
     combined-stream: "npm:^1.0.8"
     mime-types: "npm:^2.1.12"
   checksum: 10c0/cb6f3ac49180be03ff07ba3ff125f9eba2ff0b277fb33c7fc47569fc5e616882c5b1c69b9904c4c4187e97dd0419dd03b134174756f296dec62041e6527e2c6e
+  languageName: node
+  linkType: hard
+
+"fraction.js@npm:^4.3.7":
+  version: 4.3.7
+  resolution: "fraction.js@npm:4.3.7"
+  checksum: 10c0/df291391beea9ab4c263487ffd9d17fed162dbb736982dee1379b2a8cc94e4e24e46ed508c6d278aded9080ba51872f1bc5f3a5fd8d7c74e5f105b508ac28711
   languageName: node
   linkType: hard
 
@@ -5546,6 +5580,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"normalize-range@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "normalize-range@npm:0.1.2"
+  checksum: 10c0/bf39b73a63e0a42ad1a48c2bd1bda5a07ede64a7e2567307a407674e595bcff0fa0d57e8e5f1e7fa5e91000797c7615e13613227aaaa4d6d6e87f5bd5cc95de6
+  languageName: node
+  linkType: hard
+
 "npm-run-path@npm:^4.0.1":
   version: 4.0.1
   resolution: "npm-run-path@npm:4.0.1"
@@ -5821,7 +5862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"picocolors@npm:^1.0.0, picocolors@npm:^1.1.0":
+"picocolors@npm:^1.0.0, picocolors@npm:^1.0.1, picocolors@npm:^1.1.0":
   version: 1.1.0
   resolution: "picocolors@npm:1.1.0"
   checksum: 10c0/86946f6032148801ef09c051c6fb13b5cf942eaf147e30ea79edb91dd32d700934edebe782a1078ff859fb2b816792e97ef4dab03d7f0b804f6b01a0df35e023
@@ -5928,14 +5969,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss-value-parser@npm:^4.0.0":
+"postcss-value-parser@npm:^4.0.0, postcss-value-parser@npm:^4.2.0":
   version: 4.2.0
   resolution: "postcss-value-parser@npm:4.2.0"
   checksum: 10c0/f4142a4f56565f77c1831168e04e3effd9ffcc5aebaf0f538eee4b2d465adfd4b85a44257bb48418202a63806a7da7fe9f56c330aebb3cac898e46b4cbf49161
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.23, postcss@npm:^8.4.43":
+"postcss@npm:^8.4.23, postcss@npm:^8.4.43, postcss@npm:^8.4.47":
   version: 8.4.47
   resolution: "postcss@npm:8.4.47"
   dependencies:

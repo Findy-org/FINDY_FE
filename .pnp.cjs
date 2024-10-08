@@ -39,6 +39,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.3.10"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vitejs/plugin-react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.3.2"],\
+          ["autoprefixer", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
           ["eslint", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:9.11.1"],\
           ["eslint-config-prettier", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:9.1.0"],\
@@ -53,6 +54,7 @@ const RAW_RUNTIME_STATE =
           ["globals", "npm:15.10.0"],\
           ["husky", "npm:9.1.6"],\
           ["jest", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
+          ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
@@ -3100,6 +3102,34 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["autoprefixer", [\
+      ["npm:10.4.20", {\
+        "packageLocation": "./.yarn/cache/autoprefixer-npm-10.4.20-dd5fd05d27-e1f00978a2.zip/node_modules/autoprefixer/",\
+        "packageDependencies": [\
+          ["autoprefixer", "npm:10.4.20"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:10.4.20", {\
+        "packageLocation": "./.yarn/__virtual__/autoprefixer-virtual-7a8917bf94/0/cache/autoprefixer-npm-10.4.20-dd5fd05d27-e1f00978a2.zip/node_modules/autoprefixer/",\
+        "packageDependencies": [\
+          ["autoprefixer", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:10.4.20"],\
+          ["@types/postcss", null],\
+          ["browserslist", "npm:4.24.0"],\
+          ["caniuse-lite", "npm:1.0.30001667"],\
+          ["fraction.js", "npm:4.3.7"],\
+          ["normalize-range", "npm:0.1.2"],\
+          ["picocolors", "npm:1.1.0"],\
+          ["postcss", "npm:8.4.47"],\
+          ["postcss-value-parser", "npm:4.2.0"]\
+        ],\
+        "packagePeers": [\
+          "@types/postcss",\
+          "postcss"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["available-typed-arrays", [\
       ["npm:1.0.7", {\
         "packageLocation": "./.yarn/cache/available-typed-arrays-npm-1.0.7-e5e5d79687-d07226ef4f.zip/node_modules/available-typed-arrays/",\
@@ -3445,6 +3475,13 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001666-feaf409c49-2d49e9be67.zip/node_modules/caniuse-lite/",\
         "packageDependencies": [\
           ["caniuse-lite", "npm:1.0.30001666"]\
+        ],\
+        "linkType": "HARD"\
+      }],\
+      ["npm:1.0.30001667", {\
+        "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001667-6dc99b360b-6bc8555a47.zip/node_modules/caniuse-lite/",\
+        "packageDependencies": [\
+          ["caniuse-lite", "npm:1.0.30001667"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -4970,6 +5007,7 @@ const RAW_RUNTIME_STATE =
           ["@types/react", "npm:18.3.10"],\
           ["@types/react-dom", "npm:18.3.0"],\
           ["@vitejs/plugin-react", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.3.2"],\
+          ["autoprefixer", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:10.4.20"],\
           ["axios", "npm:1.7.7"],\
           ["eslint", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:9.11.1"],\
           ["eslint-config-prettier", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:9.1.0"],\
@@ -4984,6 +5022,7 @@ const RAW_RUNTIME_STATE =
           ["globals", "npm:15.10.0"],\
           ["husky", "npm:9.1.6"],\
           ["jest", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
+          ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
@@ -5069,6 +5108,15 @@ const RAW_RUNTIME_STATE =
           ["asynckit", "npm:0.4.0"],\
           ["combined-stream", "npm:1.0.8"],\
           ["mime-types", "npm:2.1.35"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["fraction.js", [\
+      ["npm:4.3.7", {\
+        "packageLocation": "./.yarn/cache/fraction.js-npm-4.3.7-c2c7e95a8e-df291391be.zip/node_modules/fraction.js/",\
+        "packageDependencies": [\
+          ["fraction.js", "npm:4.3.7"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -7177,6 +7225,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/normalize-path-npm-3.0.0-658ba7d77f-e008c8142b.zip/node_modules/normalize-path/",\
         "packageDependencies": [\
           ["normalize-path", "npm:3.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["normalize-range", [\
+      ["npm:0.1.2", {\
+        "packageLocation": "./.yarn/cache/normalize-range-npm-0.1.2-bec5e259e2-bf39b73a63.zip/node_modules/normalize-range/",\
+        "packageDependencies": [\
+          ["normalize-range", "npm:0.1.2"]\
         ],\
         "linkType": "HARD"\
       }]\
