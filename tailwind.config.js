@@ -3,7 +3,11 @@ export default {
   darkMode: ['class'],
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        pretendard: ['Pretendard'],
+      },
+    },
   },
   plugins: [],
 };
