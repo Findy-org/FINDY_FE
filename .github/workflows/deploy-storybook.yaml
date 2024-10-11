@@ -1,0 +1,24 @@
+name: Deploy Storybook
+on:
+  pull_request:
+    types:
+      - closed
+    paths:
+      - 'src/components/**'
+
+jobs:
+  deploy-storybook:
+    if: github.event.pull_request.merged == true && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: install packages
+        run: yarn
+
+      - name: deploy with chromatic
+        id: chromatic
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
