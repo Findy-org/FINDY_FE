@@ -1,4 +1,5 @@
 name: Preview Storybook
+
 on:
   pull_request:
     paths:
@@ -25,12 +26,12 @@ jobs:
           onlyChanged: true
           autoAcceptChanges: true
 
-      - name: current time
-          uses: josStorer/get-current-time@v2
-          id: current-time
-          with:
-            format: "YYYY년 MM월 DD일 HH시 mm분 ss초"
-            utcOffset: "+09:00"
+      - name: Get current time
+        uses: josStorer/get-current-time@v2
+        id: current-time
+        with:
+          format: 'YYYY년 MM월 DD일 HH시 mm분 ss초'
+          utcOffset: '+09:00'
 
       - name: PR comment
         uses: thollander/actions-comment-pull-request@v2
