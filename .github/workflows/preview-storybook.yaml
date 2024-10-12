@@ -1,5 +1,4 @@
 name: Preview Storybook
-
 on:
   pull_request:
     paths:
@@ -38,5 +37,5 @@ jobs:
         with:
           comment_tag: ${{github.event.number}}-storybook
           message: |
-            Update: ${{ steps.current-time.outputs.current_time }}
+            Update: ${{ steps.current-time.outputs.formattedTime }}
             Storybook 미리보기: ${{ steps.chromatic.outputs.storybookUrl }}
