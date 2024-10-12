@@ -1,5 +1,6 @@
+import { cva, type VariantProps } from 'class-variance-authority';
+
 import { Props, TypographyVariant } from './Typography.type';
-import { cva, VariantProps } from 'class-variance-authority';
 
 const variantClasses = cva('whitespace-pre-wrap', {
   variants: {
@@ -59,5 +60,3 @@ export const Body2 = withBaseTypography('Body2');
 export const Body3 = withBaseTypography('Body3');
 export const Body4 = withBaseTypography('Body4');
 export const Caption = withBaseTypography('Caption');
-
-export default Typography;
