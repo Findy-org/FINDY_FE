@@ -1,0 +1,95 @@
+import { Meta, Typeset } from '@storybook/blocks';
+
+<Meta title="foundations/Typography" />;
+
+export const typography = {
+  type: {
+    primary: 'Pretendard',
+  },
+  weight: {
+    light: '300',
+    normal: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+  },
+  size: {
+    32: '32px',
+    28: '28px',
+    24: '24px',
+    20: '20px',
+    18: '18px',
+    16: '16px',
+    14: '14px',
+    12: '12px',
+  },
+};
+
+export const SampleText = '핀디, 순간을 핀으로 담아내다.';
+
+# Typography
+
+**Font:** Pretendard
+
+**Weights:** 300(light), 400(normal), 500(medium), 600(semibold), 700(bold)
+
+<Typeset
+  fontSizes={[typography.size[32]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title1 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[28]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title2 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[24]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Title3 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[20]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Body1 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[18]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Body2 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[16]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Body3 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[16]]}
+  fontWeight={typography.weight.medium}
+  sampleText={`Body3 ${SampleText} (medium)`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[14]]}
+  fontWeight={typography.weight.semibold}
+  sampleText={`Body4 ${SampleText}`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[14]]}
+  fontWeight={typography.weight.medium}
+  sampleText={`Body4 ${SampleText} (medium)`}
+  fontFamily={typography.type.primary}
+/>
+<Typeset
+  fontSizes={[typography.size[12]]}
+  fontWeight={typography.weight.normal}
+  sampleText={`Caption ${SampleText} (normal)`}
+  fontFamily={typography.type.primary}
+/>
