@@ -6,10 +6,10 @@ export default {
   content: ['./src/**/*.{ts,tsx}'],
   theme: {
     colors,
+    fontFamily: {
+      pretendard: ['Pretendard'],
+    },
     extend: {
-      fontFamily: {
-        pretendard: ['Pretendard'],
-      },
       fontSize: {
         title1: '32px',
         title2: '28px',
