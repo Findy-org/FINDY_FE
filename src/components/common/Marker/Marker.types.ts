@@ -1,16 +1,10 @@
 import { ComponentPropsWithoutRef } from 'react';
 
+import { MarkerCategory } from '@/constants/categories';
+
 export type Props = {
   /**
    * category name to be displayed.
    */
-  categoryName:
-    | 'restaurant'
-    | 'cafe'
-    | 'bar'
-    | 'shopping'
-    | 'travel'
-    | 'public'
-    | 'hospital'
-    | 'other';
+  categoryName: MarkerCategory;
 } & ComponentPropsWithoutRef<'button'>;

@@ -1,6 +1,8 @@
 /* eslint-disable no-restricted-exports */
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { MARKER_CATEGORIES } from '@/constants/categories';
+
 import { Marker } from '.';
 
 const meta = {
@@ -12,16 +14,12 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof Marker>;
 
-const categoryNames: Array<
-  'restaurant' | 'cafe' | 'bar' | 'shopping' | 'travel' | 'public' | 'hospital' | 'other'
-> = ['restaurant', 'cafe', 'bar', 'shopping', 'travel', 'public', 'hospital', 'other'];
-
 export const Basic: Story = {
   args: {
     categoryName: 'restaurant',
   },
   argTypes: {
-    categoryName: { control: { type: 'select' }, options: categoryNames },
+    categoryName: { control: { type: 'select' }, options: MARKER_CATEGORIES },
   },
   render: (args) => {
     return <Marker {...args} />;
@@ -32,7 +30,7 @@ export const ALL: Story = {
   render: () => {
     return (
       <>
-        {categoryNames.map((item) => (
+        {MARKER_CATEGORIES.map((item) => (
           <Marker key={item} categoryName={item} />
         ))}
       </>
