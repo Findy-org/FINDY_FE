@@ -16,6 +16,7 @@ import KakaoLogin from './kakao-login.svg?react';
 import Link from './link.svg?react';
 import Location from './location.svg?react';
 import Map from './map.svg?react';
+import Marker from './marker.svg?react';
 import NaverLogin from './naver-login.svg?react';
 import Other from './other.svg?react';
 import Public from './public.svg?react';
@@ -38,6 +39,7 @@ export const Icons = {
   link: Link,
   map: Map,
   location: Location,
+  marker: Marker,
   kakaoLogin: KakaoLogin,
   naverLogin: NaverLogin,
   findy1: Findy1,
