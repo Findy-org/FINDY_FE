@@ -23,6 +23,9 @@ export default {
       lineHeight: {
         140: '140%',
       },
+      zIndex: {
+        modal: '100',
+      },
     },
   },
   plugins: [],

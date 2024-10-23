@@ -14,7 +14,7 @@ const Content = ({ children }: PropsWithChildren) => {
       initial="initial"
       animate="animate"
       exit="exit"
-      className=" w-[22rem] relative z-100 bg-white px-6 py-7 rounded-[1.25rem] shadow-lg"
+      className="relative z-modal bg-white px-6 py-7 rounded-[1.25rem] shadow-lg"
     >
       {children}
     </motion.div>
@@ -23,7 +23,7 @@ const Content = ({ children }: PropsWithChildren) => {
 
 export const Modal = ({ isOpen, onClickOutside, children }: Props) => {
   const onClickOutsideDefault = (e: MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget && onClickOutside) {
+    if (e.target instanceof HTMLElement && e.target === e.currentTarget && onClickOutside) {
       onClickOutside();
     }
   };
