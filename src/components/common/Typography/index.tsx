@@ -1,6 +1,6 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
-import { Props, TypographyVariant } from './Typography.type';
+import { Props, TypographyVariant } from './Typography.types';
 
 const variantClasses = cva('whitespace-pre-wrap', {
   variants: {
