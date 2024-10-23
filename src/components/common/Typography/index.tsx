@@ -2,7 +2,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 
 import { Props, TypographyVariant } from './Typography.types';
 
-const variantClasses = cva('whitespace-pre-wrap', {
+const variantClasses = cva('whitespace-pre-wrap select-none', {
   variants: {
     type: {
       Title1: 'text-title1 leading-140',
