@@ -6,8 +6,9 @@ export const ButtonVariants = cva(
   {
     variants: {
       variant: {
-        primary: 'bg-primary text-white disabled:opacity-50 disabled:cursor-not-allowed',
-        gray: 'bg-gray-100 text-gray-950 disabled:opacity-50 disabled:cursor-not-allowed',
+        primary:
+          'bg-primary text-white hover:bg-[#FF3131] disabled:opacity-50 disabled:cursor-not-allowed',
+        gray: 'bg-gray-150 text-gray-950 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed',
       },
       size: {
         large: 'w-full h-16 text-xl font-medium',

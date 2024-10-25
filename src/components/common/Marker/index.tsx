@@ -4,26 +4,16 @@ import { Props } from './Marker.types';
 
 import { Icon } from '../Icon';
 
-export const Marker = ({ categoryName, ...props }: Props) => {
-  const ICON_SIZE = 35;
-  const ICON_POSITIONS = {
-    default: { left: '51%', top: '1/2' },
-    restaurant: { left: '51%', top: '[55%]' },
-  };
+const ICON_SIZE = 30;
 
-  const position =
-    categoryName === 'restaurant' ? ICON_POSITIONS.restaurant : ICON_POSITIONS.default;
+export const Marker = ({ categoryName, ...props }: Props) => {
   return (
-    <button
-      aria-label={`${categoryName} location marker`}
-      className="relative inline-block"
-      {...props}
-    >
-      <MarkerIcon />
+    <button aria-label={`${categoryName} location marker`} className="relative" {...props}>
+      <MarkerIcon className="relative" />
       <Icon
         name={categoryName}
         size={ICON_SIZE}
-        className={`absolute left-[${position.left}] top-${position.top} -translate-x-1/2 -translate-y-1/2`}
+        className="absolute left-1/2 top-[45%] -translate-x-1/2 -translate-y-1/2"
       />
     </button>
   );
