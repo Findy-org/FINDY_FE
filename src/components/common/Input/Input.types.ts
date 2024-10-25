@@ -1,4 +1,4 @@
-import { ChangeEventHandler, ComponentPropsWithoutRef } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
 export type Props = {
   /*
@@ -6,15 +6,11 @@ export type Props = {
    */
   value: string;
   /*
-   * The current value of the input field.
-   */
-  onChange: ChangeEventHandler<HTMLInputElement>;
-  /*
-   * The current value of the input field.
+   * Function to reset the input value to its initial state.
    */
   onClickReset: VoidFunction;
   /*
-   * indicating whether the input value is valid or not.
+   * Indicates whether the current input value is valid.
    */
   isValid: boolean;
 } & ComponentPropsWithoutRef<'input'>;
