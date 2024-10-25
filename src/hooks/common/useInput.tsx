@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useCallback, useRef, useState } from 'react';
 
-export const useInput = (initialValue = '') => {
+export const useInput = (initialValue = '', validation: string[] = ['youtube', 'www']) => {
   const [state, setState] = useState(initialValue);
   const [isValid, setIsValid] = useState(true);
   const ref = useRef<HTMLInputElement>(null);
@@ -12,9 +12,9 @@ export const useInput = (initialValue = '') => {
 
   const onBlur = useCallback(() => {
     if (state.length > 0) {
-      setIsValid(state.includes('youtube') || state.includes('www.'));
+      setIsValid(validation.some((criteria) => state.includes(criteria)));
     }
-  }, [state]);
+  }, [state, validation]);
 
   const onClickReset = useCallback(() => {
     setState(initialValue);
