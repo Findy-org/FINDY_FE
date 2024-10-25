@@ -22,6 +22,8 @@ export type Props = {
   /**
    * Optional initial zoom level for the map.
    * @default 13
+   * @min 1
+   * @max 21
    */
   initialZoom?: number;
   /**
