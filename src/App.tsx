@@ -1,6 +1,11 @@
 import { Outlet } from 'react-router-dom';
 
-// TODO : Layout으로 Outlet 감싸기
+import { Layout } from './components/common/Layout';
+
 export const App = () => {
-  return <Outlet />;
+  return (
+    <Layout>
+      <Outlet />
+    </Layout>
+  );
 };
