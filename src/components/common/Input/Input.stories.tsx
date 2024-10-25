@@ -4,7 +4,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { useInput } from '@/hooks/common/useInput';
 
 import { Input } from '.';
-import { Layout } from '../Layout';
 
 const meta = {
   title: 'components/common/Input',
@@ -19,7 +18,7 @@ export const Basic: Story = {
   render: () => {
     const { state, onChange, onClickReset, isValid, onBlur, ref } = useInput();
     return (
-      <Layout>
+      <div className=" w-96">
         <Input
           value={state}
           onChange={onChange}
@@ -28,7 +27,7 @@ export const Basic: Story = {
           isValid={isValid}
           ref={ref}
         />
-      </Layout>
+      </div>
     );
   },
 };
