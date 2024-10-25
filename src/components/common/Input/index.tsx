@@ -6,7 +6,18 @@ import { Icon } from '../Icon';
 import { Caption } from '../Typography';
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  ({ value, onChange, onClickReset, isValid, onBlur, ...props }, ref) => {
+  (
+    {
+      value = '',
+      onChange,
+      onClickReset = () => {},
+      isValid = true,
+      onBlur = () => {},
+      errorMessage = '',
+      ...props
+    },
+    ref
+  ) => {
     const helperMessage = !isValid && value.length > 0;
 
     return (
@@ -31,7 +42,9 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
         </div>
         {helperMessage && (
-          <Caption className="text-primary mt-1">유투브 링크 혹은 지도 링크만 가능합니다.</Caption>
+          <Caption className="text-primary mt-1">
+            {errorMessage || '유투브 링크 혹은 지도 링크만 가능합니다.'}
+          </Caption>
         )}
       </div>
     );

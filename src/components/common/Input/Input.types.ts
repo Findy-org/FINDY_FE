@@ -13,4 +13,8 @@ export type Props = {
    * Indicates whether the current input value is valid.
    */
   isValid: boolean;
+  /*
+   * Optional error message to display when validation fails.
+   */
+  errorMessage?: string;
 } & ComponentPropsWithoutRef<'input'>;
