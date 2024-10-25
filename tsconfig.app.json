@@ -24,7 +24,7 @@
     "paths": {
       "@/*": ["src/*"]
     },
-    "types": ["vite-plugin-svgr/client"]
+    "types": ["vite-plugin-svgr/client", "navermaps"]
   },
   "include": ["src"]
 }
