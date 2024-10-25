@@ -29,7 +29,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
             onBlur={onBlur}
             ref={ref}
             placeholder="링크를 입력해주세요."
-            className="w-full h-11 text-body3 bg-gray-50 pl-5 pr-10 rounded-lg outline-none focus:outline-1 focus:outline-offset-0 focus:outline-gray-500 transition-colors"
+            className="w-full h-11 text-body3 bg-gray-100 pl-5 pr-10 rounded-lg outline-none focus:outline-1 focus:outline-offset-0 focus:outline-gray-400 transition-colors"
             {...props}
           />
           {value && (
