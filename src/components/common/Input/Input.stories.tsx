@@ -18,7 +18,7 @@ export const Basic: Story = {
   render: () => {
     const { state, onChange, onClickReset, isValid, onBlur, ref } = useInput();
     return (
-      <div className=" w-96">
+      <div className=" max-w-96 w-full">
         <Input
           value={state}
           onChange={onChange}
