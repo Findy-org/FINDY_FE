@@ -1,6 +1,7 @@
 import Bar from './bar.svg?react';
 import EmptyBookMark from './bookmark-empty.svg?react';
 import BookMark from './bookmark.svg?react';
+import Bubble from './bubble.svg?react';
 import Cafe from './cafe-dessert.svg?react';
 import DeleteRound from './delete-round.svg?react';
 import Findy1 from './findy-1.svg?react';
@@ -41,6 +42,7 @@ export const Icons = {
   map: Map,
   location: Location,
   marker: Marker,
+  bubble: Bubble,
   deleteRound: DeleteRound,
   kakaoLogin: KakaoLogin,
   naverLogin: NaverLogin,
