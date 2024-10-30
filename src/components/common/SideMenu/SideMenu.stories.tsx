@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-exports */
-import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { sideMenuItem } from '@/constants/sideMenuItem';
