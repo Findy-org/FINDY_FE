@@ -6,18 +6,7 @@ import { Icon } from '../Icon';
 import { Caption } from '../Typography';
 
 export const Input = forwardRef<HTMLInputElement, Props>(
-  (
-    {
-      value = '',
-      onChange,
-      onClickReset = () => {},
-      isValid = true,
-      onBlur = () => {},
-      errorMessage = '',
-      ...props
-    },
-    ref
-  ) => {
+  ({ value, onClickReset, isValid, errorMessage, ...props }, ref) => {
     const helperMessage = !isValid && value.length > 0;
 
     return (
@@ -25,8 +14,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
         <div className="relative flex items-center w-full">
           <input
             value={value}
-            onChange={onChange}
-            onBlur={onBlur}
             ref={ref}
             placeholder="링크를 입력해주세요."
             className="w-full h-11 text-body3 bg-gray-100 pl-5 pr-10 rounded-lg outline-none focus:outline-1 focus:outline-offset-0 focus:outline-gray-400 transition-colors"
