@@ -16,8 +16,8 @@ export const Basic: Story = {
   args: {
     variant: 'primary',
     size: 'large',
-    children: '확인',
     disabled: false,
+    children: '확인',
   },
   argTypes: {
     variant: {
@@ -31,6 +31,9 @@ export const Basic: Story = {
         type: 'inline-radio',
       },
       options: ['medium', 'large'],
+    },
+    disabled: {
+      control: 'boolean',
     },
   },
   render: (args) => (
