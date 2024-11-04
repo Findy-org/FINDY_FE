@@ -17,6 +17,7 @@ export const ButtonVariants = cva(
     },
     defaultVariants: {
       variant: 'primary',
+      size: 'large',
     },
   }
 );
