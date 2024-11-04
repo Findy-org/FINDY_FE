@@ -50,7 +50,7 @@ export const Icons = {
   bubble: Bubble,
   search: Search,
   plus: Plus,
-  stat: Star,
+  star: Star,
   user: User,
   back: Back,
   deleteRound: DeleteRound,
