@@ -21,14 +21,7 @@ export const IconButton = ({ name, isActive, className, ...props }: Props) => {
       <Icon
         name={name}
         color={name === 'bookMark' ? (isActive ? 'primary' : 'gray') : 'primary'}
-        className={cn(
-          'w-6 h-6',
-          name === 'bookMark'
-            ? isActive
-              ? 'border-primary'
-              : 'border-gray-300'
-            : 'hover:border-primary'
-        )}
+        className={cn('w-6 h-6')}
       />
     </button>
   );

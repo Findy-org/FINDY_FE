@@ -14,7 +14,7 @@ export type Props = {
   isActive?: boolean;
   /**
    * Additional CSS classes for the button.
-   * * @default ''
+   * @default ''
    */
   className?: string;
 } & ComponentPropsWithoutRef<'button'>;
