@@ -1,3 +1,4 @@
+import Back from './back.svg?react';
 import Bar from './bar.svg?react';
 import EmptyBookMark from './bookmark-empty.svg?react';
 import BookMark from './bookmark.svg?react';
@@ -21,10 +22,14 @@ import Map from './map.svg?react';
 import Marker from './marker.svg?react';
 import NaverLogin from './naver-login.svg?react';
 import Other from './other.svg?react';
+import Plus from './plus.svg?react';
 import Public from './public.svg?react';
 import Restaurant from './restaurant.svg?react';
+import Search from './search.svg?react';
 import Shopping from './shopping.svg?react';
+import Star from './star.svg?react';
 import Travel from './travel.svg?react';
+import User from './user.svg?react';
 
 export const Icons = {
   restaurant: Restaurant,
@@ -43,6 +48,11 @@ export const Icons = {
   location: Location,
   marker: Marker,
   bubble: Bubble,
+  search: Search,
+  plus: Plus,
+  stat: Star,
+  user: User,
+  back: Back,
   deleteRound: DeleteRound,
   kakaoLogin: KakaoLogin,
   naverLogin: NaverLogin,
