@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { SearchInput } from '@/components/common/SearchInput';
 import { NaverMap } from '@/components/features/NaverMap';
 
-export const Map = () => {
+export const MapView = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleChange = (value: string) => {
