@@ -4,12 +4,12 @@ import { Props } from './IconButton.types';
 
 import { Icon } from '../Icon';
 
-export const IconButton = ({ variant = 'default', name, isActive, className, ...props }: Props) => {
+export const IconButton = ({ name, isActive, className, ...props }: Props) => {
   return (
     <button
       className={cn(
         'p-3 rounded-full transition-colors border shadow-md shadow-gray-300 ',
-        variant === 'bookmark'
+        name === 'bookMark'
           ? isActive
             ? 'border-primary'
             : 'border-gray-300'
@@ -20,10 +20,10 @@ export const IconButton = ({ variant = 'default', name, isActive, className, ...
     >
       <Icon
         name={name}
-        color={variant === 'bookmark' ? (isActive ? 'primary' : 'gray') : 'primary'}
+        color={name === 'bookMark' ? (isActive ? 'primary' : 'gray') : 'primary'}
         className={cn(
           'w-6 h-6',
-          variant === 'bookmark'
+          name === 'bookMark'
             ? isActive
               ? 'border-primary'
               : 'border-gray-300'

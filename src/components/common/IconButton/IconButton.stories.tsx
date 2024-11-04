@@ -20,12 +20,7 @@ export const Basic: Story = {
       <div className="flex flex-row flex-wrap gap-2">
         <IconButton name="map" />
         <IconButton name="link" />
-        <IconButton
-          name="bookMark"
-          variant="bookmark"
-          isActive={value}
-          onClick={() => setValue(!value)}
-        />
+        <IconButton name="bookMark" isActive={value} onClick={() => setValue(!value)} />
       </div>
     );
   },
@@ -36,12 +31,7 @@ export const BookMark: Story = {
     const [value, setValue] = useState(false);
     return (
       <div className="flex flex-row gap-4">
-        <IconButton
-          variant="bookmark"
-          name="bookMark"
-          isActive={value}
-          onClick={() => setValue(!value)}
-        />
+        <IconButton name="bookMark" isActive={value} onClick={() => setValue(!value)} />
       </div>
     );
   },

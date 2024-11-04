@@ -8,11 +8,6 @@ export type Props = {
    */
   name: IconName;
   /**
-   * The type of button to be rendered.
-   * @default 'default'
-   */
-  variant?: 'default' | 'bookmark';
-  /**
    * Indicates whether the button is currently active.
    * @default 'false'
    */
