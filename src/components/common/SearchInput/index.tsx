@@ -12,7 +12,7 @@ export const SearchInput = forwardRef<HTMLInputElement, Props>(
           <input
             value={value}
             ref={ref}
-            placeholder="링크를 입력해주세요."
+            placeholder="검색어를 입력해주세요."
             className="w-full h-11 text-body3 bg-white pl-5 pr-10 rounded-lg border focus:outline-none border-primary transition-colors"
             {...props}
           />
