@@ -21,7 +21,7 @@ export const Basic: Story = {
     position: 'left',
   },
   argTypes: {
-    variant: { control: { type: 'radio' }, options: ['gps', 'link', 'bookMark'] },
+    variant: { control: { type: 'radio' }, options: ['gps', 'link', 'emptyBookMark'] },
     position: { control: { type: 'radio' }, options: ['left', 'right'] },
   },
   render: (args) => {
