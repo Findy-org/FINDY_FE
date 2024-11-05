@@ -13,7 +13,6 @@ export const Landing = ({ onNext, onHomeClick }: LinkFormProps) => {
     <div className="flex flex-col h-full items-center justify-between">
       <Header left={<Icon name="home" size={20} onClick={onHomeClick} />} />
       <div className="flex flex-col items-center gap-10 my-36">
-        {/* TODO : framer-motion animation constants로 변경 */}
         <m.div
           initial={FIDIES_ANIMATION.initial}
           animate={FIDIES_ANIMATION.animate}

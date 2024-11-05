@@ -10,10 +10,9 @@ import { Portal } from '../Portal';
 const Content = ({ children }: PropsWithChildren) => {
   return (
     <motion.div
-      variants={FADE_IN_ANIMATION}
-      initial="initial"
-      animate="animate"
-      exit="exit"
+      initial={FADE_IN_ANIMATION.initial}
+      animate={FADE_IN_ANIMATION.animate}
+      exit={FADE_IN_ANIMATION.exit}
       className="relative z-modal bg-white px-6 py-7 rounded-[1.25rem] shadow-lg"
     >
       {children}
