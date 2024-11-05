@@ -1,7 +1,7 @@
 import { MouseEvent, PropsWithChildren } from 'react';
 import { motion } from 'framer-motion';
 
-import { defaultFadeInVariants } from '@/constants/motions';
+import { FADE_IN_ANIMATION } from '@/constants/motions';
 
 import { Props } from './Modal.types';
 
@@ -10,7 +10,7 @@ import { Portal } from '../Portal';
 const Content = ({ children }: PropsWithChildren) => {
   return (
     <motion.div
-      variants={defaultFadeInVariants}
+      variants={FADE_IN_ANIMATION}
       initial="initial"
       animate="animate"
       exit="exit"
@@ -32,7 +32,7 @@ export const Modal = ({ isOpen, onClickOutside, children }: Props) => {
     <Portal isOpen={isOpen}>
       <motion.div
         onClick={onClickOutsideDefault}
-        variants={defaultFadeInVariants}
+        variants={FADE_IN_ANIMATION}
         initial="initial"
         animate="animate"
         exit="exit"
