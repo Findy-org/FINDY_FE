@@ -8,7 +8,7 @@ export const IconButton = ({ name, isActive, className, ...props }: Props) => {
   return (
     <button
       className={cn(
-        'p-3 rounded-full transition-colors border shadow-md shadow-gray-300 ',
+        'p-3 rounded-full transition-colors border shadow-md shadow-gray-300 bg-white',
         name === 'bookMark'
           ? isActive
             ? 'border-primary'

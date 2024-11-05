@@ -23,7 +23,7 @@ const SideMenuGroup = ({ position = 'left', children, ...props }: GroupProps) =>
   return (
     <div
       className={cn(
-        `w-fit wrap flex flex-col gap-4 ${position === 'left' ? 'left-4' : 'right-4'}         `
+        `w-fit wrap flex flex-col gap-3 ${position === 'left' ? 'left-4' : 'right-4'}         `
       )}
       {...props}
     >
