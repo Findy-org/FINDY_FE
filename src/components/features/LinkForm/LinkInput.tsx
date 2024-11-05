@@ -24,7 +24,7 @@ export const LinkInput = ({ onNext, onHomeClick }: LinkFormProps) => {
           ref={ref}
         />
       </div>
-      <div className="absolute bottom-3 w-full max-w-[480px] px-4 mb-5">
+      <div className="absolute bottom-3 w-full max-w-[30rem] px-4 mb-5">
         <Button
           variant="primary"
           size="large"
