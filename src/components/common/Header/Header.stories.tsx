@@ -17,7 +17,7 @@ export const Basic: Story = {
   render: () => {
     return (
       <div className="space-y-4">
-        <div className=" shadow-md">
+        <div className="shadow-md">
           <Header left={<Icon name="home" size={20} />} />
         </div>
       </div>
@@ -28,10 +28,10 @@ export const Basic: Story = {
 export const WithMiddle: Story = {
   render: () => {
     return (
-      <div className=" shadow-md">
+      <div className="shadow-md">
         <Header
           left={<Icon name="home" size={20} />}
-          middle={<Icon name="findyLogo1" size={100} />}
+          middle={<Icon name="findyLogo1" size={60} />}
         />
       </div>
     );
@@ -41,7 +41,7 @@ export const WithMiddle: Story = {
 export const WithMiddleAndRight: Story = {
   render: () => {
     return (
-      <div className=" shadow-md">
+      <div className="shadow-md">
         <Header
           left={<Icon name="home" size={20} />}
           middle={<Icon name="findyLogo1" size={100} />}
