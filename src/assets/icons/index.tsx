@@ -5,6 +5,7 @@ import BookMark from './bookmark.svg?react';
 import Bubble from './bubble.svg?react';
 import Cafe from './cafe-dessert.svg?react';
 import DeleteRound from './delete-round.svg?react';
+import Fidies from './findies.svg?react';
 import Findy1 from './findy-1.svg?react';
 import Findy2 from './findy-2.svg?react';
 import Findy3 from './findy-3.svg?react';
@@ -14,6 +15,7 @@ import Findy6 from './findy-6.svg?react';
 import FindyLogo1 from './findy-logo1.svg?react';
 import FindyLogo2 from './findy-logo2.svg?react';
 import Gps from './gps.svg?react';
+import Home from './home.svg?react';
 import Hospital from './hospital.svg?react';
 import KakaoLogin from './kakao-login.svg?react';
 import Link from './link.svg?react';
@@ -53,6 +55,7 @@ export const Icons = {
   star: Star,
   user: User,
   back: Back,
+  home: Home,
   deleteRound: DeleteRound,
   kakaoLogin: KakaoLogin,
   naverLogin: NaverLogin,
@@ -62,6 +65,7 @@ export const Icons = {
   findy4: Findy4,
   findy5: Findy5,
   findy6: Findy6,
+  fidies: Fidies,
   findyLogo1: FindyLogo1,
   findyLogo2: FindyLogo2,
 };

@@ -1,4 +1,4 @@
-import { m } from 'framer-motion';
+import { motion as m } from 'framer-motion';
 
 import { cn } from '@/lib/core';
 

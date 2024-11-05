@@ -6,9 +6,14 @@ import { Props } from './Button.types';
 import { ButtonVariants } from './Button.variants';
 
 export const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ variant, size, children, ...props }, ref) => {
+  ({ variant, size, className, children, ...props }, ref) => {
     return (
-      <button type="button" className={cn(ButtonVariants({ variant, size }))} ref={ref} {...props}>
+      <button
+        type="button"
+        className={cn(ButtonVariants({ variant, size }), className)}
+        ref={ref}
+        {...props}
+      >
         {children}
       </button>
     );
