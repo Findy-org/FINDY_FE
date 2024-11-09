@@ -32,12 +32,16 @@ export const NaverMap = memo(
           zoom: initialZoom,
         });
 
-        window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
+        const listener = window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
           const currentZoom = map.getZoom();
           handleZoomChange(currentZoom);
         });
 
         mapInstance.current = map;
+        return () => {
+          window.naver.maps.Event.removeListener(listener);
+          mapInstance.current = null;
+        };
       }
     }, [initialCenter.lat, initialCenter.lng, initialZoom, handleZoomChange]);
 
