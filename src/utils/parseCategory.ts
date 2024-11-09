@@ -1,24 +1,18 @@
-export const parseCategory = (categoryName: string) => {
-  if (categoryName.includes('식')) {
-    return 'restaurant';
-  }
-  if (categoryName.includes('카페') || categoryName.includes('디저트')) {
-    return 'cafe';
-  }
-  if (categoryName.includes('술집')) {
-    return 'bar';
-  }
-  if (categoryName.includes('쇼핑') || categoryName.includes('유통')) {
-    return 'shopping';
-  }
-  if (categoryName.includes('여행') || categoryName.includes('명소')) {
-    return 'travel';
-  }
-  if (categoryName.includes('공공') || categoryName.includes('사회')) {
-    return 'public';
-  }
-  if (categoryName.includes('병원') || categoryName.includes('의원')) {
-    return 'hospital';
+const CATEGORY_REGEX_MAPPING: { [key: string]: RegExp } = {
+  restaurant: /음식점|한식|중식|양식|일식/,
+  cafe: /카페|디저트/,
+  bar: /술집/,
+  shopping: /쇼핑|유통/,
+  public: /공공|교육|사회/,
+  travel: /명소|여행/,
+  hospital: /병원|의원/,
+};
+
+export const parseCategory = (categoryName: string): string => {
+  for (const [category, regex] of Object.entries(CATEGORY_REGEX_MAPPING)) {
+    if (regex.test(categoryName)) {
+      return category;
+    }
   }
 
   return 'other';
