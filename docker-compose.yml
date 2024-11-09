@@ -7,6 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - '80:80'
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
     networks:
       - app-network
 
