@@ -24,7 +24,7 @@ export const Basic: Story = {
 
     return (
       <>
-        <Button size="medium" onClick={handleClickModal}>
+        <Button variant="primary" size="medium" onClick={handleClickModal}>
           Open Modal
         </Button>
         <Modal isOpen={isOpen} onClickOutside={() => setIsOpen(false)}>
