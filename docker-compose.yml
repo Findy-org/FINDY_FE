@@ -6,9 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - '80:80'
-    env_file:
-      - .env
+      - '5173:5173'
     environment:
       - NODE_ENV=production
     networks:
