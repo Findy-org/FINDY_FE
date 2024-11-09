@@ -13,9 +13,9 @@ export type ExtractProp = { isLoading: boolean } & LinkFormProps;
 // TODO : isLoading 인 경우 framer-노출, 데이터 불러온 이후 map 페이지로 이동
 export const ExtractionStatus = ({ onNext, onHomeClick, isLoading }: ExtractProp) => {
   return (
-    <div className="flex flex-col h-full items-center justify-between">
+    <div className="flex flex-col items-center justify-between">
       <Header left={<Icon name="home" size={20} onClick={onHomeClick} />} />
-      <div className="w-full flex flex-col items-start gap-12 my-36 px-10 overflow-hidden">
+      <div className="w-full flex flex-col items-start gap-12 my-36 px-6 overflow-hidden">
         <Body1>{`현재 장소 정보를 추출 중입니다.\n조금만 더 기다려 주세요, 곧 완료됩니다!`}</Body1>
         <m.div
           initial={SLIDER_ANIMATION.initial}

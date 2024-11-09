@@ -39,7 +39,7 @@ export const MapView = () => {
 
   return (
     <>
-      <div className="relative w-full">
+      <div className="relative">
         <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 w-full max-w-md px-2">
           <SearchInput
             value={searchValue}
@@ -49,7 +49,7 @@ export const MapView = () => {
           />
         </div>
         <NaverMap />
-        <div className="absolute bottom-24 right-4 flex flex-col gap-2 justify-center items-center">
+        <div className="absolute bottom-10 right-4 flex flex-col gap-2 justify-center items-center">
           <SideMenu.Group>
             <SideMenu position="right" variant="gps" onClick={() => {}} />
             <SideMenu position="right" variant="link" onClick={() => navigate('/link')} />
