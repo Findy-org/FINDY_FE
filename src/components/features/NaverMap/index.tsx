@@ -24,7 +24,6 @@ export const NaverMap = memo(
       clearExistingMarkers(markersRef, markerDataRef);
     }, []);
 
-    // TODO: window.naver가 load 되지 않을 경우 toast/modal 추가
     useEffect(() => {
       if (mapRef.current && window.naver) {
         const center = new window.naver.maps.LatLng(initialCenter.lat, initialCenter.lng);

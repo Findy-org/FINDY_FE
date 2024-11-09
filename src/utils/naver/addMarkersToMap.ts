@@ -2,6 +2,8 @@ import { Place } from '@/types/naver';
 
 import { CustomMarker } from '../CustomMarker';
 
+const MIN_ZOOM = 14;
+
 export const addMarkersToMap = (
   mapInstance: React.MutableRefObject<naver.maps.Map | null>,
   markers: Place[],
@@ -19,7 +21,7 @@ export const addMarkersToMap = (
 
     const bounds = new window.naver.maps.LatLngBounds(initialPosition, initialPosition);
     const currentZoom = mapInstance.current.getZoom();
-    const shouldShowTitles = currentZoom >= 14;
+    const shouldShowTitles = currentZoom >= MIN_ZOOM;
 
     markers.forEach((markerData) => {
       const mapy = Number(markerData.mapy) / 1e7;
@@ -37,7 +39,7 @@ export const addMarkersToMap = (
             shouldShowTitle: shouldShowTitles,
           }),
           size: new window.naver.maps.Size(30, 30),
-          anchor: new window.naver.maps.Point(15, 30),
+          anchor: new window.naver.maps.Point(30, 30),
         },
       });
 
@@ -48,6 +50,7 @@ export const addMarkersToMap = (
       });
       bounds.extend(position);
     });
-    mapInstance.current.fitBounds(bounds);
+
+    mapInstance.current.fitBounds(bounds, { left: 10, right: 10 });
   }
 };
