@@ -3,7 +3,7 @@ export const parseCategory = (categoryName: string) => {
     return 'restaurant';
   }
   if (categoryName.includes('카페') || categoryName.includes('디저트')) {
-    return 'cafe-dessert';
+    return 'cafe';
   }
   if (categoryName.includes('술집')) {
     return 'bar';
