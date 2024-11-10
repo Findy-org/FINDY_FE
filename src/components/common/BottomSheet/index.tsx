@@ -9,22 +9,25 @@ const Content = ({ children }: React.PropsWithChildren) => (
   <div className="w-full text-black p-6">{children}</div>
 );
 
-export const BottomSheet = memo(({ resetTrigger = 0, children }: Props) => {
-  const initialHeight = 150;
-  const minVisibleHeight = 60;
+export const BottomSheet = memo(({ children, resetTrigger = 0 }: Props) => {
   const dragControls = useDragControls();
 
   const { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, resetSheet } =
-    useBottomSheet(initialHeight, minVisibleHeight, resetTrigger);
+    useBottomSheet(resetTrigger);
 
   return (
     <>
       <div
         className={`absolute top-0 left-0 w-full h-full transition-opacity duration-300 ${
-          sheetHeight > 10 ? 'opacity-70 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          isHidden ? 'opacity-0 pointer-events-none' : 'opacity-70 pointer-events-auto'
         }`}
-        onClick={resetSheet}
+        onClick={() => {
+          if (!isInteractionDisabled) {
+            resetSheet();
+          }
+        }}
       />
+
       <AnimatePresence>
         {!isHidden && (
           <motion.div
