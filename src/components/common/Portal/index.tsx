@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useRef, useState } from 'react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { createPortal } from 'react-dom';
 
