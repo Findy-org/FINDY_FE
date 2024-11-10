@@ -1,7 +1,7 @@
 import { ComponentPropsWithoutRef, ReactNode } from 'react';
 
 export type Props = ComponentPropsWithoutRef<'div'> & {
-  resetTrigger?: number;
+  resetTrigger?: boolean;
   children?: ReactNode;
 };
 
