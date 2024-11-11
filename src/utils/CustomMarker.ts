@@ -1,16 +1,16 @@
-import bar from '@/assets/icons/bar.svg';
-import cafe from '@/assets/icons/cafe-dessert.svg';
-import hospital from '@/assets/icons/hospital.svg';
-import markerIcon from '@/assets/icons/marker.svg';
-import other from '@/assets/icons/other.svg';
-import publicIcon from '@/assets/icons/public.svg';
-import restaurant from '@/assets/icons/restaurant.svg';
-import shopping from '@/assets/icons/shopping.svg';
-import travel from '@/assets/icons/travel.svg';
+import bar from '@/assets/icons/bar.svg?url';
+import cafe from '@/assets/icons/cafe-dessert.svg?url';
+import hospital from '@/assets/icons/hospital.svg?url';
+import markerIcon from '@/assets/icons/marker.svg?url';
+import other from '@/assets/icons/other.svg?url';
+import publicIcon from '@/assets/icons/public.svg?url';
+import restaurant from '@/assets/icons/restaurant.svg?url';
+import shopping from '@/assets/icons/shopping.svg?url';
+import travel from '@/assets/icons/travel.svg?url';
 
 import { parseCategory } from './parseCategory';
 
-const iconMap = {
+const iconMap: Record<string, string> = {
   bar,
   cafe,
   hospital,
@@ -22,8 +22,6 @@ const iconMap = {
   default: other,
 };
 
-type IconMapKeys = keyof typeof iconMap;
-
 export const CustomMarker = ({
   title,
   categoryName,
@@ -33,8 +31,9 @@ export const CustomMarker = ({
   categoryName: string;
   shouldShowTitle: boolean;
 }) => {
-  const iconName = parseCategory(categoryName) as IconMapKeys;
+  const iconName = parseCategory(categoryName) as keyof typeof iconMap;
   const categoryIcon = iconMap[iconName] || iconMap.default;
+  console.log('수정');
 
   const markerHTML = `
   <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
