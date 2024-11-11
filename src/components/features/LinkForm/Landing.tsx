@@ -10,9 +10,9 @@ import { LinkFormProps } from './types';
 
 export const Landing = ({ onNext, onHomeClick }: LinkFormProps) => {
   return (
-    <div className="flex flex-col h-full items-center justify-between">
+    <div className="flex flex-col items-center justify-between">
       <Header left={<Icon name="home" size={20} onClick={onHomeClick} />} />
-      <div className="flex flex-col items-center gap-10 my-36">
+      <div className=" flex flex-col items-center justify-center gap-10 my-36">
         <m.div
           initial={FIDIES_ANIMATION.initial}
           animate={FIDIES_ANIMATION.animate}
