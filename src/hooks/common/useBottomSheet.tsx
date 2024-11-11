@@ -28,7 +28,7 @@ export const useBottomSheet = (isOpen: boolean) => {
   }, [isOpen]);
 
   const handleDrag = useCallback(
-    (_: PointerEvent, info: DragInfo) => {
+    (_: MouseEvent | TouchEvent | PointerEvent, info: DragInfo) => {
       if (isInteractionDisabled) return;
 
       try {
