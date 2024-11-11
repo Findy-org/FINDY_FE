@@ -1,7 +1,7 @@
 import bar from '@/assets/icons/bar.svg?url';
 import cafe from '@/assets/icons/cafe-dessert.svg?url';
 import hospital from '@/assets/icons/hospital.svg?url';
-import markerIcon from '@/assets/icons/marker.svg?url';
+import markerIcon from '@/assets/icons/marker.svg';
 import other from '@/assets/icons/other.svg?url';
 import publicIcon from '@/assets/icons/public.svg?url';
 import restaurant from '@/assets/icons/restaurant.svg?url';
@@ -38,8 +38,8 @@ export const CustomMarker = ({
   const markerHTML = `
   <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
     <button style="position: relative;" >
-      <img src="${markerIcon}" style="width: 40px; height: 50px; position: relative;" />
-      <img src="${categoryIcon}" style="width: 33px; height: 33px; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);" />
+      <img src="${markerIcon}" style="width: 100%; height: 100%; position: relative;" />
+      <img src="${categoryIcon}" style="width: 33px; height: 100%; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);" />
     </button>
     <div style="width: auto; height: auto; font-size: 11px; font-weight: 600; color: black; text-shadow: 1px 1px 2px white; text-align: center; white-space: normal;">
       ${shouldShowTitle ? title : ''}
