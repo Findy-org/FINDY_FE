@@ -1,22 +1,28 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import { motion, useDragControls, AnimatePresence } from 'framer-motion';
 
 import { useBottomSheet } from '@/hooks/common/useBottomSheet';
 
 import { Props } from './BottomSheet.types';
 
-import { Button } from '../Button';
 import { Portal } from '../Portal';
 
 const Content = ({ children }: React.PropsWithChildren) => (
   <div className="w-full text-black p-6">{children}</div>
 );
 
-export const BottomSheet = memo(({ children, resetTrigger = false }: Props) => {
+export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
   const dragControls = useDragControls();
 
   const { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, resetSheet } =
-    useBottomSheet(resetTrigger);
+    useBottomSheet(isOpen);
+
+  const handleClose = () => {
+    if (!isInteractionDisabled) {
+      resetSheet();
+      if (onClose) onClose();
+    }
+  };
 
   return (
     <Portal isOpen={!isHidden}>
@@ -24,7 +30,7 @@ export const BottomSheet = memo(({ children, resetTrigger = false }: Props) => {
         className={`absolute top-0 left-0 w-full h-full transition-opacity duration-300 ${
           isHidden ? 'opacity-0 pointer-events-none' : 'opacity-70 pointer-events-auto'
         }`}
-        onClick={resetSheet}
+        onClick={handleClose}
       />
 
       <AnimatePresence>
@@ -51,22 +57,3 @@ export const BottomSheet = memo(({ children, resetTrigger = false }: Props) => {
     </Portal>
   );
 });
-
-export const BottomSheetDemo = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleClickBottomSheet = () => setIsOpen(!isOpen);
-
-  return (
-    <>
-      <Button variant="primary" size="medium" onClick={handleClickBottomSheet}>
-        Open BottomSheet
-      </Button>
-      <BottomSheet resetTrigger={isOpen}>
-        <div className="flex flex-col gap-6 items-center">
-          <div>BottomSheet Content</div>
-        </div>
-      </BottomSheet>
-    </>
-  );
-};

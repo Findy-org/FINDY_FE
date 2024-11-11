@@ -26,7 +26,7 @@ export const Basic: Story = {
           Open BottomSheet
         </Button>
         {isOpen && (
-          <BottomSheet resetTrigger={isOpen}>
+          <BottomSheet isOpen={isOpen} onClose={() => setIsOpen(false)}>
             <div className="flex flex-col gap-6 items-center">
               <div>Contents ...</div>
             </div>

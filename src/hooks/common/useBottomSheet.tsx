@@ -4,7 +4,7 @@ import { animate } from 'framer-motion';
 import { DragInfo } from '@/components/common/BottomSheet/BottomSheet.types';
 import { INITIAL_HEIGHT, MIN_VISIBLE_HEIGHT, MAX_HEIGHT } from '@/constants/bottomSheetOptions';
 
-export const useBottomSheet = (resetTrigger: boolean) => {
+export const useBottomSheet = (isOpen: boolean) => {
   const [sheetHeight, setSheetHeight] = useState(INITIAL_HEIGHT);
   const [isHidden, setIsHidden] = useState(false);
   const [isInteractionDisabled, setIsInteractionDisabled] = useState(false);
@@ -14,41 +14,48 @@ export const useBottomSheet = (resetTrigger: boolean) => {
   const lastDragPositionRef = useRef(0);
   const lastVelocityRef = useRef(0);
 
+  const resetSheetState = () => {
+    setSheetHeight(INITIAL_HEIGHT);
+    setIsHidden(false);
+    setIsInteractionDisabled(false);
+    dragOffsetRef.current = 0;
+    initialPositionRef.current = INITIAL_HEIGHT;
+    dragStartTimeRef.current = null;
+  };
+
   useEffect(() => {
-    if (resetTrigger) {
-      setSheetHeight(INITIAL_HEIGHT);
-      setIsHidden(false);
-      setIsInteractionDisabled(false);
-      dragOffsetRef.current = 0;
-      initialPositionRef.current = INITIAL_HEIGHT;
-      dragStartTimeRef.current = null;
-    }
-  }, [resetTrigger]);
+    if (isOpen) resetSheetState();
+  }, [isOpen]);
 
   const handleDrag = useCallback(
-    (_: MouseEvent | TouchEvent | PointerEvent, info: DragInfo) => {
+    (_: PointerEvent, info: DragInfo) => {
       if (isInteractionDisabled) return;
 
-      if (!dragStartTimeRef.current) {
-        dragStartTimeRef.current = Date.now();
-        lastDragPositionRef.current = info.delta.y;
+      try {
+        if (!dragStartTimeRef.current) {
+          dragStartTimeRef.current = Date.now();
+          lastDragPositionRef.current = info.delta.y;
+        }
+
+        requestAnimationFrame(() => {
+          const dragAmount = -info.delta.y;
+          dragOffsetRef.current += dragAmount;
+
+          const velocity =
+            (lastDragPositionRef.current - info.delta.y) /
+            (Date.now() - (dragStartTimeRef.current || Date.now()));
+          lastVelocityRef.current = velocity;
+
+          const newHeight = Math.min(
+            Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
+            MAX_HEIGHT
+          );
+          setSheetHeight(newHeight);
+        });
+      } catch (error) {
+        console.error('드래그 중 에러 발생:', error);
+        resetSheetState();
       }
-
-      requestAnimationFrame(() => {
-        const dragAmount = -info.delta.y;
-        dragOffsetRef.current += dragAmount;
-
-        const velocity =
-          (lastDragPositionRef.current - info.delta.y) /
-          (Date.now() - (dragStartTimeRef.current || Date.now()));
-        lastVelocityRef.current = velocity;
-
-        const newHeight = Math.min(
-          Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
-          MAX_HEIGHT
-        );
-        setSheetHeight(newHeight);
-      });
     },
     [isInteractionDisabled]
   );
@@ -75,14 +82,7 @@ export const useBottomSheet = (resetTrigger: boolean) => {
     });
   }, [sheetHeight]);
 
-  const resetSheet = useCallback(() => {
-    setSheetHeight(INITIAL_HEIGHT);
-    setIsHidden(false);
-    setIsInteractionDisabled(false);
-    dragOffsetRef.current = 0;
-    initialPositionRef.current = INITIAL_HEIGHT;
-    dragStartTimeRef.current = null;
-  }, []);
+  const resetSheet = useCallback(resetSheetState, []);
 
   return { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, resetSheet };
 };
