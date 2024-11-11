@@ -31,31 +31,26 @@ export const useBottomSheet = (isOpen: boolean) => {
     (_: MouseEvent | TouchEvent | PointerEvent, info: DragInfo) => {
       if (isInteractionDisabled) return;
 
-      try {
-        if (!dragStartTimeRef.current) {
-          dragStartTimeRef.current = Date.now();
-          lastDragPositionRef.current = info.delta.y;
-        }
-
-        requestAnimationFrame(() => {
-          const dragAmount = -info.delta.y;
-          dragOffsetRef.current += dragAmount;
-
-          const velocity =
-            (lastDragPositionRef.current - info.delta.y) /
-            (Date.now() - (dragStartTimeRef.current || Date.now()));
-          lastVelocityRef.current = velocity;
-
-          const newHeight = Math.min(
-            Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
-            MAX_HEIGHT
-          );
-          setSheetHeight(newHeight);
-        });
-      } catch (error) {
-        console.error('드래그 중 에러 발생:', error);
-        resetSheetState();
+      if (!dragStartTimeRef.current) {
+        dragStartTimeRef.current = Date.now();
+        lastDragPositionRef.current = info.delta.y;
       }
+
+      requestAnimationFrame(() => {
+        const dragAmount = -info.delta.y;
+        dragOffsetRef.current += dragAmount;
+
+        const velocity =
+          (lastDragPositionRef.current - info.delta.y) /
+          (Date.now() - (dragStartTimeRef.current || Date.now()));
+        lastVelocityRef.current = velocity;
+
+        const newHeight = Math.min(
+          Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
+          MAX_HEIGHT
+        );
+        setSheetHeight(newHeight);
+      });
     },
     [isInteractionDisabled]
   );
