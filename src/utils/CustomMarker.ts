@@ -33,17 +33,16 @@ export const CustomMarker = ({
 }) => {
   const iconName = parseCategory(categoryName) as keyof typeof iconMap;
   const categoryIcon = iconMap[iconName] || iconMap.default;
-  console.log('수정');
 
   const markerHTML = `
   <div style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
-    <button style="position: relative;" >
-      <img src="${markerIcon}" style="width: 37px; height: 47px; position: relative;" />
-      <img src="${categoryIcon}" style="width: 33px; height: 100%; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);" />
+    <button style="position: relative; display: flex; flex-direction: column; align-items: center;" >
+      <object data="${markerIcon}" type="image/svg+xml" style="width: 37px; height: 47px;"></object>
+      <object data="${categoryIcon}" type="image/svg+xml" style="width: 33px; height: 33px; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);"></object>
     </button>
-    <div style="width: auto; height: auto; font-size: 11px; font-weight: 600; color: black; text-shadow: 1px 1px 2px white; text-align: center; white-space: normal;">
+    <span style="display: block; font-size: 11px; font-weight: 600; color: black; text-shadow: 1px 1px 2px white; text-align: center; white-space: normal; margin-top: 5px;">
       ${shouldShowTitle ? title : ''}
-    </div>
+    </span>
   </div>
   `;
 
