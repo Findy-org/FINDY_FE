@@ -40,7 +40,7 @@ export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
             style={{ height: sheetHeight }}
             drag="y"
             dragControls={dragControls}
-            dragElastic={0}
+            dragElastic={0.3}
             dragConstraints={{ top: 0, bottom: 0 }}
             onDrag={handleDrag}
             onDragEnd={handleDragEnd}
