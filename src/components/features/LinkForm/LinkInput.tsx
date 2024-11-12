@@ -4,11 +4,20 @@ import { Icon } from '@/components/common/Icon';
 import { Input } from '@/components/common/Input';
 import { Body1 } from '@/components/common/Typography';
 import { useInput } from '@/hooks/common/useInput';
+import { FormData } from '@/hooks/common/useYoutubeContext';
 
 import { LinkFormProps } from './types';
 
-export const LinkInput = ({ onNext, onHomeClick }: LinkFormProps) => {
-  const { state, onChange, onClickReset, isValid, onBlur, ref } = useInput();
+export type LinkInputProp<T> = FormData<T> & LinkFormProps;
+
+export const LinkInput = ({ onNext, onHomeClick, context }: LinkInputProp<string>) => {
+  const { state: youtubeLink, setState: setYoutube } = context;
+  const { state, onChange, onClickReset, isValid, onBlur, ref } = useInput(youtubeLink);
+
+  const handleSaveAndNext = () => {
+    setYoutube(state);
+    onNext();
+  };
 
   return (
     <div className="flex flex-col items-center justify-between">
@@ -19,7 +28,10 @@ export const LinkInput = ({ onNext, onHomeClick }: LinkFormProps) => {
           value={state}
           onChange={onChange}
           onBlur={onBlur}
-          onClickReset={onClickReset}
+          onClickReset={() => {
+            onClickReset();
+            setYoutube('');
+          }}
           isValid={isValid}
           ref={ref}
         />
@@ -28,7 +40,7 @@ export const LinkInput = ({ onNext, onHomeClick }: LinkFormProps) => {
         <Button
           variant="primary"
           size="large"
-          onClick={onNext}
+          onClick={handleSaveAndNext}
           disabled={state.length === 0 || !isValid}
           className="w-full"
         >
