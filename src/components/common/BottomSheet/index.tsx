@@ -9,11 +9,11 @@ import { Portal } from '../Portal';
 
 const Content = ({ children }: React.PropsWithChildren) => <div>{children}</div>;
 
-export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
+export const BottomSheet = memo(({ children, isOpen }: Props) => {
   const dragControls = useDragControls();
 
   const { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, handleClose } =
-    useBottomSheet(isOpen, onClose);
+    useBottomSheet(isOpen);
 
   return (
     <Portal isOpen={!isHidden}>
