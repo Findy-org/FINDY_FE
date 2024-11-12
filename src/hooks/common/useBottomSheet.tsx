@@ -42,8 +42,12 @@ export const useBottomSheet = (isOpen: boolean) => {
     if (sheetHeight <= MIN_VISIBLE_HEIGHT) {
       setIsHidden(true);
       setIsInteractionDisabled(true);
-    } else if (sheetHeight > MAX_HEIGHT) {
+      return;
+    }
+
+    if (sheetHeight > MAX_HEIGHT) {
       setSheetHeight(MAX_HEIGHT);
+      return;
     }
   }, [sheetHeight]);
 
