@@ -26,7 +26,7 @@ export const useBottomSheet = (isOpen: boolean) => {
 
       requestAnimationFrame(() => {
         const dragAmount = -info.delta.y;
-        dragOffsetRef.current += dragAmount;
+        dragOffsetRef.current += dragAmount * 10;
 
         const newHeight = Math.min(
           Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),

@@ -27,11 +27,10 @@ export const BottomSheet = memo(({ children, isOpen }: Props) => {
       <AnimatePresence>
         {!isHidden && (
           <motion.div
-            className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000]"
-            style={{ height: sheetHeight }}
+            className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000] h-${sheetHeight}"
             drag="y"
             dragControls={dragControls}
-            dragElastic={1}
+            dragElastic={0}
             dragConstraints={{ top: 0, bottom: 0 }}
             onDrag={handleDrag}
             onDragEnd={handleDragEnd}
