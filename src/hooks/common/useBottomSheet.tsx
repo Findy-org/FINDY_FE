@@ -24,16 +24,18 @@ export const useBottomSheet = (resetTrigger: boolean, onClose?: () => void) => {
     (_: MouseEvent | TouchEvent | PointerEvent, info: DragInfo) => {
       if (isInteractionDisabled) return;
 
-      const dragAmount = -info.delta.y;
-      dragOffsetRef.current += dragAmount;
+      requestAnimationFrame(() => {
+        const dragAmount = -info.delta.y;
+        dragOffsetRef.current += dragAmount;
 
-      const newHeight = Math.min(
-        Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
-        MAX_HEIGHT
-      );
-      setSheetHeight(newHeight);
+        const newHeight = Math.min(
+          Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
+          MAX_HEIGHT
+        );
+        setSheetHeight(newHeight);
+      });
     },
-    [isInteractionDisabled]
+    [isInteractionDisabled, setSheetHeight]
   );
 
   const handleDragEnd = useCallback(() => {

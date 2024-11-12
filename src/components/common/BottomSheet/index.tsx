@@ -14,15 +14,8 @@ const Content = ({ children }: React.PropsWithChildren) => (
 export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
   const dragControls = useDragControls();
 
-  const {
-    sheetHeight,
-    isHidden,
-    isInteractionDisabled,
-    handleDrag,
-    handleDragEnd,
-    resetSheet,
-    handleClose,
-  } = useBottomSheet(isOpen, onClose);
+  const { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, handleClose } =
+    useBottomSheet(isOpen, onClose);
 
   return (
     <Portal isOpen={!isHidden}>
