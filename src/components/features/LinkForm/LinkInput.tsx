@@ -4,11 +4,11 @@ import { Icon } from '@/components/common/Icon';
 import { Input } from '@/components/common/Input';
 import { Body1 } from '@/components/common/Typography';
 import { useInput } from '@/hooks/common/useInput';
-import { FormData } from '@/hooks/common/useYoutubeContext';
+import { ContextProps } from '@/hooks/common/useYoutubeContext';
 
 import { LinkFormProps } from './types';
 
-export type LinkInputProp<T> = FormData<T> & LinkFormProps;
+export type LinkInputProp<T> = ContextProps<T> & LinkFormProps;
 
 export const LinkInput = ({ onNext, onHomeClick, context }: LinkInputProp<string>) => {
   const { state: youtubeLink, setState: setYoutube } = context;

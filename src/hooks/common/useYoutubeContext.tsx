@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
 
-type Action = { type: 'link'; payload: YoutubeLink };
+type Action = { type: 'SET_LINK'; payload: YoutubeLink };
 
-export type FormData<T> = {
+export type ContextProps<T> = {
   context: { state: T; setState: (newState: T) => void };
 };
 
@@ -22,7 +22,7 @@ const initial = (): YoutubeLink => ({
 
 const reducer = (state: YoutubeLink, action: Action): YoutubeLink => {
   switch (action.type) {
-    case 'link':
+    case 'SET_LINK':
       return { ...state, youtubeLink: action.payload.youtubeLink };
     default:
       return state;
