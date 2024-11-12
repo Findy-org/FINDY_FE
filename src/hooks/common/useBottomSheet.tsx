@@ -3,7 +3,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 import { DragInfo } from '@/components/common/BottomSheet/BottomSheet.types';
 import { INITIAL_HEIGHT, MIN_VISIBLE_HEIGHT, MAX_HEIGHT } from '@/constants/bottomSheetOptions';
 
-export const useBottomSheet = (resetTrigger: boolean) => {
+export const useBottomSheet = (resetTrigger: boolean, onClose?: () => void) => {
   const [sheetHeight, setSheetHeight] = useState(INITIAL_HEIGHT);
   const [isHidden, setIsHidden] = useState(false);
   const [isInteractionDisabled, setIsInteractionDisabled] = useState(false);
@@ -40,10 +40,13 @@ export const useBottomSheet = (resetTrigger: boolean) => {
     if (sheetHeight <= MIN_VISIBLE_HEIGHT) {
       setIsHidden(true);
       setIsInteractionDisabled(true);
+      if (onClose) {
+        onClose();
+      }
     } else if (sheetHeight > MAX_HEIGHT) {
       setSheetHeight(MAX_HEIGHT);
     }
-  }, [sheetHeight]);
+  }, [sheetHeight, onClose]);
 
   const resetSheet = useCallback(() => {
     setSheetHeight(INITIAL_HEIGHT);
@@ -53,5 +56,19 @@ export const useBottomSheet = (resetTrigger: boolean) => {
     initialPositionRef.current = INITIAL_HEIGHT;
   }, []);
 
-  return { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, resetSheet };
+  const handleClose = useCallback(() => {
+    if (!isInteractionDisabled) {
+      resetSheet();
+    }
+  }, [isInteractionDisabled, resetSheet]);
+
+  return {
+    sheetHeight,
+    isHidden,
+    isInteractionDisabled,
+    handleDrag,
+    handleDragEnd,
+    resetSheet,
+    handleClose,
+  };
 };

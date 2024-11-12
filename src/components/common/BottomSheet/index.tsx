@@ -14,21 +14,21 @@ const Content = ({ children }: React.PropsWithChildren) => (
 export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
   const dragControls = useDragControls();
 
-  const { sheetHeight, isHidden, isInteractionDisabled, handleDrag, handleDragEnd, resetSheet } =
-    useBottomSheet(isOpen);
-
-  const handleClose = () => {
-    if (!isInteractionDisabled) {
-      resetSheet();
-      if (onClose) onClose();
-    }
-  };
+  const {
+    sheetHeight,
+    isHidden,
+    isInteractionDisabled,
+    handleDrag,
+    handleDragEnd,
+    resetSheet,
+    handleClose,
+  } = useBottomSheet(isOpen, onClose);
 
   return (
     <Portal isOpen={!isHidden}>
       <div
         className={`absolute top-0 left-0 w-full h-full transition-opacity duration-300 ${
-          isHidden ? 'opacity-0 pointer-events-none' : 'opacity-70 pointer-events-auto'
+          isHidden ? 'pointer-events-none' : 'pointer-events-auto'
         }`}
         onClick={handleClose}
       />
@@ -36,11 +36,11 @@ export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
       <AnimatePresence>
         {!isHidden && (
           <motion.div
-            className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden"
+            className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000]"
             style={{ height: sheetHeight }}
             drag="y"
             dragControls={dragControls}
-            dragElastic={0.3}
+            dragElastic={1}
             dragConstraints={{ top: 0, bottom: 0 }}
             onDrag={handleDrag}
             onDragEnd={handleDragEnd}
