@@ -13,7 +13,7 @@ export type Props = ComponentPropsWithoutRef<'div'> & {
   /**
    * The content to be displayed inside the BottomSheet.
    */
-  children?: ReactNode;
+  children: ReactNode;
 };
 
 export type DragInfo = {

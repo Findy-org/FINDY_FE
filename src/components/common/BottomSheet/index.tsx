@@ -7,9 +7,7 @@ import { Props } from './BottomSheet.types';
 
 import { Portal } from '../Portal';
 
-const Content = ({ children }: React.PropsWithChildren) => (
-  <div className="w-full text-black p-6">{children}</div>
-);
+const Content = ({ children }: React.PropsWithChildren) => <div>{children}</div>;
 
 export const BottomSheet = memo(({ children, isOpen, onClose }: Props) => {
   const dragControls = useDragControls();
