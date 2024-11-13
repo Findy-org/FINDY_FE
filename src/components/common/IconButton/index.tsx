@@ -6,7 +6,7 @@ import { Icon } from '../Icon';
 
 export const IconButton = ({ name, isActive, className, ...props }: Props) => {
   return (
-    <button
+    <div
       className={cn(
         'p-3 rounded-full transition-colors border shadow-md shadow-gray-300 bg-white',
         name === 'bookMark'
@@ -23,6 +23,6 @@ export const IconButton = ({ name, isActive, className, ...props }: Props) => {
         color={name === 'bookMark' ? (isActive ? 'primary' : 'gray') : 'primary'}
         className={cn('w-6 h-6')}
       />
-    </button>
+    </div>
   );
 };

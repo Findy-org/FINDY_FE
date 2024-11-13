@@ -29,11 +29,21 @@ export const Basic: Story = {
           </Step>
 
           <Step name="링크입력">
-            <LinkInput onNext={() => setStep('추출상태')} onHomeClick={() => {}} />
+            <LinkInput
+              onNext={() => setStep('추출상태')}
+              onHomeClick={() => {}}
+              context={{ state: '', setState: () => {} }}
+            />
           </Step>
 
           <Step name="추출상태">
-            <ExtractionStatus onNext={() => {}} isLoading={true} onHomeClick={() => {}} />
+            <ExtractionStatus
+              url=""
+              place={[]}
+              onNext={() => {}}
+              isLoading={true}
+              onHomeClick={() => {}}
+            />
           </Step>
         </Funnel>
       </Layout>

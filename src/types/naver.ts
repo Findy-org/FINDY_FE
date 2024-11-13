@@ -9,13 +9,20 @@ export type NaverMapResponse = {
 };
 
 export type Place = {
+  id?: number;
+  timeStamp?: number;
   title: string;
   link: string;
-  category: string;
+  category: string | Category;
   description: string;
   telephone: string;
   address: string;
   roadAddress: string;
   mapx: string;
   mapy: string;
+};
+
+export type Category = {
+  majorCategory: string;
+  middleCategory: string;
 };

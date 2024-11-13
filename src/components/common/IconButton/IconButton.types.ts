@@ -17,4 +17,4 @@ export type Props = {
    * @default ''
    */
   className?: string;
-} & ComponentPropsWithoutRef<'button'>;
+} & ComponentPropsWithoutRef<'div'>;

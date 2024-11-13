@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { SearchInput } from '@/components/common/SearchInput';
 import { SideMenu } from '@/components/common/SideMenu';
@@ -14,6 +14,23 @@ export const MapView = () => {
   const { addMarker, clearMarkers } = useMarkers();
   const { state: searchValue, onChange, onClickReset } = useInput();
   const [isInputDisabled, setIsInputDisabled] = useState(false);
+
+  const location = useLocation();
+  const data = location.state?.data;
+
+  useEffect(() => {
+    if (data && data.places) {
+      clearMarkers();
+      data.places.forEach((marker: Place) => {
+        const markerData = {
+          ...marker,
+          category:
+            typeof marker.category === 'string' ? marker.category : marker.category.majorCategory,
+        };
+        addMarker(markerData);
+      });
+    }
+  }, [addMarker, clearMarkers, data]);
 
   const { refetch } = useNaverSearchResult(searchValue);
 

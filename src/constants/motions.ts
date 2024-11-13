@@ -19,6 +19,19 @@ export const FIDIES_ANIMATION = {
   },
 };
 
+export const THUMBNAIL_ANIMATION = {
+  initial: { y: 0 },
+  animate: {
+    y: [0, -10, 0, 10, 0],
+  },
+  transition: {
+    duration: 1,
+    repeat: Infinity,
+    repeatType: 'mirror' as const,
+    ease: 'easeInOut',
+  },
+};
+
 export const SLIDER_ANIMATION = {
   initial: { x: '0%' },
   animate: { x: '-400px' },
