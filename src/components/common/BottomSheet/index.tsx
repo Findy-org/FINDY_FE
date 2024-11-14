@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { motion, useDragControls, AnimatePresence } from 'framer-motion';
 
+import { BOTTOM_SHEET_ANIMATION } from '@/constants/motions';
 import { useBottomSheet } from '@/hooks/common/useBottomSheet';
 
 import { Props } from './BottomSheet.types';
@@ -34,10 +35,10 @@ export const BottomSheet = memo(({ children, isOpen }: Props) => {
             dragConstraints={{ top: 0, bottom: 0 }}
             onDrag={handleDrag}
             onDragEnd={handleDragEnd}
-            animate={{ height: sheetHeight, opacity: isHidden ? 0 : 1 }}
-            transition={{ type: 'spring', stiffness: 170, damping: 30, duration: 0.3 }}
+            animate={BOTTOM_SHEET_ANIMATION.animate(sheetHeight, isHidden)}
+            transition={BOTTOM_SHEET_ANIMATION.transition}
             onPointerDown={(e) => !isInteractionDisabled && dragControls.start(e)}
-            exit={{ height: 0, opacity: 0 }}
+            exit={BOTTOM_SHEET_ANIMATION.exit}
           >
             <div className="w-20 h-1.5 bg-primary mx-auto rounded-full" />
             <Content>{children}</Content>
