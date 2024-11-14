@@ -2,6 +2,7 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 
 import { DragInfo } from '@/components/common/BottomSheet/BottomSheet.types';
 import { INITIAL_HEIGHT, MIN_VISIBLE_HEIGHT, MAX_HEIGHT } from '@/constants/bottomSheetOptions';
+import { BOTTOM_SHEET_ANIMATION } from '@/constants/motions';
 
 export const useBottomSheet = (isOpen: boolean) => {
   const [sheetHeight, setSheetHeight] = useState(INITIAL_HEIGHT);
@@ -9,6 +10,7 @@ export const useBottomSheet = (isOpen: boolean) => {
   const [isInteractionDisabled, setIsInteractionDisabled] = useState(false);
   const dragOffsetRef = useRef(0);
   const initialPositionRef = useRef(INITIAL_HEIGHT);
+  const bottomSheetRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (isOpen) {
@@ -18,6 +20,24 @@ export const useBottomSheet = (isOpen: boolean) => {
       dragOffsetRef.current = 0;
       initialPositionRef.current = INITIAL_HEIGHT;
     }
+  }, [isOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: Event) => {
+      if (bottomSheetRef.current && !bottomSheetRef.current.contains(event.target as Node)) {
+        setSheetHeight(INITIAL_HEIGHT);
+      }
+    };
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
   }, [isOpen]);
 
   const handleDrag = useCallback(
@@ -40,8 +60,11 @@ export const useBottomSheet = (isOpen: boolean) => {
 
   const handleDragEnd = useCallback(() => {
     if (sheetHeight <= MIN_VISIBLE_HEIGHT) {
-      setIsHidden(true);
-      setIsInteractionDisabled(true);
+      setSheetHeight(MIN_VISIBLE_HEIGHT);
+      setTimeout(() => {
+        setIsHidden(true);
+        setIsInteractionDisabled(true);
+      }, BOTTOM_SHEET_ANIMATION.transition.duration * 1000);
       return;
     }
 
@@ -51,26 +74,12 @@ export const useBottomSheet = (isOpen: boolean) => {
     }
   }, [sheetHeight]);
 
-  const resetSheet = useCallback(() => {
-    setSheetHeight(INITIAL_HEIGHT);
-    setIsHidden(false);
-    setIsInteractionDisabled(false);
-    dragOffsetRef.current = 0;
-    initialPositionRef.current = INITIAL_HEIGHT;
-  }, []);
-
-  const handleClose = useCallback(() => {
-    if (!isInteractionDisabled) {
-      resetSheet();
-    }
-  }, [isInteractionDisabled, resetSheet]);
-
   return {
     sheetHeight,
     isHidden,
     isInteractionDisabled,
     handleDrag,
     handleDragEnd,
-    handleClose,
+    bottomSheetRef,
   };
 };
