@@ -79,7 +79,6 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
           ["react-error-boundary", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.0.13"],\
           ["react-router-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:6.26.2"],\
-          ["react-use-measure", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.1.1"],\
           ["storybook", "npm:8.3.5"],\
           ["storybook-addon-sass-postcss", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:0.3.2"],\
           ["tailwind-merge", "npm:2.5.4"],\
@@ -6582,15 +6581,6 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
-    ["debounce", [\
-      ["npm:1.2.1", {\
-        "packageLocation": "./.yarn/cache/debounce-npm-1.2.1-b09266a260-6c9320aa09.zip/node_modules/debounce/",\
-        "packageDependencies": [\
-          ["debounce", "npm:1.2.1"]\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
     ["debug", [\
       ["npm:2.6.9", {\
         "packageLocation": "./.yarn/cache/debug-npm-2.6.9-7d4cb597dc-121908fb83.zip/node_modules/debug/",\
@@ -8160,7 +8150,6 @@ const RAW_RUNTIME_STATE =
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
           ["react-error-boundary", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.0.13"],\
           ["react-router-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:6.26.2"],\
-          ["react-use-measure", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.1.1"],\
           ["storybook", "npm:8.3.5"],\
           ["storybook-addon-sass-postcss", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:0.3.2"],\
           ["tailwind-merge", "npm:2.5.4"],\
@@ -12260,33 +12249,6 @@ const RAW_RUNTIME_STATE =
           ["react", "npm:18.3.1"],\
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
           ["react-router", "virtual:a212ec2c5b19fb8821c5ab95e8974af320dd847634ca5e2c7ff6e7f49480b9787324c87938b15288df76129cb8c5180ac2db3bc6b096824bd005975ae57b5adc#npm:6.26.2"]\
-        ],\
-        "packagePeers": [\
-          "@types/react-dom",\
-          "@types/react",\
-          "react-dom",\
-          "react"\
-        ],\
-        "linkType": "HARD"\
-      }]\
-    ]],\
-    ["react-use-measure", [\
-      ["npm:2.1.1", {\
-        "packageLocation": "./.yarn/cache/react-use-measure-npm-2.1.1-7e53301142-77b035189d.zip/node_modules/react-use-measure/",\
-        "packageDependencies": [\
-          ["react-use-measure", "npm:2.1.1"]\
-        ],\
-        "linkType": "SOFT"\
-      }],\
-      ["virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.1.1", {\
-        "packageLocation": "./.yarn/__virtual__/react-use-measure-virtual-110e8e1c71/0/cache/react-use-measure-npm-2.1.1-7e53301142-77b035189d.zip/node_modules/react-use-measure/",\
-        "packageDependencies": [\
-          ["react-use-measure", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.1.1"],\
-          ["@types/react", "npm:18.3.10"],\
-          ["@types/react-dom", "npm:18.3.0"],\
-          ["debounce", "npm:1.2.1"],\
-          ["react", "npm:18.3.1"],\
-          ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"]\
         ],\
         "packagePeers": [\
           "@types/react-dom",\
