@@ -2,7 +2,6 @@ import { useState, useCallback, useRef, useEffect } from 'react';
 
 import { DragInfo } from '@/components/common/BottomSheet/BottomSheet.types';
 import { INITIAL_HEIGHT, MIN_VISIBLE_HEIGHT, MAX_HEIGHT } from '@/constants/bottomSheetOptions';
-import { BOTTOM_SHEET_ANIMATION } from '@/constants/motions';
 
 export const useBottomSheet = (isOpen: boolean) => {
   const [sheetHeight, setSheetHeight] = useState(INITIAL_HEIGHT);
@@ -60,11 +59,8 @@ export const useBottomSheet = (isOpen: boolean) => {
 
   const handleDragEnd = useCallback(() => {
     if (sheetHeight <= MIN_VISIBLE_HEIGHT) {
-      setSheetHeight(MIN_VISIBLE_HEIGHT);
-      setTimeout(() => {
-        setIsHidden(true);
-        setIsInteractionDisabled(true);
-      }, BOTTOM_SHEET_ANIMATION.transition.duration * 1000);
+      setIsHidden(true);
+      setIsInteractionDisabled(true);
       return;
     }
 

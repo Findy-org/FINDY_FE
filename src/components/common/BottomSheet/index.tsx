@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { motion, useDragControls, AnimatePresence } from 'framer-motion';
+import { motion, useDragControls } from 'framer-motion';
 
 import { BOTTOM_SHEET_ANIMATION } from '@/constants/motions';
 import { useBottomSheet } from '@/hooks/common/useBottomSheet';
@@ -23,27 +23,25 @@ export const BottomSheet = memo(({ children, isOpen }: Props) => {
 
   return (
     <Portal isOpen={!isHidden}>
-      <AnimatePresence>
-        {!isHidden && (
-          <motion.div
-            ref={bottomSheetRef}
-            className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000] h-${sheetHeight}"
-            drag="y"
-            dragControls={dragControls}
-            dragElastic={0}
-            dragConstraints={{ top: 0, bottom: 0 }}
-            onDrag={handleDrag}
-            onDragEnd={handleDragEnd}
-            animate={BOTTOM_SHEET_ANIMATION.animate(sheetHeight, isHidden)}
-            transition={BOTTOM_SHEET_ANIMATION.transition}
-            onPointerDown={(e) => !isInteractionDisabled && dragControls.start(e)}
-            exit={BOTTOM_SHEET_ANIMATION.exit}
-          >
-            <BottomSheetHeader />
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {!isHidden && (
+        <motion.div
+          ref={bottomSheetRef}
+          className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000] h-${sheetHeight}"
+          drag="y"
+          dragControls={dragControls}
+          dragElastic={0}
+          dragConstraints={{ top: 0, bottom: 0 }}
+          onDrag={handleDrag}
+          onDragEnd={handleDragEnd}
+          animate={BOTTOM_SHEET_ANIMATION.animate(sheetHeight, isHidden)}
+          transition={BOTTOM_SHEET_ANIMATION.transition}
+          onPointerDown={(e) => !isInteractionDisabled && dragControls.start(e)}
+          exit={BOTTOM_SHEET_ANIMATION.exit}
+        >
+          <BottomSheetHeader />
+          {children}
+        </motion.div>
+      )}
     </Portal>
   );
 });
