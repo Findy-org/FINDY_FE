@@ -1,7 +1,6 @@
 import { memo } from 'react';
 
-import ArrowDownIcon from '@/assets/icons/arrow-down.svg';
-import ArrowUpIcon from '@/assets/icons/arrow-up.svg';
+import { Icons } from '@/assets/icons';
 import { useDropdown } from '@/hooks/common/useDropdown';
 
 import { Props } from './Dropdown.types';
@@ -9,6 +8,9 @@ import { DropdownVariants } from './Dropdown.variants';
 
 export const Dropdown = memo(({ selectedCategory, onSelectCategory, className }: Props) => {
   const { isOpen, handleToggle, handleSelect, categories } = useDropdown(onSelectCategory);
+
+  const ArrowDownIcon = Icons.arrowDown;
+  const ArrowUpIcon = Icons.arrowUp;
 
   return (
     <div className={`relative inline-block ${className}`}>

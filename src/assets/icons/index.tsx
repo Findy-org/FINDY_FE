@@ -1,3 +1,5 @@
+import ArrowDown from './arrow-down.svg?react';
+import ArrowUp from './arrow-up.svg?react';
 import Back from './back.svg?react';
 import Bar from './bar.svg?react';
 import EmptyBookMark from './bookmark-empty.svg?react';
@@ -68,6 +70,8 @@ export const Icons = {
   fidies: Fidies,
   findyLogo1: FindyLogo1,
   findyLogo2: FindyLogo2,
+  arrowDown: ArrowDown,
+  arrowUp: ArrowUp,
 };
 
 export type IconName = keyof typeof Icons;
