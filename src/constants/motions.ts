@@ -44,3 +44,20 @@ export const SLIDER_ANIMATION = {
     },
   },
 };
+
+export const BOTTOM_SHEET_ANIMATION = {
+  animate: (sheetHeight: number, isHidden: boolean) => ({
+    height: sheetHeight,
+    opacity: isHidden ? 0 : 1,
+  }),
+  exit: {
+    height: 0,
+    opacity: 0,
+  },
+  transition: {
+    type: 'spring',
+    stiffness: 170,
+    damping: 30,
+    duration: 0.3,
+  },
+};
