@@ -43,7 +43,7 @@ export const Link = () => {
           context={{
             state: link.youtubeLink,
             setState: (link) => {
-              dispatch({ type: 'link', payload: { youtubeLink: link } });
+              dispatch({ type: 'SET_LINK', payload: { youtubeLink: link } });
             },
           }}
         />
