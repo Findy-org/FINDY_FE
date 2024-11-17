@@ -27,6 +27,11 @@ export type Props = {
    */
   initialZoom?: number;
   /**
+   * Determines whether the map centers on the user's current position.
+   * @default false
+   */
+  isCurrent?: boolean;
+  /**
    * Optional React nodes to be rendered as children within the map container.
    */
   children?: React.ReactNode;
