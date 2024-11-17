@@ -14,14 +14,19 @@ type Story = StoryObj<typeof Chip>;
 
 export const Basic: Story = {
   args: {
+    variant: 'medium',
     children: '카페',
   },
   argTypes: {
+    variant: {
+      control: 'inline-radio',
+      options: ['small', 'medium', 'large'],
+    },
     children: {
       control: 'text',
     },
   },
   render: (args) => {
-    return <Chip>{args.children}</Chip>;
+    return <Chip variant={args.variant}>{args.children}</Chip>;
   },
 };

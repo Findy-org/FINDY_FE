@@ -1,11 +1,9 @@
 import { Props } from './Chip.types';
+import { ChipVariants } from './Chip.variants';
 
-export const Chip = ({ children, ...props }: Props) => {
+export const Chip = ({ variant, children, ...props }: Props) => {
   return (
-    <span
-      className="h-7 w-7 bg-primary rounded-md text-body4 text-white cursor-default px-3 py-1"
-      {...props}
-    >
+    <span className={ChipVariants({ variant })} {...props}>
       {children}
     </span>
   );
