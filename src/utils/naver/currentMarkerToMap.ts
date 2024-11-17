@@ -1,6 +1,6 @@
 import { CurrentMarker } from '../CurrentMarker';
 
-export const currentMarkersToMap = (
+export const currentMarkerToMap = (
   position: { lat: number; lng: number },
   mapInstance: naver.maps.Map,
   currentLocationMarkerRef: React.MutableRefObject<naver.maps.Marker | null>

@@ -4,7 +4,7 @@ import { CustomMarker } from '../CustomMarker';
 
 const MIN_ZOOM = 14;
 
-export const addMarkersToMap = (
+export const addMarkerToMap = (
   mapInstance: React.MutableRefObject<naver.maps.Map | null>,
   markers: Place[],
   markersRef: React.MutableRefObject<naver.maps.Marker[]>,
