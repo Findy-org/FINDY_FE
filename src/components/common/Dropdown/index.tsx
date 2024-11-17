@@ -1,19 +1,15 @@
-import { memo } from 'react';
-
-import { Icons } from '@/assets/icons';
+import { Icon } from '@/components/common/Icon';
 import { useDropdown } from '@/hooks/common/useDropdown';
+import { cn } from '@/lib/core';
 
 import { Props } from './Dropdown.types';
 import { DropdownVariants } from './Dropdown.variants';
 
-export const Dropdown = memo(({ selectedCategory, onSelectCategory, className }: Props) => {
+export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Props) => {
   const { isOpen, handleToggle, handleSelect, categories } = useDropdown(onSelectCategory);
 
-  const ArrowDownIcon = Icons.arrowDown;
-  const ArrowUpIcon = Icons.arrowUp;
-
   return (
-    <div className={`relative inline-block ${className}`}>
+    <div className={cn('relative inline-block', className)}>
       <button
         type="button"
         className={DropdownVariants({ state: 'default' })}
@@ -22,12 +18,12 @@ export const Dropdown = memo(({ selectedCategory, onSelectCategory, className }:
         <div className="flex items-center">
           {selectedCategory}
           <span className="ml-2">
-            {isOpen ? <ArrowUpIcon className="inline" /> : <ArrowDownIcon className="inline" />}
+            {isOpen ? <Icon name="arrowUp" size={10} /> : <Icon name="arrowDown" size={10} />}
           </span>
         </div>
       </button>
       {isOpen && (
-        <div className="absolute left-0 bg-white shadow-lg rounded-lg mt-0 w-full">
+        <div className="absolute left-0 bg-white shadow-lg rounded-lg mt-0 w-full z-modal">
           {categories.map((category) => (
             <button
               key={category.name}
@@ -42,4 +38,4 @@ export const Dropdown = memo(({ selectedCategory, onSelectCategory, className }:
       )}
     </div>
   );
-});
+};

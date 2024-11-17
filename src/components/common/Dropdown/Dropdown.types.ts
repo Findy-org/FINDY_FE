@@ -1,7 +1,5 @@
 import { ComponentPropsWithoutRef } from 'react';
 
-import { MarkerCategory } from '@/constants/categories';
-
 export type Props = {
   /**
    * The currently selected category to be displayed.
@@ -22,8 +20,4 @@ export type Category = {
    * The unique name of the category.
    */
   name: string;
-  /**
-   * Corresponding marker category for the dropdown item.
-   */
-  markerCategory: MarkerCategory | null;
 };
