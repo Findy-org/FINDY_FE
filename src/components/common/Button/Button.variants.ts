@@ -1,6 +1,5 @@
 import { cva } from 'class-variance-authority';
 
-// TODO : hover, disable 됐을 경우 색상 추가
 export const ButtonVariants = cva(
   `flex items-center justify-center whitespace-nowrap select-none rounded-xl`,
   {
