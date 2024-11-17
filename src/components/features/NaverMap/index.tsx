@@ -1,9 +1,9 @@
 import { memo, useCallback, useEffect, useRef } from 'react';
 
 import { useMarkers } from '@/hooks/common/useMarkers';
-import { addMarkersToMap } from '@/utils/naver/addMarkersToMap';
+import { addMarkerToMap } from '@/utils/naver/addMarkerToMap';
 import { clearExistingMarkers } from '@/utils/naver/clearExistingMarkers';
-import { currentMarkersToMap } from '@/utils/naver/currentMarkersToMap';
+import { currentMarkerToMap } from '@/utils/naver/currentMarkerToMap';
 import { updateMarkerTitles } from '@/utils/naver/updateMarkerTitles';
 
 import { Props } from './NaverMap.types';
@@ -59,10 +59,10 @@ export const NaverMap = memo(
 
     useEffect(() => {
       if (mapInstance.current && markers.length > 0) {
-        addMarkersToMap(mapInstance, markers, markersRef, markerDataRef, clearMarkers);
+        addMarkerToMap(mapInstance, markers, markersRef, markerDataRef, clearMarkers);
       }
       if (mapInstance.current && isCurrent) {
-        currentMarkersToMap(initialCenter, mapInstance.current, currentLocationMarkerRef);
+        currentMarkerToMap(initialCenter, mapInstance.current, currentLocationMarkerRef);
       }
       return () => clearMarkers();
     }, [clearMarkers, initialCenter, isCurrent, markers]);

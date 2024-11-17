@@ -12,11 +12,13 @@ import { Place } from '@/types/naver';
 
 export const MapView = () => {
   const navigate = useNavigate();
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
+
   const { addMarker, clearMarkers } = useMarkers();
   const { state: searchValue, onChange, onClickReset } = useInput();
+  const { refetch } = useNaverSearchResult(searchValue);
   const { initialCenter, zoomLevel, isCurrent, updateLocation, resetCurrentLocation } =
     useMapState();
-  const [isInputDisabled, setIsInputDisabled] = useState(false);
 
   const location = useLocation();
   const data = location.state?.data;
@@ -34,8 +36,6 @@ export const MapView = () => {
       });
     }
   }, [addMarker, clearMarkers, data]);
-
-  const { refetch } = useNaverSearchResult(searchValue);
 
   const handleSearch = async () => {
     setIsInputDisabled(true);
@@ -66,6 +66,11 @@ export const MapView = () => {
     });
   }, [clearMarkers, updateLocation]);
 
+  const handleLink = () => {
+    clearMarkers();
+    navigate('/link');
+  };
+
   return (
     <>
       <div className="relative">
@@ -81,7 +86,7 @@ export const MapView = () => {
         <div className="absolute bottom-10 right-4 flex flex-col gap-2 justify-center items-center">
           <SideMenu.Group>
             <SideMenu position="right" variant="gps" onClick={() => handleCurrentLocation()} />
-            <SideMenu position="right" variant="link" onClick={() => navigate('/link')} />
+            <SideMenu position="right" variant="link" onClick={() => handleLink()} />
             <SideMenu position="right" variant="emptyBookMark" onClick={() => {}} />
           </SideMenu.Group>
         </div>
