@@ -3,7 +3,7 @@ import { memo, useCallback, useEffect, useRef } from 'react';
 import { useMarkers } from '@/hooks/common/useMarkers';
 import { addMarkersToMap } from '@/utils/naver/addMarkersToMap';
 import { clearExistingMarkers } from '@/utils/naver/clearExistingMarkers';
-import { currentMarkersToMap } from '@/utils/naver/currentMakersToMap';
+import { currentMarkersToMap } from '@/utils/naver/currentMarkersToMap';
 import { updateMarkerTitles } from '@/utils/naver/updateMarkerTitles';
 
 import { Props } from './NaverMap.types';
@@ -41,6 +41,7 @@ export const NaverMap = memo(
         const map = new window.naver.maps.Map(mapRef.current, {
           center,
           zoom: initialZoom,
+          draggable: true,
         });
 
         const listener = window.naver.maps.Event.addListener(map, 'zoom_changed', () => {
@@ -58,12 +59,12 @@ export const NaverMap = memo(
 
     useEffect(() => {
       if (mapInstance.current && markers.length > 0) {
-        return addMarkersToMap(mapInstance, markers, markersRef, markerDataRef, clearMarkers);
+        addMarkersToMap(mapInstance, markers, markersRef, markerDataRef, clearMarkers);
       }
       if (mapInstance.current && isCurrent) {
-        return currentMarkersToMap(initialCenter, mapInstance.current, currentLocationMarkerRef);
+        currentMarkersToMap(initialCenter, mapInstance.current, currentLocationMarkerRef);
       }
-      clearMarkers();
+      return () => clearMarkers();
     }, [clearMarkers, initialCenter, isCurrent, markers]);
 
     return <div id="map" ref={mapRef} style={{ width: '100%', height: '100vh' }} />;
