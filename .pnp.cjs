@@ -76,6 +76,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.3.3"],\
           ["prettier-plugin-tailwindcss", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:0.6.8"],\
           ["react", "npm:18.3.1"],\
+          ["react-cookie", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:7.2.2"],\
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
           ["react-error-boundary", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.0.13"],\
           ["react-router-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:6.26.2"],\
@@ -4108,6 +4109,17 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["@types/hoist-non-react-statics", [\
+      ["npm:3.3.5", {\
+        "packageLocation": "./.yarn/cache/@types-hoist-non-react-statics-npm-3.3.5-98b8d8e47b-2a3b64bf3d.zip/node_modules/@types/hoist-non-react-statics/",\
+        "packageDependencies": [\
+          ["@types/hoist-non-react-statics", "npm:3.3.5"],\
+          ["@types/react", "npm:18.3.10"],\
+          ["hoist-non-react-statics", "npm:3.3.2"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["@types/http-errors", [\
       ["npm:2.0.4", {\
         "packageLocation": "./.yarn/cache/@types-http-errors-npm-2.0.4-8b39ca5d7c-494670a57a.zip/node_modules/@types/http-errors/",\
@@ -6348,6 +6360,13 @@ const RAW_RUNTIME_STATE =
           ["cookie", "npm:0.7.1"]\
         ],\
         "linkType": "HARD"\
+      }],\
+      ["npm:0.7.2", {\
+        "packageLocation": "./.yarn/cache/cookie-npm-0.7.2-6ea9ee4231-9596e8ccdb.zip/node_modules/cookie/",\
+        "packageDependencies": [\
+          ["cookie", "npm:0.7.2"]\
+        ],\
+        "linkType": "HARD"\
       }]\
     ]],\
     ["cookie-signature", [\
@@ -8147,6 +8166,7 @@ const RAW_RUNTIME_STATE =
           ["prettier", "npm:3.3.3"],\
           ["prettier-plugin-tailwindcss", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:0.6.8"],\
           ["react", "npm:18.3.1"],\
+          ["react-cookie", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:7.2.2"],\
           ["react-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:18.3.1"],\
           ["react-error-boundary", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:4.0.13"],\
           ["react-router-dom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:6.26.2"],\
@@ -8730,6 +8750,16 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/headers-polyfill-npm-4.0.3-65ca63b329-53e85b2c63.zip/node_modules/headers-polyfill/",\
         "packageDependencies": [\
           ["headers-polyfill", "npm:4.0.3"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["hoist-non-react-statics", [\
+      ["npm:3.3.2", {\
+        "packageLocation": "./.yarn/cache/hoist-non-react-statics-npm-3.3.2-e7b709e6c1-fe0889169e.zip/node_modules/hoist-non-react-statics/",\
+        "packageDependencies": [\
+          ["hoist-non-react-statics", "npm:3.3.2"],\
+          ["react-is", "npm:16.13.1"]\
         ],\
         "linkType": "HARD"\
       }]\
@@ -12037,6 +12067,31 @@ const RAW_RUNTIME_STATE =
         "linkType": "HARD"\
       }]\
     ]],\
+    ["react-cookie", [\
+      ["npm:7.2.2", {\
+        "packageLocation": "./.yarn/cache/react-cookie-npm-7.2.2-61248cf180-22948a42b9.zip/node_modules/react-cookie/",\
+        "packageDependencies": [\
+          ["react-cookie", "npm:7.2.2"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:7.2.2", {\
+        "packageLocation": "./.yarn/__virtual__/react-cookie-virtual-0a40e7889d/0/cache/react-cookie-npm-7.2.2-61248cf180-22948a42b9.zip/node_modules/react-cookie/",\
+        "packageDependencies": [\
+          ["react-cookie", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:7.2.2"],\
+          ["@types/hoist-non-react-statics", "npm:3.3.5"],\
+          ["@types/react", "npm:18.3.10"],\
+          ["hoist-non-react-statics", "npm:3.3.2"],\
+          ["react", "npm:18.3.1"],\
+          ["universal-cookie", "npm:7.2.2"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
     ["react-docgen", [\
       ["npm:7.0.3", {\
         "packageLocation": "./.yarn/cache/react-docgen-npm-7.0.3-ea0f679a0f-74622750e6.zip/node_modules/react-docgen/",\
@@ -13912,6 +13967,17 @@ const RAW_RUNTIME_STATE =
           ["unist-util-visit-parents", "npm:6.0.1"],\
           ["@types/unist", "npm:3.0.3"],\
           ["unist-util-is", "npm:6.0.0"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["universal-cookie", [\
+      ["npm:7.2.2", {\
+        "packageLocation": "./.yarn/cache/universal-cookie-npm-7.2.2-c7f1748d18-214c5cf72b.zip/node_modules/universal-cookie/",\
+        "packageDependencies": [\
+          ["universal-cookie", "npm:7.2.2"],\
+          ["@types/cookie", "npm:0.6.0"],\
+          ["cookie", "npm:0.7.2"]\
         ],\
         "linkType": "HARD"\
       }]\
