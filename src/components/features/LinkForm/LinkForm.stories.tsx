@@ -2,7 +2,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Layout } from '@/components/common/Layout';
-import { linkStepNames } from '@/constants/linkForm';
+import { linkStepNames } from '@/constants/funnelStep';
 import { useFunnel } from '@/hooks/common/useFunnel';
 
 import { ExtractionStatus, LinkInput, Landing } from '.';
