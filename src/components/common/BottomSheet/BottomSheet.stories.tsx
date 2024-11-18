@@ -25,13 +25,11 @@ export const Basic: Story = {
         <Button variant="primary" size="medium" onClick={handleClickBottomSheet}>
           Open BottomSheet
         </Button>
-        {isOpen && (
-          <BottomSheet isOpen={isOpen}>
-            <div className="flex flex-col gap-6 items-center">
-              <div>Contents ...</div>
-            </div>
-          </BottomSheet>
-        )}
+        <BottomSheet isOpen={isOpen} setIsOpen={setIsOpen}>
+          <div className="flex flex-col gap-6 items-center">
+            <div>Contents ...</div>
+          </div>
+        </BottomSheet>
       </>
     );
   },

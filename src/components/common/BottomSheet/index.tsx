@@ -9,31 +9,31 @@ import { BottomSheetHeader } from './BottomSheetHeader';
 
 import { Portal } from '../Portal';
 
-export const BottomSheet = memo(({ children, isOpen }: Props) => {
-  const dragControls = useDragControls();
+export const BottomSheet = memo(
+  ({ children, isOpen, setIsOpen }: Props & { setIsOpen: (value: boolean) => void }) => {
+    const dragControls = useDragControls();
 
-  const {
-    sheetHeight,
-    isHidden,
-    isInteractionDisabled,
-    handleDrag,
-    handleDragEnd,
-    bottomSheetRef,
-  } = useBottomSheet(isOpen);
+    const {
+      sheetHeight,
+      //isHidden,
+      isInteractionDisabled,
+      handleDrag,
+      handleDragEnd,
+      bottomSheetRef,
+    } = useBottomSheet(isOpen, setIsOpen);
 
-  return (
-    <Portal isOpen={!isHidden}>
-      {!isHidden && (
+    return (
+      <Portal isOpen={isOpen}>
         <motion.div
           ref={bottomSheetRef}
-          className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-[1000] h-${sheetHeight}"
+          className="absolute bottom-0 left-0 w-full bg-white shadow-[0px_-4px_10px_0px_rgba(0,0,0,0.1)] rounded-t-3xl p-4 overflow-hidden z-40 h-${sheetHeight}"
           drag="y"
           dragControls={dragControls}
           dragElastic={0}
           dragConstraints={{ top: 0, bottom: 0 }}
           onDrag={handleDrag}
           onDragEnd={handleDragEnd}
-          animate={BOTTOM_SHEET_ANIMATION.animate(sheetHeight, isHidden)}
+          animate={BOTTOM_SHEET_ANIMATION.animate(sheetHeight, !isOpen)}
           transition={BOTTOM_SHEET_ANIMATION.transition}
           onPointerDown={(e) => !isInteractionDisabled && dragControls.start(e)}
           exit={BOTTOM_SHEET_ANIMATION.exit}
@@ -41,7 +41,7 @@ export const BottomSheet = memo(({ children, isOpen }: Props) => {
           <BottomSheetHeader />
           {children}
         </motion.div>
-      )}
-    </Portal>
-  );
-});
+      </Portal>
+    );
+  }
+);
