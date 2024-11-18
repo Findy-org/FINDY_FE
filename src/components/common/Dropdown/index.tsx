@@ -1,3 +1,5 @@
+import { useRef } from 'react';
+
 import { Icon } from '@/components/common/Icon';
 import { useDropdown } from '@/hooks/common/useDropdown';
 import { cn } from '@/lib/core';
@@ -5,11 +7,17 @@ import { cn } from '@/lib/core';
 import { Props } from './Dropdown.types';
 import { DropdownVariants } from './Dropdown.variants';
 
+import { Portal } from '../Portal';
+
 export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Props) => {
-  const { isOpen, handleToggle, handleSelect, categories } = useDropdown(onSelectCategory);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+  const { isOpen, handleToggle, handleSelect, categories, dropdownPosition } = useDropdown(
+    onSelectCategory,
+    dropdownRef
+  );
 
   return (
-    <div className={cn('relative inline-block', className)}>
+    <div ref={dropdownRef} className={cn('relative inline-block', className)}>
       <button
         type="button"
         className={DropdownVariants({ state: 'default' })}
@@ -22,8 +30,15 @@ export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Prop
           </span>
         </div>
       </button>
-      {isOpen && (
-        <div className="absolute left-0 bg-white shadow-lg rounded-lg mt-0 w-full z-modal">
+      <Portal isOpen={isOpen}>
+        <div
+          className="absolute bg-white shadow-lg rounded-lg mt-0 z-modal max-h-[calc(4*2.6rem)] overflow-y-auto scrollbar-hide"
+          style={{
+            top: dropdownPosition.top,
+            left: dropdownPosition.left,
+            width: dropdownPosition.width,
+          }}
+        >
           {categories.map((category) => (
             <button
               key={category.name}
@@ -35,7 +50,7 @@ export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Prop
             </button>
           ))}
         </div>
-      )}
+      </Portal>
     </div>
   );
 };
