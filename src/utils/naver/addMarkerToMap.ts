@@ -4,7 +4,7 @@ import { CustomMarker } from '../CustomMarker';
 
 const MIN_ZOOM = 14;
 
-export const addMarkersToMap = (
+export const addMarkerToMap = (
   mapInstance: React.MutableRefObject<naver.maps.Map | null>,
   markers: Place[],
   markersRef: React.MutableRefObject<naver.maps.Marker[]>,
@@ -35,22 +35,22 @@ export const addMarkersToMap = (
         icon: {
           content: CustomMarker({
             title: markerData.title,
-            categoryName: markerData.category,
+            categoryName: markerData.category as string,
             shouldShowTitle: shouldShowTitles,
           }),
           size: new window.naver.maps.Size(30, 30),
-          anchor: new window.naver.maps.Point(30, 30),
+          anchor: new window.naver.maps.Point(15, 30),
         },
       });
 
       markersRef.current.push(marker);
       markerDataRef.current.push({
         title: markerData.title,
-        category: markerData.category,
+        category: markerData.category as string,
       });
       bounds.extend(position);
     });
 
-    mapInstance.current.fitBounds(bounds, { left: 10, right: 10 });
+    mapInstance.current.fitBounds(bounds, { left: 10, right: 10, top: 10, bottom: 10 });
   }
 };

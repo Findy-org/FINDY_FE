@@ -7,6 +7,7 @@ export default {
   theme: {
     colors,
     fontFamily: {
+      sans: ['Pretendard'],
       pretendard: ['Pretendard'],
     },
     extend: {
