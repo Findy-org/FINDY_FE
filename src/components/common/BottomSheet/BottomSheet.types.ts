@@ -10,6 +10,10 @@ export type Props = ComponentPropsWithoutRef<'div'> & {
    * The content to be displayed inside the BottomSheet.
    */
   children: ReactNode;
+  /**
+   * Function to set the state of BottomSheet.
+   */
+  setIsOpen: (value: boolean) => void;
 };
 
 export type DragInfo = {
