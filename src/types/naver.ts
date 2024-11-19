@@ -1,11 +1,9 @@
 export type NaverMapResponse = {
-  data: {
-    display: number;
-    sort: number;
-    start: number;
-    total: number;
-    items: Array<Place>;
-  };
+  display: number;
+  sort: number;
+  start: number;
+  total: number;
+  items: Place[];
 };
 
 export type Place = {
@@ -13,7 +11,7 @@ export type Place = {
   timeStamp?: number;
   title: string;
   link: string;
-  category: string | Category;
+  category: Category | string;
   description: string;
   telephone: string;
   address: string;
