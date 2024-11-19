@@ -67,6 +67,7 @@ export const ExtractedList = ({ places, onNext }: Props) => {
         </div>
       </div>
       <ListCard>
+        {/* TODO 컴포넌트화 */}
         {places.places.map((item, index) => (
           <>
             <div
