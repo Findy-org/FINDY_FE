@@ -4,6 +4,7 @@ import EmptyBookMark from './bookmark-empty.svg?react';
 import BookMark from './bookmark.svg?react';
 import Bubble from './bubble.svg?react';
 import Cafe from './cafe-dessert.svg?react';
+import Check from './check.svg?react';
 import DeleteRound from './delete-round.svg?react';
 import Fidies from './findies.svg?react';
 import Findy1 from './findy-1.svg?react';
@@ -56,6 +57,7 @@ export const Icons = {
   user: User,
   back: Back,
   home: Home,
+  check: Check,
   deleteRound: DeleteRound,
   kakaoLogin: KakaoLogin,
   naverLogin: NaverLogin,

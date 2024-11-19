@@ -7,6 +7,7 @@ import publicIcon from '@/assets/icons/public.svg?url';
 import restaurant from '@/assets/icons/restaurant.svg?url';
 import shopping from '@/assets/icons/shopping.svg?url';
 import travel from '@/assets/icons/travel.svg?url';
+import { Category } from '@/types/naver';
 
 import { parseCategory } from './parseCategory';
 
@@ -28,10 +29,11 @@ export const CustomMarker = ({
   shouldShowTitle,
 }: {
   title: string;
-  categoryName: string;
+  categoryName: string | Category;
   shouldShowTitle: boolean;
 }) => {
-  const iconName = parseCategory(categoryName) as keyof typeof iconMap;
+  const category = typeof categoryName === 'object' ? categoryName.majorCategory : categoryName;
+  const iconName = parseCategory(category as string) as keyof typeof iconMap;
   const categoryIcon = iconMap[iconName] || iconMap.default;
 
   const markerHTML = `

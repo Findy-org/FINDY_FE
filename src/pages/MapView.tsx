@@ -1,12 +1,17 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import { BottomSheet } from '@/components/common/BottomSheet';
 import { SearchInput } from '@/components/common/SearchInput';
 import { SideMenu } from '@/components/common/SideMenu';
+import { BottomSheetContent } from '@/components/features/BottomSheetContent/BottomSheetContent';
 import { NaverMap } from '@/components/features/NaverMap';
+import { YoutubeResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useNaverSearchResult } from '@/hooks/api/search/useNaverSearchResult';
 import { useInput } from '@/hooks/common/useInput';
+import { useMapData } from '@/hooks/common/useMapData';
 import { useMapState } from '@/hooks/common/useMapState';
+import { useMapStorage } from '@/hooks/common/useMapStorage';
 import { useMarkers } from '@/hooks/common/useMarkers';
 import { Place } from '@/types/naver';
 
@@ -14,48 +19,65 @@ export const MapView = () => {
   const navigate = useNavigate();
   const [isInputDisabled, setIsInputDisabled] = useState(false);
 
+  const { state, setState } = useMapData<Place[] | YoutubeResponse>();
   const { addMarker, clearMarkers } = useMarkers();
   const { state: searchValue, onChange, onClickReset } = useInput();
   const { refetch } = useNaverSearchResult(searchValue);
+  const { getStoredMapData } = useMapStorage();
+
   const { initialCenter, zoomLevel, isCurrent, updateLocation, resetCurrentLocation } =
     useMapState();
 
   const location = useLocation();
-  const data = location.state?.data;
+  const extractedData = location.state?.data;
+
+  const handleMarkers = useCallback(
+    (places: Place[]) => {
+      clearMarkers();
+      places?.forEach(addMarker);
+    },
+    [clearMarkers, addMarker]
+  );
+  useEffect(() => {
+    if (!state.type && !state.data) {
+      const { data: storedData, type: storedType } = getStoredMapData();
+      setState({ data: storedData, type: storedType });
+
+      if (storedData && storedType === 'search') handleMarkers(storedData);
+      if (storedData && storedType === 'extract')
+        handleMarkers(storedData.places.length > 0 ? storedData.places : []);
+    }
+  }, [handleMarkers, state.type, state.data, setState, getStoredMapData]);
 
   useEffect(() => {
-    if (data && data.places) {
-      clearMarkers();
-      data.places.forEach((marker: Place) => {
-        const markerData = {
-          ...marker,
-          category:
-            typeof marker.category === 'string' ? marker.category : marker.category.majorCategory,
-        };
-        addMarker(markerData);
-      });
+    if (extractedData?.places?.length) {
+      handleMarkers(extractedData.places);
+      setState({ data: extractedData, type: 'extract' });
     }
-  }, [addMarker, clearMarkers, data]);
+  }, [extractedData, handleMarkers, setState]);
 
   const handleSearch = async () => {
     setIsInputDisabled(true);
     resetCurrentLocation();
     const result = await refetch();
-    const newData = result?.data?.data.items;
+    const newData = result?.data?.items;
 
-    newData?.forEach((marker: Place) => {
-      const markerData = {
-        ...marker,
-        title: marker.title.replace(/<[^>]+>/g, ''),
-      };
-      addMarker(markerData);
-    });
+    if (newData) {
+      handleMarkers(newData);
+      setState({ data: newData, type: 'search' });
+    }
+  };
+
+  const handleLink = () => {
+    clearMarkers();
+    navigate('/link');
   };
 
   const handleReset = () => {
+    setIsInputDisabled(false);
     onClickReset();
     clearMarkers();
-    setIsInputDisabled(false);
+    setState({ data: null, type: 'list' });
   };
 
   const handleCurrentLocation = useCallback(() => {
@@ -65,11 +87,6 @@ export const MapView = () => {
       updateLocation(latitude, longitude, 18);
     });
   }, [clearMarkers, updateLocation]);
-
-  const handleLink = () => {
-    clearMarkers();
-    navigate('/link');
-  };
 
   return (
     <>
@@ -87,9 +104,16 @@ export const MapView = () => {
           <SideMenu.Group>
             <SideMenu position="right" variant="gps" onClick={() => handleCurrentLocation()} />
             <SideMenu position="right" variant="link" onClick={() => handleLink()} />
-            <SideMenu position="right" variant="emptyBookMark" onClick={() => {}} />
+            <SideMenu
+              position="right"
+              variant="emptyBookMark"
+              onClick={() => setState((prev) => ({ ...prev, type: 'list' }))}
+            />
           </SideMenu.Group>
         </div>
+        <BottomSheet isOpen={!!state.type}>
+          <BottomSheetContent type={state.type} data={state.data} />
+        </BottomSheet>
       </div>
     </>
   );

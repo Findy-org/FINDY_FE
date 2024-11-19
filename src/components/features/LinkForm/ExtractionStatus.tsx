@@ -24,7 +24,7 @@ export const ExtractionStatus = ({
   const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
 
   const handleNavigate = () => {
-    if (place.length > 0) {
+    if (place?.length > 0) {
       return onNext();
     }
     onPrev();
@@ -38,7 +38,7 @@ export const ExtractionStatus = ({
           <Body1>
             {isLoading
               ? `현재 장소 정보를 추출 중입니다.\n조금만 더 기다려 주세요, 곧 완료됩니다!`
-              : place.length > 0
+              : place?.length > 0
                 ? `장소 정보가 성공적으로 추출되었습니다!\n지금 바로 확인하고, 원하는 장소를 방문해보세요!`
                 : `추출된 장소가 없어요.\n다른 링크를 입력해주시겠어요?`}
           </Body1>
@@ -73,7 +73,7 @@ export const ExtractionStatus = ({
           className="w-full"
           disabled={isLoading}
         >
-          {isLoading ? '확인하러 가기' : place.length > 0 ? '확인하러 가기' : '뒤로가기'}
+          {isLoading ? '확인하러 가기' : place?.length > 0 ? '확인하러 가기' : '뒤로가기'}
         </Button>
       </div>
     </div>

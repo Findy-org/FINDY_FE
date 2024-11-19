@@ -2,7 +2,7 @@ import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { ExtractionStatus, Landing, LinkInput } from '@/components/features/LinkForm';
-import { linkStepNames } from '@/constants/linkForm';
+import { linkStepNames } from '@/constants/funnelStep';
 import { useYoutubePlace } from '@/hooks/api/link/useYoutubePlace';
 import { useFunnel } from '@/hooks/common/useFunnel';
 import { useYoutubeContext } from '@/hooks/common/useYoutubeContext';

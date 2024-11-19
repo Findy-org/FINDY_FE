@@ -8,7 +8,7 @@ import { Tooltip } from '../Tooltip';
 
 export const SideMenu = ({ variant, position = 'left', className = '', ...props }: Props) => {
   return (
-    <button type="button" className="relative" {...props}>
+    <button type="button" className="relative focus:outline-none" {...props}>
       <IconButton name={variant} className={cn('peer', className)} />
       <Tooltip
         message={sideMenuTooltip[variant]}

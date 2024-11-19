@@ -13,22 +13,27 @@ export const naverInstance = axios.create({
   params: {},
 });
 
-export const get = <T>(...args: Parameters<typeof naverInstance.get>) => {
-  return naverInstance.get<T, T>(...args);
+export const get = async <T>(...args: Parameters<typeof naverInstance.get>) => {
+  const response = await naverInstance.get<T>(...args);
+  return response.data;
 };
 
-export const post = <T>(...args: Parameters<typeof naverInstance.post>) => {
-  return naverInstance.post<T, T>(...args);
+export const post = async <T>(...args: Parameters<typeof naverInstance.post>) => {
+  const response = await naverInstance.post<T>(...args);
+  return response.data;
 };
 
-export const put = <T>(...args: Parameters<typeof naverInstance.put>) => {
-  return naverInstance.put<T, T>(...args);
+export const put = async <T>(...args: Parameters<typeof naverInstance.put>) => {
+  const response = await naverInstance.put<T>(...args);
+  return response.data;
 };
 
-export const patch = <T>(...args: Parameters<typeof naverInstance.patch>) => {
-  return naverInstance.patch<T, T>(...args);
+export const patch = async <T>(...args: Parameters<typeof naverInstance.patch>) => {
+  const response = await naverInstance.patch<T>(...args);
+  return response.data;
 };
 
-export const del = <T>(...args: Parameters<typeof naverInstance.delete>) => {
-  return naverInstance.delete<T, T>(...args);
+export const del = async <T>(...args: Parameters<typeof naverInstance.delete>) => {
+  const response = await naverInstance.delete<T>(...args);
+  return response.data;
 };

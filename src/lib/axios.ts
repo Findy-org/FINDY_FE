@@ -5,6 +5,7 @@ import { ENV } from './env';
 export const instance = axios.create({
   baseURL: ENV.API_BASE_URL,
   timeout: 5000,
+  withCredentials: true,
 });
 
 export const get = <T>(...args: Parameters<typeof instance.get>) => {
