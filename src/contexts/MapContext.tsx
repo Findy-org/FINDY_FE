@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
 
-export type BottomSheetType = 'login' | 'extract' | 'search' | 'list';
+export type BottomSheetType = 'extract' | 'search' | 'list';
 
 export type MapDataState<T> = {
   data: T | null;
