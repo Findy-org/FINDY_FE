@@ -57,7 +57,12 @@ export const ExtractedList = ({ places, onNext }: Props) => {
   return (
     <div className="flex flex-col gap-4 p-3">
       <div className="flex flex-row gap-4 py-2">
-        <img src={places.youtuberProfile} className="w-12 h-12 rounded-full" />
+        {/* TODO : 이미지가 없을 경우 대체 이미지 추가 */}
+        <img
+          src={places.youtuberProfile}
+          className="w-12 h-12 rounded-full"
+          alt={`${places.youtuberName}의 프로필 이미지`}
+        />
         <div className="flex flex-col ">
           <Body2 weight="medium">{places.youtuberName}</Body2>
           <div className="flex flex-row items-center gap-1">
