@@ -8,6 +8,14 @@ const meta: Meta<typeof Dropdown> = {
   title: 'components/common/Dropdown',
   component: Dropdown,
   tags: ['autodocs'],
+  parameters: {
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 300,
+      },
+    },
+  },
 };
 
 export default meta;
