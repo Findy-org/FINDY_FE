@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { Button } from '@/components/common/Button';
 import { Chip } from '@/components/common/Chip';
 import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
@@ -57,6 +58,9 @@ export const SearchList = ({ places, onNext }: Props) => {
           </>
         ))}
       </ListCard>
+      <Button variant="primary" size="large" onClick={handleSave}>
+        저장하기
+      </Button>
       <Login isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
