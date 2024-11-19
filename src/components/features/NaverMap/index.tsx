@@ -67,6 +67,6 @@ export const NaverMap = memo(
       return () => clearMarkers();
     }, [clearMarkers, initialCenter, isCurrent, markers]);
 
-    return <div id="map" ref={mapRef} style={{ width: '100%', height: '100vh' }} />;
+    return <div id="map" ref={mapRef} style={{ width: '100%', height: '100dvh' }} />;
   }
 );
