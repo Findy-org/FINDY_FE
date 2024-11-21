@@ -8,22 +8,27 @@ export const instance = axios.create({
   withCredentials: true,
 });
 
-export const get = <T>(...args: Parameters<typeof instance.get>) => {
-  return instance.get<T, T>(...args);
+export const get = async <T>(...args: Parameters<typeof instance.get>) => {
+  const response = await instance.get<T>(...args);
+  return response.data;
 };
 
-export const post = <T>(...args: Parameters<typeof instance.post>) => {
-  return instance.post<T, T>(...args);
+export const post = async <T>(...args: Parameters<typeof instance.post>) => {
+  const response = await instance.post<T>(...args);
+  return response.data;
 };
 
-export const put = <T>(...args: Parameters<typeof instance.put>) => {
-  return instance.put<T, T>(...args);
+export const put = async <T>(...args: Parameters<typeof instance.put>) => {
+  const response = await instance.put<T>(...args);
+  return response.data;
 };
 
-export const patch = <T>(...args: Parameters<typeof instance.patch>) => {
-  return instance.patch<T, T>(...args);
+export const patch = async <T>(...args: Parameters<typeof instance.patch>) => {
+  const response = await instance.patch<T>(...args);
+  return response.data;
 };
 
-export const del = <T>(...args: Parameters<typeof instance.delete>) => {
-  return instance.delete<T, T>(...args);
+export const del = async <T>(...args: Parameters<typeof instance.delete>) => {
+  const response = await instance.delete<T>(...args);
+  return response.data;
 };
