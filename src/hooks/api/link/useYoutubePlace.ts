@@ -14,7 +14,8 @@ export type YoutubeResponse = {
 export const useYoutubePlace = (youtubeLink: string) => {
   return useQuery<YoutubeResponse>({
     queryKey: ['youtubeLink', youtubeLink],
-    queryFn: () => get<YoutubeResponse>(`video/place/${youtubeLink}`),
+    queryFn: () => get<YoutubeResponse>(`video/place/${encodeURIComponent(youtubeLink)}`),
     enabled: !!youtubeLink,
+    retry: 1,
   });
 };
