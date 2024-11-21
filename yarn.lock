@@ -5942,6 +5942,7 @@ __metadata:
     husky: "npm:^9.1.6"
     jest: "npm:^29.7.0"
     jest-environment-jsdom: "npm:^29.7.0"
+    jotai: "npm:^2.10.3"
     msw: "npm:^2.4.10"
     postcss: "npm:^8.4.47"
     prettier: "npm:^3.3.3"
@@ -7598,6 +7599,21 @@ __metadata:
   bin:
     jiti: bin/jiti.js
   checksum: 10c0/05b9ed58cd30d0c3ccd3c98209339e74f50abd9a17e716f65db46b6a35812103f6bde6e134be7124d01745586bca8cc5dae1d0d952267c3ebe55171949c32e56
+  languageName: node
+  linkType: hard
+
+"jotai@npm:^2.10.3":
+  version: 2.10.3
+  resolution: "jotai@npm:2.10.3"
+  peerDependencies:
+    "@types/react": ">=17.0.0"
+    react: ">=17.0.0"
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    react:
+      optional: true
+  checksum: 10c0/64f6536aaa91f77dacd8d9714fb846f254bfed6e5354b3005375433d72844f3ae1d6d893ee4dd423d5bddd109d393dd338e562da914605b31190989a3d47db35
   languageName: node
   linkType: hard
 
