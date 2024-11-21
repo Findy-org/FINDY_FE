@@ -2,9 +2,9 @@ import { useCallback, useState } from 'react';
 
 import { BookmarkDetail } from '@/components/features/BookmarkDetail';
 import { BookmarkList } from '@/components/features/BookmarkList';
-import { ExtractedList } from '@/components/features/ExtractedList/ExtractedList';
-import { SearchList } from '@/components/features/SearchList';
-import { SelectBookmarkList } from '@/components/features/SearchList/SelectBookmarkList';
+import { ExtractedPlacesList } from '@/components/features/ExtractedPlacesList/ExtractedPlacesList';
+import { SearchResultsList } from '@/components/features/SearchResultsList';
+import { BookmarkSelectionList } from '@/components/features/SearchResultsList/BookmarkSelectionList';
 import { FLOW_CONFIGS, FlowType, STEPS, StepType } from '@/constants/funnelStep';
 import { Place } from '@/types/naver';
 
@@ -43,20 +43,23 @@ export const useBottomFunnel = ({ type, data }: bottomFunnelProps) => {
 
   const stepComponents: Record<StepType, React.ReactNode> = {
     [STEPS.SEARCH_PLACES]: (
-      <SearchList
+      <SearchResultsList
         places={data as Place[]}
         onNext={() => handleStepChange(STEPS.LIST_SELECT)}
         onSelect={setSelectedPlace}
       />
     ),
     [STEPS.LIST_SELECT]: (
-      <SelectBookmarkList
+      <BookmarkSelectionList
         selectedPlace={selectedPlace as NewMarker}
         onNext={() => handleStepChange(STEPS.LIST)}
       />
     ),
     [STEPS.EXTRACTED_PLACES]: (
-      <ExtractedList places={data as YoutubeResponse} onNext={() => handleStepChange(STEPS.LIST)} />
+      <ExtractedPlacesList
+        places={data as YoutubeResponse}
+        onNext={() => handleStepChange(STEPS.LIST)}
+      />
     ),
     [STEPS.LIST]: (
       <BookmarkList
