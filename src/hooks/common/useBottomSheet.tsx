@@ -46,10 +46,12 @@ export const useBottomSheet = (isOpen: boolean, setIsOpen: (value: boolean) => v
         const dragAmount = -info.delta.y;
         dragOffsetRef.current += dragAmount * 5;
 
+        const contentHeight = bottomSheetRef.current?.scrollHeight || MAX_HEIGHT;
         const newHeight = Math.min(
           Math.max(initialPositionRef.current + dragOffsetRef.current, MIN_VISIBLE_HEIGHT),
-          MAX_HEIGHT
+          Math.min(contentHeight, MAX_HEIGHT)
         );
+
         setSheetHeight(newHeight);
       });
     },
@@ -67,6 +69,9 @@ export const useBottomSheet = (isOpen: boolean, setIsOpen: (value: boolean) => v
       setSheetHeight(MAX_HEIGHT);
       return;
     }
+
+    initialPositionRef.current = sheetHeight;
+    dragOffsetRef.current = 0;
   }, [setIsOpen, sheetHeight]);
 
   return {
