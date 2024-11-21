@@ -22,7 +22,7 @@ export const LinkInput = ({ onNext, onHomeClick, context }: LinkInputProp<string
   return (
     <div className="flex flex-col items-center justify-between">
       <Header left={<Icon name="home" size={20} onClick={onHomeClick} />} />
-      <div className="w-full flex flex-col items-start gap-6 my-36 px-6">
+      <div className="w-full flex flex-col items-start gap-6 my-32 px-6">
         <Body1>{`아래에 링크를 입력해주시면,\n특별한 장소 정보를 추출해드릴게요.`}</Body1>
         <Input
           value={state}
