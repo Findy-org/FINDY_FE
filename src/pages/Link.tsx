@@ -16,11 +16,7 @@ export const Link = () => {
     navigate('/map');
   }, [navigate]);
 
-  const {
-    refetch: fetchPlaces,
-    data,
-    isLoading,
-  } = useYoutubePlace(encodeURIComponent(link.youtubeLink));
+  const { refetch: fetchPlaces, data, isLoading } = useYoutubePlace(link.youtubeLink);
 
   const handleLinkSubmit = useCallback(() => {
     fetchPlaces();

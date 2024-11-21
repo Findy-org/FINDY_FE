@@ -4,7 +4,7 @@ import { ENV } from './env';
 
 export const externalInstance = axios.create({
   baseURL: ENV.FAST_API_BASE_URL,
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export const get = async <T>(...args: Parameters<typeof externalInstance.get>) => {
