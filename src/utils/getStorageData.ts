@@ -1,6 +1,7 @@
 import { BottomSheetType } from '@/contexts/MapAtom';
 
-export const getStoredMapData = (): { data: unknown | null; type: BottomSheetType | null } => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getStoredMapData = (): { data: any; type: BottomSheetType | null } => {
   const storedData = sessionStorage.getItem('mapData');
   const storedType = sessionStorage.getItem('bottomSheetType') as BottomSheetType | null;
   return {

@@ -14,10 +14,11 @@ import { Login } from '../LoginModal';
 
 type Props = { places: YoutubeResponse; onNext: () => void };
 export const ExtractedPlacesList = ({ places, onNext }: Props) => {
-  const { clearMarkers } = useMarkers();
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { token } = useAuth();
+  const { clearMarkers } = useMarkers();
   const { mutate: bookmarkMutate } = useYoutubeBookmark(token);
 
   const handleToggleSelect = (id: number) => {
@@ -36,6 +37,7 @@ export const ExtractedPlacesList = ({ places, onNext }: Props) => {
       ...places,
       places: places.places
         .filter((place) => selectedIds.includes(place.id as number))
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         .map(({ id, ...placeData }) => placeData),
     };
 
