@@ -1,8 +1,18 @@
-import { useContext } from 'react';
+import { useCallback } from 'react';
+import { useAtom } from 'jotai';
 
-import { MapDataContext, MapDataContextValue } from '@/contexts/MapContext';
+import { MapDataState, mapDataAtom, setMapDataAtom } from '@/contexts/MapAtom';
 
-export const useMapData = <T,>(): MapDataContextValue<T> => {
-  const context = useContext(MapDataContext);
-  return context as MapDataContextValue<T>;
+export const useMapData = <T,>() => {
+  const [mapData] = useAtom<MapDataState<T>>(mapDataAtom);
+  const [, setMapData] = useAtom(setMapDataAtom);
+
+  const setState = useCallback(
+    (newState: MapDataState<T>, token: string | null) => {
+      setMapData({ newState, token });
+    },
+    [setMapData]
+  );
+
+  return { state: mapData, setState };
 };
