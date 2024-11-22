@@ -18,12 +18,12 @@ export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Prop
         <div className="flex items-center">
           {selectedCategory}
           <span className="ml-2">
-            {isOpen ? <Icon name="arrowUp" size={10} /> : <Icon name="arrowDown" size={10} />}
+            <Icon name={isOpen ? 'arrowUp' : 'arrowDown'} size={10} />
           </span>
         </div>
       </button>
       {isOpen && (
-        <div className="absolute bg-white shadow-lg rounded-lg mt-0 z-modal max-h-[calc(4*2.6rem)] overflow-y-auto scrollbar-hide">
+        <div className="absolute bg-white w-24 shadow-lg rounded-lg mt-0 z-modal max-h-[10.6rem] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded">
           {categories.map((category) => (
             <button
               key={category.name}

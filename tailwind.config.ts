@@ -1,5 +1,3 @@
-import tailwindScrollbarHide from 'tailwind-scrollbar-hide';
-
 import { colors } from './src/styles/theme/colors';
 
 /** @type {import('tailwindcss').Config} */
@@ -31,5 +29,5 @@ export default {
       },
     },
   },
-  plugins: [tailwindScrollbarHide],
+  plugins: [],
 };
