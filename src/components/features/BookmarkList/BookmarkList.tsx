@@ -28,7 +28,7 @@ export const BookmarkList = ({ onNext }: Props) => {
   };
 
   const handleDelete = () => {
-    if (selectedId !== null) {
+    if (selectedId !== 0) {
       deleteBookmarkMutation.mutate({ token, bookmarkId: selectedId });
       setSelectedId(0);
       setIsOpen(false);

@@ -10,7 +10,7 @@ export const Delete = ({ item, onClickDelete, isOpen, setIsOpen }: Props) => {
       <div className="flex flex-col gap-6 items-center max-w-[450px]">
         <Body1 className="text-center mt-4">{`${item}를 삭제하시겠습니까?`}</Body1>
         <div className="flex flex-row gap-6 items-center mb-1.5 max-w-80">
-          <Button variant="primary" size="medium" onClick={() => setIsOpen(!isOpen)}>
+          <Button variant="primary" size="medium" onClick={() => setIsOpen(false)}>
             취소
           </Button>
           <Button variant="gray" size="medium" onClick={onClickDelete}>
