@@ -29,8 +29,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
     if (bookmarkId !== 0 && selectedPlace) {
       mutation.mutate(selectedPlace, {
         onSuccess: () => {
-          sessionStorage.removeItem('bottomSheetType');
-          sessionStorage.removeItem('mapData');
+          sessionStorage.clear();
           clearMarkers();
           onNext();
         },

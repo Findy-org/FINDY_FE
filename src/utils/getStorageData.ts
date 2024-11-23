@@ -11,6 +11,5 @@ export const getStoredMapData = (): { data: any; type: BottomSheetType | null } 
 };
 
 export const clearMapStorage = (): void => {
-  sessionStorage.removeItem('mapData');
-  sessionStorage.removeItem('bottomSheetType');
+  sessionStorage.clear();
 };
