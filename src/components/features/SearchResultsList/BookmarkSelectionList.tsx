@@ -75,7 +75,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
           </>
         ))}
       </ListCard>
-      <Button variant="primary" size="large" onClick={handleSave}>
+      <Button variant="primary" size="large" onClick={handleSave} disabled={bookmarkId === 0}>
         저장하기
       </Button>
     </div>
