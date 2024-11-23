@@ -27,6 +27,10 @@ export const Basic: Story = {
     },
   },
   render: (args) => {
-    return <Chip variant={args.variant}>{args.children}</Chip>;
+    return (
+      <div className="w-20">
+        <Chip variant={args.variant}>{args.children}</Chip>
+      </div>
+    );
   },
 };
