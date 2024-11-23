@@ -8,25 +8,26 @@ import { BottomSheetContent } from '@/components/features/BottomSheetContent/Bot
 import { NaverMap } from '@/components/features/NaverMap';
 import { YoutubeResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useNaverSearchResult } from '@/hooks/api/search/useNaverSearchResult';
+import { useAuth } from '@/hooks/auth/useAuth';
 import { useInput } from '@/hooks/common/useInput';
 import { useMapData } from '@/hooks/common/useMapData';
 import { useMapState } from '@/hooks/common/useMapState';
-import { useMapStorage } from '@/hooks/common/useMapStorage';
 import { useMarkers } from '@/hooks/common/useMarkers';
+import { useSessionDataLoader } from '@/hooks/common/useSessionDataLoader';
 import { Place } from '@/types/naver';
 
 export const MapView = () => {
+  const { token } = useAuth();
   const navigate = useNavigate();
-  const [isInputDisabled, setIsInputDisabled] = useState(false);
 
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
   const { state, setState } = useMapData<Place[] | YoutubeResponse>();
   const { addMarker, clearMarkers } = useMarkers();
   const { state: searchValue, onChange, onClickReset } = useInput();
   const { refetch } = useNaverSearchResult(searchValue);
-  const { getStoredMapData } = useMapStorage();
-
   const { initialCenter, zoomLevel, isCurrent, updateLocation, resetCurrentLocation } =
     useMapState();
+  useSessionDataLoader(token);
 
   const location = useLocation();
   const extractedData = location.state?.data;
@@ -38,23 +39,13 @@ export const MapView = () => {
     },
     [clearMarkers, addMarker]
   );
-  useEffect(() => {
-    if (!state.type && !state.data) {
-      const { data: storedData, type: storedType } = getStoredMapData();
-      setState({ data: storedData, type: storedType });
-
-      if (storedData && storedType === 'search') handleMarkers(storedData);
-      if (storedData && storedType === 'extract')
-        handleMarkers(storedData.places.length > 0 ? storedData.places : []);
-    }
-  }, [handleMarkers, state.type, state.data, setState, getStoredMapData]);
 
   useEffect(() => {
-    if (extractedData?.places?.length) {
+    if (extractedData?.places.length) {
       handleMarkers(extractedData.places);
-      setState({ data: extractedData, type: 'extract' });
+      setState({ data: extractedData, type: 'extract' }, token);
     }
-  }, [extractedData, handleMarkers, setState]);
+  }, [extractedData, handleMarkers, location.state, setState, token]);
 
   const handleSearch = async () => {
     setIsInputDisabled(true);
@@ -63,8 +54,8 @@ export const MapView = () => {
     const newData = result?.data?.items;
 
     if (newData) {
+      setState({ data: newData, type: 'search' }, token);
       handleMarkers(newData);
-      setState({ data: newData, type: 'search' });
     }
   };
 
@@ -74,10 +65,10 @@ export const MapView = () => {
   };
 
   const handleReset = () => {
-    setIsInputDisabled(false);
-    onClickReset();
     clearMarkers();
-    setState({ data: null, type: 'list' });
+    setIsInputDisabled(false);
+    setState({ data: null, type: null }, token);
+    onClickReset();
   };
 
   const handleCurrentLocation = useCallback(() => {
@@ -107,12 +98,17 @@ export const MapView = () => {
             <SideMenu
               position="right"
               variant="emptyBookMark"
-              onClick={() => setState((prev) => ({ ...prev, type: 'list' }))}
+              onClick={() => setState({ data: state.data, type: 'list' }, token)}
             />
           </SideMenu.Group>
         </div>
-        <BottomSheet isOpen={!!state.type}>
-          <BottomSheetContent type={state.type} data={state.data} />
+        <BottomSheet
+          isOpen={!!state.type}
+          setIsOpen={(open) => {
+            if (!open) setState({ ...state, type: null }, token);
+          }}
+        >
+          <BottomSheetContent key={state.type} type={state.type} data={state.data} />
         </BottomSheet>
       </div>
     </>

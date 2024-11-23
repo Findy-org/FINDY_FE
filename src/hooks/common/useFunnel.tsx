@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useState } from 'react';
+import { ReactElement, ReactNode, useMemo, useState } from 'react';
 
 export type StepProps = {
   name: string;
@@ -9,15 +9,18 @@ export type FunnelProps = {
   children: Array<ReactElement<StepProps>>;
 };
 
-export const useFunnel = (initStep: string) => {
-  const [step, setStep] = useState(initStep);
+export const useFunnel = <T extends string>(initStep: T) => {
+  const [step, setStep] = useState<T>(initStep);
 
   const Step = ({ children }: StepProps): ReactElement => {
     return <>{children}</>;
   };
 
   const Funnel = ({ children }: FunnelProps) => {
-    const targetStep = children.find((childStep) => childStep.props.name === step);
+    const targetStep = useMemo(
+      () => children.find((childStep) => childStep.props.name === step),
+      [children]
+    );
 
     return <>{targetStep}</>;
   };

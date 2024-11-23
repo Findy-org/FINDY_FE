@@ -71,6 +71,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.6"],\
           ["jest", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
+          ["jotai", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.10.3"],\
           ["msw", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.4.10"],\
           ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
@@ -8161,6 +8162,7 @@ const RAW_RUNTIME_STATE =
           ["husky", "npm:9.1.6"],\
           ["jest", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
           ["jest-environment-jsdom", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:29.7.0"],\
+          ["jotai", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.10.3"],\
           ["msw", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.4.10"],\
           ["postcss", "npm:8.4.47"],\
           ["prettier", "npm:3.3.3"],\
@@ -10099,6 +10101,28 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "./.yarn/cache/jiti-npm-1.21.6-0bb76563a3-05b9ed58cd.zip/node_modules/jiti/",\
         "packageDependencies": [\
           ["jiti", "npm:1.21.6"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["jotai", [\
+      ["npm:2.10.3", {\
+        "packageLocation": "./.yarn/cache/jotai-npm-2.10.3-20aff9aa6c-64f6536aaa.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "npm:2.10.3"]\
+        ],\
+        "linkType": "SOFT"\
+      }],\
+      ["virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.10.3", {\
+        "packageLocation": "./.yarn/__virtual__/jotai-virtual-db7bfd2d05/0/cache/jotai-npm-2.10.3-20aff9aa6c-64f6536aaa.zip/node_modules/jotai/",\
+        "packageDependencies": [\
+          ["jotai", "virtual:496772d107f3d2c371d44f7464355fcd2fcfd9b1940f6002dce91963b0955dbca515f91fecb79ab9255c9de181f2db37be71afcdc7b32ce3d95b36cadf9d8518#npm:2.10.3"],\
+          ["@types/react", "npm:18.3.10"],\
+          ["react", "npm:18.3.1"]\
+        ],\
+        "packagePeers": [\
+          "@types/react",\
+          "react"\
         ],\
         "linkType": "HARD"\
       }]\

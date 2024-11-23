@@ -13,11 +13,12 @@ import { useMarkers } from '@/hooks/common/useMarkers';
 import { Login } from '../LoginModal';
 
 type Props = { places: YoutubeResponse; onNext: () => void };
-export const ExtractedList = ({ places, onNext }: Props) => {
-  const { clearMarkers } = useMarkers();
+export const ExtractedPlacesList = ({ places, onNext }: Props) => {
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const [isOpen, setIsOpen] = useState<boolean>(false);
+
   const { token } = useAuth();
+  const { clearMarkers } = useMarkers();
   const { mutate: bookmarkMutate } = useYoutubeBookmark(token);
 
   const handleToggleSelect = (id: number) => {
@@ -32,25 +33,19 @@ export const ExtractedList = ({ places, onNext }: Props) => {
       return;
     }
 
-    const filteredPlaces = places.places.filter((place) =>
-      selectedIds.includes(place.id as number)
-    );
-
     const savePlaces = {
       ...places,
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      places: filteredPlaces.map(({ id, ...rest }) => rest),
+      places: places.places
+        .filter((place) => selectedIds.includes(place.id as number))
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        .map(({ id, ...placeData }) => placeData),
     };
 
     bookmarkMutate(savePlaces, {
       onSuccess: () => {
-        sessionStorage.removeItem('bottomSheetType');
-        sessionStorage.removeItem('mapData');
+        sessionStorage.clear();
         clearMarkers();
         onNext();
-      },
-      onError: (error) => {
-        console.error('저장 실패', error);
       },
     });
   };
@@ -86,13 +81,13 @@ export const ExtractedList = ({ places, onNext }: Props) => {
                     <Chip variant="medium">{item.category.majorCategory}</Chip>
                   )}
                 </div>
-                <Body4 className="pt-1 " weight="normal">
+                <Body4 className="pt-1" weight="normal">
                   {item.address}
                 </Body4>
               </div>
               <Icon
                 name="check"
-                className="cursor-pointer h-7"
+                className="cursor-pointer h-7 w-7 flex-shrink-0"
                 color={selectedIds.includes(item.id as number) ? 'primary' : 'gray'}
                 onClick={() => handleToggleSelect(item.id as number)}
               />

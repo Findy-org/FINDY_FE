@@ -7,6 +7,7 @@ import { Icon } from '@/components/common/Icon';
 import { Body1 } from '@/components/common/Typography';
 import { SLIDER_ANIMATION, THUMBNAIL_ANIMATION } from '@/constants/motions';
 import { Place } from '@/types/naver';
+import { extractVideoId } from '@/utils/extractVideoId';
 
 import { LinkFormProps } from './types';
 
@@ -20,9 +21,8 @@ export const ExtractionStatus = ({
   onNext,
   onHomeClick,
 }: ExtractProp) => {
-  const videoId = url.includes('v=') ? url.split('v=')[1].split('&')[0] : url.split('/').pop();
-  const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-
+  const videoId = extractVideoId(url);
+  const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` : '';
   const handleNavigate = () => {
     if (place?.length > 0) {
       return onNext();

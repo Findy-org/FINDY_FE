@@ -1,6 +1,6 @@
 import { ChangeEventHandler, useCallback, useRef, useState } from 'react';
 
-export const useInput = (initialValue = '', validation: string[] = ['youtube', 'www']) => {
+export const useInput = (initialValue = '', validation: string[] = ['https', 'www', 'youtu']) => {
   const [state, setState] = useState(initialValue);
   const [isValid, setIsValid] = useState(true);
   const ref = useRef<HTMLInputElement>(null);

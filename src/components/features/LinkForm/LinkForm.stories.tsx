@@ -2,7 +2,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Layout } from '@/components/common/Layout';
-import { linkStepNames } from '@/constants/funnelStep';
 import { useFunnel } from '@/hooks/common/useFunnel';
 
 import { ExtractionStatus, LinkInput, Landing } from '.';
@@ -19,7 +18,7 @@ type Story = StoryObj<typeof Landing>;
 
 export const Basic: Story = {
   render: () => {
-    const { Funnel, Step, setStep } = useFunnel(linkStepNames[0]);
+    const { Funnel, Step, setStep } = useFunnel<'입력전' | '링크입력' | '추출상태'>('입력전');
 
     return (
       <Layout>

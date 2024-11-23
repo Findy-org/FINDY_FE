@@ -1,7 +1,15 @@
-import { useContext } from 'react';
+import { useAtom } from 'jotai';
 
-import { MarkerContext } from '@/contexts/MarkerContext';
+import { addMarkerAtom, clearMarkersAtom, markersAtom } from '@/contexts/MarkerAtom';
 
 export const useMarkers = () => {
-  return useContext(MarkerContext);
+  const [markers] = useAtom(markersAtom);
+  const [, addMarker] = useAtom(addMarkerAtom);
+  const [, clearMarkers] = useAtom(clearMarkersAtom);
+
+  return {
+    markers,
+    addMarker,
+    clearMarkers,
+  };
 };

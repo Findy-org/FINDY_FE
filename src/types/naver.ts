@@ -10,12 +10,12 @@ export type Place = {
   id?: number;
   timeStamp?: number;
   title: string;
-  link: string;
+  link?: string;
   category: Category | string;
-  description: string;
-  telephone: string;
+  description?: string;
+  telephone?: string;
   address: string;
-  roadAddress: string;
+  roadAddress?: string;
   mapx: string;
   mapy: string;
 };

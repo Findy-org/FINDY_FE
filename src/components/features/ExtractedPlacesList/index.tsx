@@ -1,0 +1,1 @@
+export { ExtractedPlacesList } from './ExtractedPlacesList';
