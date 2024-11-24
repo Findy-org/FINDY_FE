@@ -40,9 +40,9 @@ const Typography = ({
   const classes = variantClasses({ type: variant, weight, className });
 
   return (
-    <p className={classes} {...props}>
+    <span className={classes} {...props}>
       {children}
-    </p>
+    </span>
   );
 };
 
