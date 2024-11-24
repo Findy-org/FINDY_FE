@@ -32,7 +32,7 @@ export const BottomSheet = memo(({ children, isOpen, setIsOpen }: Props) => {
         onPointerDown={(e) => !isInteractionDisabled && dragControls.start(e)}
         exit={BOTTOM_SHEET_ANIMATION.exit}
       >
-        <BottomSheetHeader setIsOpen={setIsOpen} />
+        <BottomSheetHeader />
         {children}
       </motion.div>
     </Portal>
