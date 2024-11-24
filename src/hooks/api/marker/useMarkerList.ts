@@ -27,11 +27,11 @@ export type MarkerDetail = {
   };
 };
 
-export const useMarkerList = (bookmarkId: number, token: string) => {
+export const useMarkerList = (markerId: number, token: string) => {
   return useQuery<Marker>({
-    queryKey: ['bookmarkId', bookmarkId, token],
+    queryKey: ['marker', markerId, token],
     queryFn: () =>
-      get<Marker>(`api/markers/${bookmarkId}?cursor=0&size=10`, {
+      get<Marker>(`api/markers/${markerId}?cursor=0&size=10`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
