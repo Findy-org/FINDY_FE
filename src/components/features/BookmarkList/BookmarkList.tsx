@@ -17,7 +17,8 @@ import { Delete } from '../DeleteModal';
 
 type Props = { onNext: (bookmarkId: number) => void };
 export const BookmarkList = ({ onNext }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isNewBookmarkMode, setIsNewBookmarkMode] = useState<boolean>(false);
+  const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
   const [bookmarkName, setBookmarkName] = useState<string>('');
@@ -34,7 +35,7 @@ export const BookmarkList = ({ onNext }: Props) => {
       {
         onSuccess: () => {
           setBookmarkName('');
-          setIsOpen(false);
+          setIsNewBookmarkMode(false);
         },
       }
     );
@@ -51,7 +52,7 @@ export const BookmarkList = ({ onNext }: Props) => {
     if (selectedId !== 0) {
       deleteBookmarkMutation.mutate({ token, bookmarkId: selectedId });
       setSelectedId(0);
-      setIsOpen(false);
+      setIsDeleteMode(false);
       setIsEditing(false);
     }
   };
@@ -72,7 +73,7 @@ export const BookmarkList = ({ onNext }: Props) => {
       <ListCard>
         <div
           className="w-full flex flex-row items-center gap-4 pb-4 cursor-pointer"
-          onClick={() => setIsOpen(true)}
+          onClick={() => setIsNewBookmarkMode(true)}
         >
           <IconButton name="bookMark" />
           <Body2 weight="medium" className="text-gray-400">
@@ -129,7 +130,7 @@ export const BookmarkList = ({ onNext }: Props) => {
               variant="primary"
               size="large"
               disabled={selectedId === 0}
-              onClick={() => setIsOpen(true)}
+              onClick={() => setIsDeleteMode(true)}
             >
               삭제하기
             </Button>
@@ -143,11 +144,11 @@ export const BookmarkList = ({ onNext }: Props) => {
       <Delete
         item={selectedItemName}
         onClickDelete={handleDelete}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isOpen={isDeleteMode}
+        setIsOpen={setIsDeleteMode}
       />
 
-      <Modal isOpen={isOpen}>
+      <Modal isOpen={isNewBookmarkMode}>
         <div className="p-1 max-w-80">
           <Body2 className="pb-3" weight="semibold">
             장소 추가
@@ -161,7 +162,7 @@ export const BookmarkList = ({ onNext }: Props) => {
             onChange={(e) => setBookmarkName(e.target.value)}
           />
           <div className="flex gap-4 mt-4">
-            <Button variant="gray" size="medium" onClick={() => setIsOpen(false)}>
+            <Button variant="gray" size="medium" onClick={() => setIsNewBookmarkMode(false)}>
               취소
             </Button>
             <Button
