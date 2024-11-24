@@ -61,7 +61,8 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
           className="cursor-pointer"
         />
         <Body1 className="my-4 mx-3" weight="semibold" onClick={onPrev}>
-          {data?.bookmarkName}의 핀디 리스트
+          <span className="text-primary mr-2">{data?.bookmarkName}</span>
+          리스트
         </Body1>
       </div>
       <ListCard>
