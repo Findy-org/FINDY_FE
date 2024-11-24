@@ -2,23 +2,44 @@ import { useState } from 'react';
 
 import { Button } from '@/components/common/Button';
 import { Icon } from '@/components/common/Icon';
+import { IconButton } from '@/components/common/IconButton';
+import { Input } from '@/components/common/Input';
 import { ListCard } from '@/components/common/ListCard';
+import { Modal } from '@/components/common/Modal';
 import { Body1, Body2, Body3 } from '@/components/common/Typography';
+import { findyIconNames } from '@/constants/findyIcons';
 import { useBookMarkList } from '@/hooks/api/bookmarks/useBookMarkList';
 import { useDeleteBookmark } from '@/hooks/api/bookmarks/useDeleteBookmark';
+import { useNewBookMark } from '@/hooks/api/bookmarks/useNewBookMark';
 import { useAuth } from '@/hooks/auth/useAuth';
 
 import { Delete } from '../DeleteModal';
 
 type Props = { onNext: (bookmarkId: number) => void };
 export const BookmarkList = ({ onNext }: Props) => {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [isNewBookmarkMode, setIsNewBookmarkMode] = useState<boolean>(false);
+  const [isDeleteMode, setIsDeleteMode] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
+  const [bookmarkName, setBookmarkName] = useState<string>('');
 
   const { token } = useAuth();
   const { data } = useBookMarkList(token);
   const deleteBookmarkMutation = useDeleteBookmark();
+  const newBookmarkMutation = useNewBookMark(token);
+
+  const handleAddBookmark = () => {
+    if (!bookmarkName.trim()) return;
+    newBookmarkMutation.mutate(
+      { name: bookmarkName.trim() },
+      {
+        onSuccess: () => {
+          setBookmarkName('');
+          setIsNewBookmarkMode(false);
+        },
+      }
+    );
+  };
 
   const handleBookmarkClick = (bookmarkId: number) => {
     if (isEditing) {
@@ -31,7 +52,7 @@ export const BookmarkList = ({ onNext }: Props) => {
     if (selectedId !== 0) {
       deleteBookmarkMutation.mutate({ token, bookmarkId: selectedId });
       setSelectedId(0);
-      setIsOpen(false);
+      setIsDeleteMode(false);
       setIsEditing(false);
     }
   };
@@ -50,10 +71,19 @@ export const BookmarkList = ({ onNext }: Props) => {
         나의 핀디 리스트
       </Body1>
       <ListCard>
+        <div
+          className="w-full flex flex-row items-center gap-4 pb-4 cursor-pointer"
+          onClick={() => setIsNewBookmarkMode(true)}
+        >
+          <IconButton name="bookMark" />
+          <Body2 weight="medium" className="text-gray-400">
+            새 장소 추가하기
+          </Body2>
+        </div>
+        <hr className="border-dashed pt-2" />
         {data?.data.map((item, index) => (
-          <>
+          <div key={item.bookmarkId}>
             <div
-              key={item.bookmarkId}
               onClick={() => handleBookmarkClick(item.bookmarkId)}
               className="flex flex-row justify-between items-center cursor-pointer"
             >
@@ -65,7 +95,10 @@ export const BookmarkList = ({ onNext }: Props) => {
                     alt={`${item.name}의 프로필 이미지`}
                   />
                 ) : (
-                  <Icon name="findy1" className="w-11 h-11" />
+                  <Icon
+                    name={findyIconNames[index % findyIconNames.length]}
+                    className="w-11 h-11"
+                  />
                 )}
                 <div className="flex flex-col py-1">
                   <Body2 weight="medium">{item.name}</Body2>
@@ -84,7 +117,7 @@ export const BookmarkList = ({ onNext }: Props) => {
               )}
             </div>
             {index < data.data.length - 1 && <hr className="border-dashed pt-2" />}
-          </>
+          </div>
         ))}
       </ListCard>
       <div className="flex gap-4 mt-5">
@@ -97,7 +130,7 @@ export const BookmarkList = ({ onNext }: Props) => {
               variant="primary"
               size="large"
               disabled={selectedId === 0}
-              onClick={() => setIsOpen(true)}
+              onClick={() => setIsDeleteMode(true)}
             >
               삭제하기
             </Button>
@@ -111,9 +144,38 @@ export const BookmarkList = ({ onNext }: Props) => {
       <Delete
         item={selectedItemName}
         onClickDelete={handleDelete}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
+        isOpen={isDeleteMode}
+        setIsOpen={setIsDeleteMode}
       />
+
+      <Modal isOpen={isNewBookmarkMode}>
+        <div className="p-1 max-w-80">
+          <Body2 className="pb-3" weight="semibold">
+            장소 추가
+          </Body2>
+          <Input
+            value={bookmarkName}
+            placeholder="새 장소 이름을 입력하세요."
+            isValid={bookmarkName.length >= 1}
+            errorMessage="1글자 이상 입력해야 합니다."
+            onClickReset={() => setBookmarkName('')}
+            onChange={(e) => setBookmarkName(e.target.value)}
+          />
+          <div className="flex gap-4 mt-4">
+            <Button variant="gray" size="medium" onClick={() => setIsNewBookmarkMode(false)}>
+              취소
+            </Button>
+            <Button
+              variant="primary"
+              size="medium"
+              onClick={handleAddBookmark}
+              disabled={!bookmarkName.trim()}
+            >
+              추가하기
+            </Button>
+          </div>
+        </div>
+      </Modal>
     </>
   );
 };
