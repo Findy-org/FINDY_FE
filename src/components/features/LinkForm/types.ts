@@ -2,7 +2,7 @@ export type LinkFormProps = {
   /**
    * Function to be called when moving to the next step.
    */
-  onNext: () => void;
+  onNext: (value?: string) => void;
   /**
    * Function to be called when moving to the previous step.
    */
