@@ -23,7 +23,7 @@ export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Prop
         </div>
       </button>
       {isOpen && (
-        <div className="absolute bg-white w-24 shadow-lg rounded-lg mt-0 z-modal max-h-[10.6rem] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded">
+        <div className="absolute bg-white w-20 shadow-lg rounded-lg mt-0 z-modal max-h-[10.6rem] overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 [&::-webkit-scrollbar-thumb]:rounded">
           {categories.map((category) => (
             <button
               key={category.name}
