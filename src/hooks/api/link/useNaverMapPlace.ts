@@ -2,16 +2,16 @@ import { useMutation } from '@tanstack/react-query';
 
 import { post } from '@/lib/external';
 
-import { SharedResponse } from './useYoutubePlace';
+import { ExtractResponse } from './useYoutubePlace';
 
 export type NaverMapLink = {
   url: string;
 };
 
 export const useNaverMapPlace = () => {
-  return useMutation<SharedResponse, Error, NaverMapLink>({
+  return useMutation<ExtractResponse, Error, NaverMapLink>({
     mutationFn: ({ url }) =>
-      post<SharedResponse>('naver_bookmark', {
+      post<ExtractResponse>('naver_bookmark', {
         url,
       }),
     retry: 1,

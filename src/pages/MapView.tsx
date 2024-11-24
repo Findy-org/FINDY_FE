@@ -6,7 +6,7 @@ import { SearchInput } from '@/components/common/SearchInput';
 import { SideMenu } from '@/components/common/SideMenu';
 import { BottomSheetContent } from '@/components/features/BottomSheetContent/BottomSheetContent';
 import { NaverMap } from '@/components/features/NaverMap';
-import { YoutubeResponse } from '@/hooks/api/link/useYoutubePlace';
+import { SharedResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useNaverSearchResult } from '@/hooks/api/search/useNaverSearchResult';
 import { useAuth } from '@/hooks/auth/useAuth';
 import { useInput } from '@/hooks/common/useInput';
@@ -21,7 +21,7 @@ export const MapView = () => {
   const navigate = useNavigate();
 
   const [isInputDisabled, setIsInputDisabled] = useState(false);
-  const { state, setState } = useMapData<Place[] | YoutubeResponse>();
+  const { state, setState } = useMapData<Place[] | SharedResponse>();
   const { addMarker, clearMarkers } = useMarkers();
   const { state: searchValue, onChange, onClickReset } = useInput();
   const { refetch } = useNaverSearchResult(searchValue);

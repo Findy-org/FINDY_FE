@@ -6,16 +6,16 @@ import { ExtractedPlacesList } from '@/components/features/ExtractedPlacesList/E
 import { SearchResultsList } from '@/components/features/SearchResultsList';
 import { BookmarkSelectionList } from '@/components/features/SearchResultsList/BookmarkSelectionList';
 import { FLOW_CONFIGS, FlowType, STEPS, StepType } from '@/constants/funnelStep';
+import { ExtractResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useFunnel } from '@/hooks/common/useFunnel';
 import { Place } from '@/types/naver';
 
-import { SharedResponse } from '../api/link/useYoutubePlace';
 import { NewMarker } from '../api/marker/useNewMarker';
 import { useAuth } from '../auth/useAuth';
 
 type bottomFunnelProps = {
   type: FlowType;
-  data?: Place[] | SharedResponse;
+  data?: Place[] | ExtractResponse;
 };
 export const useBottomFunnel = ({ type, data }: bottomFunnelProps) => {
   const { token } = useAuth();
@@ -56,7 +56,7 @@ export const useBottomFunnel = ({ type, data }: bottomFunnelProps) => {
     ),
     [STEPS.EXTRACTED_PLACES]: (
       <ExtractedPlacesList
-        data={data as SharedResponse}
+        data={data as ExtractResponse}
         onNext={() => handleStepChange(STEPS.LIST)}
       />
     ),

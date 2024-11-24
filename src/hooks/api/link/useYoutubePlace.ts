@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { get } from '@/lib/external';
 import { Place } from '@/types/naver';
 
-export type SharedResponse = {
+export type ExtractResponse = {
   name?: string;
   youtuberId?: string;
   youtuberName?: string;
@@ -13,9 +13,9 @@ export type SharedResponse = {
 };
 
 export const useYoutubePlace = (youtubeLink: string) => {
-  return useQuery<SharedResponse>({
+  return useQuery<ExtractResponse>({
     queryKey: ['youtubeLink', youtubeLink],
-    queryFn: () => get<SharedResponse>(`video/place/${encodeURIComponent(youtubeLink)}`),
+    queryFn: () => get<ExtractResponse>(`video/place/${encodeURIComponent(youtubeLink)}`),
     enabled: !!youtubeLink,
     retry: 1,
   });
