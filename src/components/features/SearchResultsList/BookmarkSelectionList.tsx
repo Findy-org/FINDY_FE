@@ -53,7 +53,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
   useEffect(() => {
     const observer = new IntersectionObserver(handleObserver, {
       root: null,
-      rootMargin: '100px',
+      rootMargin: '20px',
       threshold: 0.1,
     });
 
