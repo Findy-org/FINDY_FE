@@ -11,6 +11,7 @@ import { useYoutubeBookmark } from '@/hooks/api/bookmarks/useYoutubeBookmark';
 import { ExtractResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useAuth } from '@/hooks/auth/useAuth';
 import { useMarkers } from '@/hooks/common/useMarkers';
+import { Category } from '@/types/naver';
 
 import { Login } from '../LoginModal';
 
@@ -92,10 +93,12 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
               <div className="flex flex-col gap-1 py-2">
                 <div className="flex flex-row gap-3 items-center">
                   <Body2 className="text-primary">{item.title}</Body2>
-                  {typeof item.category === 'object' ? (
-                    <Chip variant="medium">{item.category.majorCategory}</Chip>
-                  ) : (
-                    <Chip variant="medium">{item.category}</Chip>
+                  {item.category && (
+                    <Chip variant="medium">
+                      {typeof item.category === 'object'
+                        ? (item.category as Category).majorCategory
+                        : item.category}
+                    </Chip>
                   )}
                 </div>
                 <Body4 className="pt-1" weight="normal">
