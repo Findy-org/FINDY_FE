@@ -37,8 +37,6 @@ export const useMarkerList = (markerId: number, token: string) => {
         },
       }),
     initialPageParam: 0,
-    getNextPageParam: (page) => {
-      return page.markers.nextCursor || undefined;
-    },
+    getNextPageParam: (page) => (page.markers.hasNext ? page.markers.nextCursor : undefined),
   });
 };
