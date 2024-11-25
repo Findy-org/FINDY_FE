@@ -17,7 +17,7 @@ export const Dropdown = ({ selectedCategory, onSelectCategory, className }: Prop
       >
         <div className="flex items-center">
           {selectedCategory}
-          <span className="ml-2">
+          <span className="absolute ml-14">
             <Icon name={isOpen ? 'arrowUp' : 'arrowDown'} size={10} />
           </span>
         </div>
