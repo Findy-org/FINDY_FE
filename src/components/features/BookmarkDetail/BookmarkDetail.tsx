@@ -135,9 +135,9 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
               )}
             </div>
             {index < allMarkers.length - 1 && <hr className="border-dashed pt-2" />}
-            <div ref={observerTarget} />
           </div>
         ))}
+        <div ref={observerTarget} />
       </ListCard>
       <div className="flex gap-4 mt-5">
         {isEditing ? (

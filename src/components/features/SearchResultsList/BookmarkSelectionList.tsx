@@ -107,9 +107,9 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
               {index < data.pages.flatMap((page) => page.data).length - 1 && (
                 <hr className="border-dashed pt-2" />
               )}
-              <div ref={observerTarget} className="h-1" />
             </div>
           ))}
+        <div ref={observerTarget} />
       </ListCard>
       <Button variant="primary" size="large" onClick={handleSave} disabled={bookmarkId === 0}>
         저장하기

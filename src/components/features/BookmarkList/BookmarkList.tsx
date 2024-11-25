@@ -113,7 +113,6 @@ export const BookmarkList = ({ onNext }: Props) => {
           .map((item, index) => (
             <div key={item.bookmarkId}>
               <div
-                ref={observerTarget}
                 onClick={() => handleBookmarkClick(item.bookmarkId)}
                 className="flex flex-row justify-between items-center cursor-pointer"
               >
@@ -151,6 +150,7 @@ export const BookmarkList = ({ onNext }: Props) => {
               )}
             </div>
           ))}
+        <div ref={observerTarget} />
       </ListCard>
       <div className="flex gap-4 mt-5">
         {isEditing ? (
