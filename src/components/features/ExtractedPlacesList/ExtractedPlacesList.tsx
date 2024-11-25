@@ -40,7 +40,7 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
       places: data.places
         .filter((place) => selectedIds.includes(place.id as number))
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        .map(({ id, ...placeData }) => placeData), // id 제거
+        .map(({ id, ...placeData }) => placeData),
     };
 
     if (data.youtuberId) {
