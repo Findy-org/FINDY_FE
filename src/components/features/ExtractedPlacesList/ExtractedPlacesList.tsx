@@ -6,6 +6,7 @@ import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
 import { Body2, Body3, Body4 } from '@/components/common/Typography';
 import { findyIconNames } from '@/constants/findyIcons';
+import { useNaverBookmark } from '@/hooks/api/bookmarks/useNaverBookmark';
 import { useYoutubeBookmark } from '@/hooks/api/bookmarks/useYoutubeBookmark';
 import { ExtractResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useAuth } from '@/hooks/auth/useAuth';
@@ -20,7 +21,8 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
 
   const { token } = useAuth();
   const { clearMarkers } = useMarkers();
-  const { mutate: bookmarkMutate } = useYoutubeBookmark(token);
+  const { mutate: youtubeMutate } = useYoutubeBookmark(token);
+  const { mutate: naverkMutate } = useNaverBookmark(token);
 
   const handleToggleSelect = (id: number) => {
     setSelectedIds((prev) =>
@@ -42,7 +44,16 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
     };
 
     if (data.youtuberId) {
-      bookmarkMutate(savePlaces, {
+      youtubeMutate(savePlaces, {
+        onSuccess: () => {
+          sessionStorage.clear();
+          clearMarkers();
+          onNext();
+        },
+      });
+    }
+    if (data.name) {
+      naverkMutate(savePlaces, {
         onSuccess: () => {
           sessionStorage.clear();
           clearMarkers();
