@@ -22,7 +22,7 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
   const { token } = useAuth();
   const { clearMarkers } = useMarkers();
   const { mutate: youtubeMutate } = useYoutubeBookmark(token);
-  const { mutate: naverkMutate } = useNaverBookmark(token);
+  const { mutate: naverMutate } = useNaverBookmark(token);
 
   const handleToggleSelect = (id: number) => {
     setSelectedIds((prev) =>
@@ -53,7 +53,7 @@ export const ExtractedPlacesList = ({ data, onNext }: Props) => {
       });
     }
     if (data.name) {
-      naverkMutate(savePlaces, {
+      naverMutate(savePlaces, {
         onSuccess: () => {
           sessionStorage.clear();
           clearMarkers();
