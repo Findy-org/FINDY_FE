@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { get } from '@/lib/axios';
 
@@ -20,13 +20,15 @@ export type BookmarkDetail = {
 };
 
 export const useBookMarkList = (token: string) => {
-  return useQuery<Bookmarks>({
+  return useInfiniteQuery<Bookmarks>({
     queryKey: ['bookmarklist', token],
-    queryFn: () =>
-      get<Bookmarks>('api/bookmarks?cursor=0&size=10', {
+    queryFn: ({ pageParam = 0 }) =>
+      get<Bookmarks>(`api/bookmarks?cursor=${pageParam}&size=7`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }),
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => (lastPage.hasNext ? lastPage.nextCursor : undefined),
   });
 };
