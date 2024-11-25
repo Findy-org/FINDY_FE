@@ -10,8 +10,8 @@ export const ButtonVariants = cva(
         gray: 'bg-gray-150 text-gray-950 hover:bg-gray-200 disabled:opacity-50 disabled:cursor-not-allowed',
       },
       size: {
-        large: 'w-full h-16 text-xl font-medium',
-        medium: 'w-[19rem] h-14 text-lg font-medium',
+        large: 'w-full h-14 text-xl font-medium',
+        medium: 'w-[19rem] h-12 text-lg font-medium',
       },
     },
     defaultVariants: {
