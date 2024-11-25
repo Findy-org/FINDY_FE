@@ -9,6 +9,6 @@ export const addMarkerAtom = atom(null, (get, set, marker: Place) => {
   set(markersAtom, [...currentMarkers, marker]);
 });
 
-export const clearMarkersAtom = atom(null, (get, set) => {
+export const clearMarkersAtom = atom(null, (_get, set) => {
   set(markersAtom, []);
 });
