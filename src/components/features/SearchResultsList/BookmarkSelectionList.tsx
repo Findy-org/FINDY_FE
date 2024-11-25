@@ -42,8 +42,8 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
       <Body1 className="my-3 mx-3">북마크 리스트</Body1>
       <ListCard>
         {data?.data.map((item, index) => (
-          <>
-            <div key={item.bookmarkId} className={`flex flex-row justify-between items-center `}>
+          <div key={item.bookmarkId}>
+            <div className={`flex flex-row justify-between items-center `}>
               <div className="flex flex-row gap-4 py-2.5 items-center justify-center">
                 {item.youtuberProfile ? (
                   <img
@@ -72,7 +72,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
               )}
             </div>
             {index < data.data.length - 1 && <hr className="border-dashed pt-2" />}
-          </>
+          </div>
         ))}
       </ListCard>
       <Button variant="primary" size="large" onClick={handleSave} disabled={bookmarkId === 0}>

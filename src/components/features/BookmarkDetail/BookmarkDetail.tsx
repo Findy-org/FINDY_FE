@@ -10,6 +10,7 @@ import { markersAtom } from '@/contexts/MarkerAtom';
 import { useDeleteMarkers } from '@/hooks/api/marker/useDeleteMarkers';
 import { useMarkerList } from '@/hooks/api/marker/useMarkerList';
 import { useAuth } from '@/hooks/auth/useAuth';
+import { Category } from '@/types/naver';
 
 import { Delete } from '../DeleteModal';
 
@@ -74,8 +75,12 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
               <div className="flex flex-col gap-1 py-2">
                 <div className="flex flex-row gap-3 items-center">
                   <Body2 className="text-primary">{item.title}</Body2>
-                  {typeof item.category === 'object' && (
-                    <Chip variant="medium">{item.category.majorCategory}</Chip>
+                  {item.category && (
+                    <Chip variant="medium">
+                      {typeof item.category === 'object'
+                        ? (item.category as Category).majorCategory
+                        : item.category}
+                    </Chip>
                   )}
                 </div>
                 <Body4 className="pt-1 " weight="normal">

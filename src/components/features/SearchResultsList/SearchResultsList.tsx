@@ -7,7 +7,7 @@ import { ListCard } from '@/components/common/ListCard';
 import { Body1, Body2, Body4 } from '@/components/common/Typography';
 import { NewMarker } from '@/hooks/api/marker/useNewMarker';
 import { useAuth } from '@/hooks/auth/useAuth';
-import { Place } from '@/types/naver';
+import { Category, Place } from '@/types/naver';
 
 import { Login } from '../LoginModal';
 
@@ -47,7 +47,13 @@ export const SearchResultsList = ({ places, onNext, onSelect }: Props) => {
             <div className="flex flex-col gap-1 py-2">
               <div className="flex flex-row gap-3 items-center">
                 <Body2 className="text-primary">{item.title}</Body2>
-                {typeof item.category === 'string' && <Chip variant="medium">{item.category}</Chip>}
+                {item.category && (
+                  <Chip variant="medium">
+                    {typeof item.category === 'object'
+                      ? (item.category as Category).majorCategory
+                      : item.category}
+                  </Chip>
+                )}
               </div>
               <Body4 className="pt-1" weight="normal">
                 {item.address}

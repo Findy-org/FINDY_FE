@@ -1,5 +1,7 @@
 import { cva, type VariantProps } from 'class-variance-authority';
 
+import { cn } from '@/lib/core';
+
 import { Props, TypographyVariant } from './Typography.types';
 
 const variantClasses = cva('whitespace-pre-wrap select-none', {
@@ -37,10 +39,8 @@ const Typography = ({
   className,
   ...props
 }: Props & TypographyVariants) => {
-  const classes = variantClasses({ type: variant, weight, className });
-
   return (
-    <p className={classes} {...props}>
+    <p className={cn(variantClasses({ type: variant, weight }), className)} {...props}>
       {children}
     </p>
   );
