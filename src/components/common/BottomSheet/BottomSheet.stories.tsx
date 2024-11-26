@@ -27,7 +27,11 @@ export const Basic: Story = {
         </Button>
         <BottomSheet isOpen={isOpen} setIsOpen={setIsOpen}>
           <div className="flex flex-col gap-6 items-center">
-            <div>Contents ...</div>
+            <div>Contents 1</div>
+            <div>Contents 2</div>
+            <div>Contents 3</div>
+            <div>Contents 4</div>
+            <div>Contents 5</div>
           </div>
         </BottomSheet>
       </>
