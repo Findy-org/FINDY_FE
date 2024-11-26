@@ -13,7 +13,7 @@ const Content = ({ children }: PropsWithChildren) => {
       initial={FADE_IN_ANIMATION.initial}
       animate={FADE_IN_ANIMATION.animate}
       exit={FADE_IN_ANIMATION.exit}
-      className="relative z-modal bg-white px-6 py-7 rounded-[1.25rem] shadow-lg"
+      className="relative z-modal bg-white px-4 py-4 rounded-[1.25rem] shadow-lg"
     >
       {children}
     </motion.div>

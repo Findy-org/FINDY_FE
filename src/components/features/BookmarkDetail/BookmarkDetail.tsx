@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
 
 import { Button } from '@/components/common/Button';
@@ -6,24 +6,24 @@ import { Chip } from '@/components/common/Chip';
 import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
 import { Body1, Body2, Body4 } from '@/components/common/Typography';
+import { Delete } from '@/components/features/DeleteModal';
 import { markersAtom } from '@/contexts/MarkerAtom';
 import { useDeleteMarkers } from '@/hooks/api/marker/useDeleteMarkers';
 import { useMarkerList } from '@/hooks/api/marker/useMarkerList';
 import { useAuth } from '@/hooks/auth/useAuth';
 import { Category } from '@/types/naver';
 
-import { Delete } from '../DeleteModal';
-
 type Props = { bookmarkId: number; onPrev: () => void };
 export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
+  const [, setMarkers] = useAtom(markersAtom);
+  const observerTarget = useRef<HTMLDivElement>(null);
 
   const { token } = useAuth();
-  const { data } = useMarkerList(bookmarkId, token);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useMarkerList(bookmarkId, token);
   const deleteMarkersMutation = useDeleteMarkers();
-  const [, setMarkers] = useAtom(markersAtom);
 
   const handleToggleSelect = (markerId: number) => {
     setSelectedId((prev) => (prev === markerId ? 0 : markerId));
@@ -40,14 +40,49 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
     setSelectedId(0);
   };
 
-  useEffect(() => {
-    if (data?.markers?.data) {
-      setMarkers(data.markers.data);
-    }
-  }, [data?.markers?.data, setMarkers]);
+  const allMarkers = useMemo(
+    () => (data?.pages ? data.pages.flatMap((page) => page.markers.data) : []),
+    [data?.pages]
+  );
 
-  const selectedMarkerName =
-    data?.markers.data.find((item) => item.markerId === selectedId)?.title || '마커';
+  useEffect(() => {
+    if (allMarkers.length) {
+      setMarkers((prevMarkers) => {
+        const newMarkersStr = JSON.stringify(allMarkers);
+        const prevMarkersStr = JSON.stringify(prevMarkers);
+        return newMarkersStr !== prevMarkersStr ? allMarkers : prevMarkers;
+      });
+    }
+  }, [allMarkers, setMarkers]);
+
+  const selectedMarkerName = useMemo(
+    () => allMarkers.find((item) => item.markerId === selectedId)?.title || '마커',
+    [allMarkers, selectedId]
+  );
+
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      });
+    },
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, {
+      root: null,
+      rootMargin: '20px',
+      threshold: 0.1,
+    });
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   return (
     <div>
@@ -62,15 +97,15 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
           className="cursor-pointer"
         />
         <Body1 className="my-4 mx-3" weight="semibold" onClick={onPrev}>
-          <span className="text-primary mr-2">{data?.bookmarkName}</span>
+          <span className="text-primary mr-2">{data?.pages[0]?.bookmarkName}</span>
           리스트
         </Body1>
       </div>
       <ListCard>
-        {data?.markers.data.map((item, index) => (
+        {allMarkers.map((item, index) => (
           <div key={item.markerId}>
             <div
-              className={`flex flex-row justify-between gap-4 items-center ${index !== data.markers.data.length - 1 && 'pb-2'}`}
+              className={`flex flex-row justify-between gap-4 items-center ${index !== allMarkers.length - 1 && 'pb-2'} `}
             >
               <div className="flex flex-col gap-1 py-2">
                 <div className="flex flex-row gap-3 items-center">
@@ -96,10 +131,10 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
                 />
               )}
             </div>
-
-            {index < data.markers.data.length - 1 && <hr className="border-dashed pt-2" />}
+            {index < allMarkers.length - 1 && <hr className="border-dashed pt-2" />}
           </div>
         ))}
+        <div ref={observerTarget} />
       </ListCard>
       <div className="flex gap-4 mt-5">
         {isEditing ? (

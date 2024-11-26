@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/common/Button';
 import { Icon } from '@/components/common/Icon';
@@ -22,9 +22,11 @@ export const BookmarkList = ({ onNext }: Props) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
   const [bookmarkName, setBookmarkName] = useState<string>('');
+  const observerTarget = useRef<HTMLDivElement>(null);
 
   const { token } = useAuth();
-  const { data } = useBookMarkList(token);
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } = useBookMarkList(token);
+
   const deleteBookmarkMutation = useDeleteBookmark();
   const newBookmarkMutation = useNewBookMark(token);
 
@@ -63,7 +65,32 @@ export const BookmarkList = ({ onNext }: Props) => {
   };
 
   const selectedItemName =
-    data?.data.find((item) => item.bookmarkId === selectedId)?.name || '북마크';
+    data?.pages.flatMap((page) => page.data).find((item) => item.bookmarkId === selectedId)?.name ||
+    '북마크';
+
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+          fetchNextPage();
+        }
+      });
+    },
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(handleObserver, {
+      root: null,
+      rootMargin: '20px',
+      threshold: 0.1,
+    });
+
+    if (observerTarget.current) {
+      observer.observe(observerTarget.current);
+    }
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   return (
     <>
@@ -81,44 +108,49 @@ export const BookmarkList = ({ onNext }: Props) => {
           </Body2>
         </div>
         <hr className="border-dashed pt-2" />
-        {data?.data.map((item, index) => (
-          <div key={item.bookmarkId}>
-            <div
-              onClick={() => handleBookmarkClick(item.bookmarkId)}
-              className="flex flex-row justify-between items-center cursor-pointer"
-            >
-              <div className="flex flex-row gap-4 py-2.5 items-center justify-center">
-                {item.youtuberProfile ? (
-                  <img
-                    src={item.youtuberProfile}
-                    className="w-12 h-12 rounded-full"
-                    alt={`${item.name}의 프로필 이미지`}
-                  />
-                ) : (
-                  <Icon
-                    name={findyIconNames[index % findyIconNames.length]}
-                    className="w-11 h-11"
-                  />
-                )}
-                <div className="flex flex-col py-1">
-                  <Body2 weight="medium">{item.name}</Body2>
-                  <div className="flex flex-row items-center gap-1">
-                    <Icon name="location" size={15} />
-                    <Body3 className=" text-gray-500">{item.markersCount}</Body3>
+        {data?.pages
+          .flatMap((page) => page.data)
+          .map((item, index) => (
+            <div key={item.bookmarkId}>
+              <div
+                onClick={() => handleBookmarkClick(item.bookmarkId)}
+                className="flex flex-row justify-between items-center cursor-pointer"
+              >
+                <div className="flex flex-row gap-4 py-2.5 items-center justify-center">
+                  {item.youtuberProfile ? (
+                    <img
+                      src={item.youtuberProfile}
+                      className="w-12 h-12 rounded-full"
+                      alt={`${item.name}의 프로필 이미지`}
+                    />
+                  ) : (
+                    <Icon
+                      name={findyIconNames[index % findyIconNames.length]}
+                      className="w-11 h-11"
+                    />
+                  )}
+                  <div className="flex flex-col py-1">
+                    <Body2 weight="medium">{item.name}</Body2>
+                    <div className="flex flex-row items-center gap-1">
+                      <Icon name="location" size={15} />
+                      <Body3 className=" text-gray-500">{item.markersCount}</Body3>
+                    </div>
                   </div>
                 </div>
+                {isEditing && (
+                  <Icon
+                    name="check"
+                    className="cursor-pointer h-7 w-7 flex-shrink-0"
+                    color={selectedId === item.bookmarkId ? 'primary' : 'gray'}
+                  />
+                )}
               </div>
-              {isEditing && (
-                <Icon
-                  name="check"
-                  className="cursor-pointer h-7 w-7 flex-shrink-0"
-                  color={selectedId === item.bookmarkId ? 'primary' : 'gray'}
-                />
+              {index < data.pages.flatMap((page) => page.data).length - 1 && (
+                <hr className="border-dashed pt-2" />
               )}
             </div>
-            {index < data.data.length - 1 && <hr className="border-dashed pt-2" />}
-          </div>
-        ))}
+          ))}
+        <div ref={observerTarget} />
       </ListCard>
       <div className="flex gap-4 mt-5">
         {isEditing ? (
