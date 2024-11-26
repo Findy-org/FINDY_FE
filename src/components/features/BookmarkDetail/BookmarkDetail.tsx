@@ -6,13 +6,12 @@ import { Chip } from '@/components/common/Chip';
 import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
 import { Body1, Body2, Body4 } from '@/components/common/Typography';
+import { Delete } from '@/components/features/DeleteModal';
 import { markersAtom } from '@/contexts/MarkerAtom';
 import { useDeleteMarkers } from '@/hooks/api/marker/useDeleteMarkers';
 import { useMarkerList } from '@/hooks/api/marker/useMarkerList';
 import { useAuth } from '@/hooks/auth/useAuth';
 import { Category } from '@/types/naver';
-
-import { Delete } from '../DeleteModal';
 
 type Props = { bookmarkId: number; onPrev: () => void };
 export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
@@ -57,10 +56,8 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
   }, [allMarkers, setMarkers]);
 
   const selectedMarkerName = useMemo(
-    () =>
-      data?.pages.flatMap((page) => page.markers.data).find((item) => item.markerId === selectedId)
-        ?.title || '마커',
-    [data?.pages, selectedId]
+    () => allMarkers.find((item) => item.markerId === selectedId)?.title || '마커',
+    [allMarkers, selectedId]
   );
 
   const handleObserver = useCallback(
