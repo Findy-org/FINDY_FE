@@ -1,4 +1,5 @@
 import { colors } from './src/styles/theme/colors';
+
 /** @type {import('tailwindcss').Config} */
 // eslint-disable-next-line no-restricted-exports
 export default {
