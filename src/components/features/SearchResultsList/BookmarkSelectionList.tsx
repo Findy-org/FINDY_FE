@@ -1,10 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/common/Button';
-import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
-import { Body1, Body2, Body3 } from '@/components/common/Typography';
-import { findyIconNames } from '@/constants/findyIcons';
+import { Profile } from '@/components/common/Profile';
+import { Body1 } from '@/components/common/Typography';
 import { useBookMarkList } from '@/hooks/api/bookmarks/useBookMarkList';
 import { NewMarker, useNewMarker } from '@/hooks/api/marker/useNewMarker';
 import { useAuth } from '@/hooks/auth/useAuth';
@@ -64,50 +63,21 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
   }, [handleObserver]);
 
   return (
-    <div className="flex flex-col gap-4 ">
-      <Body1 className="my-3 mx-3">북마크 리스트</Body1>
+    <div className="flex flex-col gap-4">
+      <Body1 weight="semibold" className="my-3 mx-3">
+        북마크 리스트
+      </Body1>
       <ListCard>
         {data?.pages
           .flatMap((page) => page.data)
           .map((item, index) => (
-            <div key={item.bookmarkId}>
-              <div
-                className="flex flex-row justify-between items-center cursor-pointer"
-                onClick={() => handleToggleSelect(item.bookmarkId)}
-              >
-                <div className="flex flex-row gap-4 py-2.5 items-center justify-center">
-                  {item.youtuberProfile ? (
-                    <img
-                      src={item.youtuberProfile}
-                      className="w-12 h-12 rounded-full"
-                      alt={`${item.name}의 프로필 이미지`}
-                    />
-                  ) : (
-                    <Icon
-                      name={findyIconNames[index % findyIconNames.length]}
-                      className="w-11 h-11"
-                    />
-                  )}
-                  <div className="flex flex-col py-1">
-                    <Body2 weight="medium">{item.name}</Body2>
-                    <div className="flex flex-row items-center gap-1">
-                      <Icon name="location" size={15} />
-                      <Body3 className=" text-gray-500">{item.markersCount}</Body3>
-                    </div>
-                  </div>
-                </div>
-                {item.bookmarkType !== 'YOUTUBE' && (
-                  <Icon
-                    name="check"
-                    className="cursor-pointer h-7"
-                    color={bookmarkId === item.bookmarkId ? 'primary' : 'gray'}
-                  />
-                )}
-              </div>
-              {index < data.pages.flatMap((page) => page.data).length - 1 && (
-                <hr className="border-dashed pt-2" />
-              )}
-            </div>
+            <Profile
+              item={item}
+              onSelect={handleToggleSelect}
+              selectedId={bookmarkId}
+              isEditing={true}
+              isLast={index === data.pages.flatMap((page) => page.data).length - 1}
+            />
           ))}
         <div ref={observerTarget} />
       </ListCard>

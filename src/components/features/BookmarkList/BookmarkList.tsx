@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Button } from '@/components/common/Button';
-import { Icon } from '@/components/common/Icon';
 import { IconButton } from '@/components/common/IconButton';
 import { Input } from '@/components/common/Input';
 import { ListCard } from '@/components/common/ListCard';
 import { Modal } from '@/components/common/Modal';
-import { Body1, Body2, Body3 } from '@/components/common/Typography';
-import { findyIconNames } from '@/constants/findyIcons';
+import { Profile } from '@/components/common/Profile';
+import { Body1, Body2 } from '@/components/common/Typography';
 import { useBookMarkList } from '@/hooks/api/bookmarks/useBookMarkList';
 import { useDeleteBookmark } from '@/hooks/api/bookmarks/useDeleteBookmark';
 import { useNewBookMark } from '@/hooks/api/bookmarks/useNewBookMark';
@@ -111,44 +110,13 @@ export const BookmarkList = ({ onNext }: Props) => {
         {data?.pages
           .flatMap((page) => page.data)
           .map((item, index) => (
-            <div key={item.bookmarkId}>
-              <div
-                onClick={() => handleBookmarkClick(item.bookmarkId)}
-                className="flex flex-row justify-between items-center cursor-pointer"
-              >
-                <div className="flex flex-row gap-4 py-2.5 items-center justify-center">
-                  {item.youtuberProfile ? (
-                    <img
-                      src={item.youtuberProfile}
-                      className="w-12 h-12 rounded-full"
-                      alt={`${item.name}의 프로필 이미지`}
-                    />
-                  ) : (
-                    <Icon
-                      name={findyIconNames[index % findyIconNames.length]}
-                      className="w-11 h-11"
-                    />
-                  )}
-                  <div className="flex flex-col py-1">
-                    <Body2 weight="medium">{item.name}</Body2>
-                    <div className="flex flex-row items-center gap-1">
-                      <Icon name="location" size={15} />
-                      <Body3 className=" text-gray-500">{item.markersCount}</Body3>
-                    </div>
-                  </div>
-                </div>
-                {isEditing && (
-                  <Icon
-                    name="check"
-                    className="cursor-pointer h-7 w-7 flex-shrink-0"
-                    color={selectedId === item.bookmarkId ? 'primary' : 'gray'}
-                  />
-                )}
-              </div>
-              {index < data.pages.flatMap((page) => page.data).length - 1 && (
-                <hr className="border-dashed pt-2" />
-              )}
-            </div>
+            <Profile
+              item={item}
+              onSelect={handleBookmarkClick}
+              selectedId={selectedId}
+              isEditing={isEditing}
+              isLast={index === data.pages.flatMap((page) => page.data).length - 1}
+            />
           ))}
         <div ref={observerTarget} />
       </ListCard>
@@ -182,9 +150,9 @@ export const BookmarkList = ({ onNext }: Props) => {
 
       <Modal isOpen={isNewBookmarkMode}>
         <div className="p-1 max-w-80">
-          <Body2 className="pb-3" weight="semibold">
+          <Body1 className="pb-3" weight="semibold">
             장소 추가
-          </Body2>
+          </Body1>
           <Input
             value={bookmarkName}
             placeholder="새 장소 이름을 입력하세요."
