@@ -8,7 +8,7 @@ import { Icon } from '../Icon';
 import { Body2, Body3 } from '../Typography';
 
 export const Profile = forwardRef<HTMLDivElement, Props>(
-  ({ item, onSelect, selectedId, isEditing, isLast, ...props }, ref) => {
+  ({ item, onSelect, selectedId = 0, isEditing = false, isLast = true, ...props }, ref) => {
     return (
       <>
         <div
