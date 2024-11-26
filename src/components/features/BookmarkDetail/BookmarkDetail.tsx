@@ -2,16 +2,15 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useAtom } from 'jotai';
 
 import { Button } from '@/components/common/Button';
-import { Chip } from '@/components/common/Chip';
 import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
-import { Body1, Body2, Body4 } from '@/components/common/Typography';
+import { PlaceItem } from '@/components/common/PlaceItem';
+import { Body1 } from '@/components/common/Typography';
 import { Delete } from '@/components/features/DeleteModal';
 import { markersAtom } from '@/contexts/MarkerAtom';
 import { useDeleteMarkers } from '@/hooks/api/marker/useDeleteMarkers';
 import { useMarkerList } from '@/hooks/api/marker/useMarkerList';
 import { useAuth } from '@/hooks/auth/useAuth';
-import { Category } from '@/types/naver';
 
 type Props = { bookmarkId: number; onPrev: () => void };
 export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
@@ -19,6 +18,7 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [selectedId, setSelectedId] = useState<number>(0);
   const [, setMarkers] = useAtom(markersAtom);
+
   const observerTarget = useRef<HTMLDivElement>(null);
 
   const { token } = useAuth();
@@ -91,6 +91,7 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
           name="back"
           size={30}
           onClick={() => {
+            console.log('marker');
             setMarkers([]);
             onPrev();
           }}
@@ -103,36 +104,14 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
       </div>
       <ListCard>
         {allMarkers.map((item, index) => (
-          <div key={item.markerId}>
-            <div
-              className={`flex flex-row justify-between gap-4 items-center ${index !== allMarkers.length - 1 && 'pb-2'} `}
-            >
-              <div className="flex flex-col gap-1 py-2">
-                <div className="flex flex-row gap-3 items-center">
-                  <Body2 className="text-primary">{item.title}</Body2>
-                  {item.category && (
-                    <Chip variant="medium">
-                      {typeof item.category === 'object'
-                        ? (item.category as Category).majorCategory
-                        : item.category}
-                    </Chip>
-                  )}
-                </div>
-                <Body4 className="pt-1 " weight="normal">
-                  {item.address}
-                </Body4>
-              </div>
-              {isEditing && (
-                <Icon
-                  name="check"
-                  className="cursor-pointer h-7 w-7 flex-shrink-0"
-                  color={selectedId === item.markerId ? 'primary' : 'gray'}
-                  onClick={() => handleToggleSelect(item.markerId)}
-                />
-              )}
-            </div>
-            {index < allMarkers.length - 1 && <hr className="border-dashed pt-2" />}
-          </div>
+          <PlaceItem
+            key={item.markerId}
+            place={item}
+            isEditing={isEditing}
+            isSelected={selectedId === item.markerId}
+            onToggleSelect={() => handleToggleSelect(item.markerId)}
+            isLast={index === allMarkers.length - 1}
+          />
         ))}
         <div ref={observerTarget} />
       </ListCard>

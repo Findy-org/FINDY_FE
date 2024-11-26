@@ -1,13 +1,12 @@
 import { useState } from 'react';
 
 import { Button } from '@/components/common/Button';
-import { Chip } from '@/components/common/Chip';
-import { Icon } from '@/components/common/Icon';
 import { ListCard } from '@/components/common/ListCard';
-import { Body1, Body2, Body4 } from '@/components/common/Typography';
+import { PlaceItem } from '@/components/common/PlaceItem';
+import { Body1 } from '@/components/common/Typography';
 import { NewMarker } from '@/hooks/api/marker/useNewMarker';
 import { useAuth } from '@/hooks/auth/useAuth';
-import { Category, Place } from '@/types/naver';
+import { Place } from '@/types/naver';
 
 import { Login } from '../LoginModal';
 
@@ -37,35 +36,19 @@ export const SearchResultsList = ({ places, onNext, onSelect }: Props) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Body1 className="my-3 mx-3">검색 결과</Body1>
+      <Body1 weight="semibold" className="my-3 mx-3">
+        검색 결과
+      </Body1>
       <ListCard>
         {places.map((item, index) => (
-          <div
-            key={`${item.title}-${item.address}`}
-            className={`flex flex-row justify-between items-center cursor-pointer ${index !== places.length - 1 && 'pb-2'}`}
-          >
-            <div className="flex flex-col gap-1 py-2">
-              <div className="flex flex-row gap-3 items-center">
-                <Body2 className="text-primary">{item.title}</Body2>
-                {item.category && (
-                  <Chip variant="medium">
-                    {typeof item.category === 'object'
-                      ? (item.category as Category).majorCategory
-                      : item.category}
-                  </Chip>
-                )}
-              </div>
-              <Body4 className="pt-1" weight="normal">
-                {item.address}
-              </Body4>
-            </div>
-            <Icon
-              name="check"
-              className="cursor-pointer h-7"
-              color={selectedIndex === index ? 'primary' : 'gray'}
-              onClick={() => handleSelect(index)}
-            />
-          </div>
+          <PlaceItem
+            key={index}
+            place={item}
+            isEditing={true}
+            isSelected={selectedIndex === index}
+            onToggleSelect={() => handleSelect(index)}
+            isLast={index === places.length - 1}
+          />
         ))}
       </ListCard>
       <Button variant="primary" size="large" onClick={handleSave}>
