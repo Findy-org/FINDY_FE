@@ -1,4 +1,4 @@
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useSuspenseInfiniteQuery } from '@tanstack/react-query';
 
 import { get } from '@/lib/axios';
 
@@ -28,15 +28,17 @@ export type MarkerDetail = {
 };
 
 export const useMarkerList = (markerId: number, token: string) => {
-  return useInfiniteQuery<Marker>({
+  return useSuspenseInfiniteQuery<Marker>({
     queryKey: ['marker', markerId, token],
     queryFn: ({ pageParam = 0 }) =>
-      get<Marker>(`api/markers/${markerId}?cursor=${pageParam}&size=7`, {
+      get<Marker>(`api/markers/${markerId}?cursor=${pageParam}&size=20`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }),
     initialPageParam: 0,
-    getNextPageParam: (page) => (page.markers.hasNext ? page.markers.nextCursor : undefined),
+    getNextPageParam: (lastPage) => {
+      return lastPage.markers.hasNext ? lastPage.markers.nextCursor : undefined;
+    },
   });
 };
