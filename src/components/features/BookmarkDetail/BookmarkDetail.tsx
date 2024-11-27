@@ -91,7 +91,6 @@ export const BookmarkDetail = ({ bookmarkId, onPrev }: Props) => {
           name="back"
           size={30}
           onClick={() => {
-            console.log('marker');
             setMarkers([]);
             onPrev();
           }}
