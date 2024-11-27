@@ -8,10 +8,8 @@ export const addMarkerToMap = (
   mapInstance: React.MutableRefObject<naver.maps.Map | null>,
   markers: Place[],
   markersRef: React.MutableRefObject<naver.maps.Marker[]>,
-  markerDataRef: React.MutableRefObject<Array<{ title: string; category: string }>>,
-  clearMarkers: () => void
+  markerDataRef: React.MutableRefObject<Array<{ title: string; category: string }>>
 ) => {
-  clearMarkers();
   if (mapInstance.current) {
     const firstMarker = markers[0];
     const initialPosition = new window.naver.maps.LatLng(
