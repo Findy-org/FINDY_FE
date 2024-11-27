@@ -72,6 +72,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
           .flatMap((page) => page.data)
           .map((item, index) => (
             <Profile
+              key={item.bookmarkId}
               item={item}
               onSelect={handleToggleSelect}
               selectedId={bookmarkId}
