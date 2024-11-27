@@ -1,5 +1,3 @@
-// import { forwardRef } from 'react';
-
 import { forwardRef } from 'react';
 
 import { Props } from './PlaceItem.types';
