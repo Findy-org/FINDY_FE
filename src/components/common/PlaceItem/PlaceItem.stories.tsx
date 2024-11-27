@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { Place } from '@/types/naver';
+
 import { PlaceItem } from '.';
 import { ListCard } from '../ListCard';
 
@@ -34,7 +36,7 @@ export const Basic: Story = {
   render: (args) => {
     const [select, setSelect] = useState<boolean>(args.isSelected);
 
-    const place = {
+    const MOCK_PLACE: Place = {
       title: '명지대학교',
       address: '서울특별시 서대문구 거북골로 34',
       category: '교육',
@@ -45,7 +47,7 @@ export const Basic: Story = {
       <ListCard>
         <PlaceItem
           {...args}
-          place={place}
+          place={MOCK_PLACE}
           isSelected={select}
           onToggleSelect={() => setSelect(!select)}
         />
