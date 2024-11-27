@@ -28,6 +28,7 @@ export const Basic: Story = {
       {
         bookmarkId: 2,
         name: '김세빈 저장소',
+        youtuberProfile: '',
         markersCount: 3,
         bookmarkType: 'naver',
         youtubeLink: 'https://www.youtube.com/watch?v=123',
@@ -38,12 +39,12 @@ export const Basic: Story = {
       <ListCard>
         {youtuberInfo.map((item, index) => (
           <Profile
-            key={index}
+            key={item.bookmarkId}
             item={item}
             onSelect={() => {}}
             isLast={index === youtuberInfo.length - 1}
           />
-        ))}{' '}
+        ))}
       </ListCard>
     );
   },
