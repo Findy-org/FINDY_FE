@@ -76,7 +76,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
               onSelect={handleToggleSelect}
               selectedId={bookmarkId}
               isEditing={true}
-              isLast={index === data.pages.flatMap((page) => page.data).length - 1}
+              isLast={index === data.pages.reduce((acc, page) => acc + page.data.length, 0) - 1}
             />
           ))}
         <div ref={observerTarget} />
