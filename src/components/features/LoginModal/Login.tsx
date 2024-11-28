@@ -8,7 +8,7 @@ import { Props } from './Login.types';
 
 export const Login = ({ isOpen, setIsOpen }: Props) => {
   const handleAuth = async (auth: 'kakao' | 'naver') => {
-    window.location.href = `${ENV.API_BASE_URL}oauth2/authorization/${auth}`;
+    window.location.href = `${ENV.API_BASE_URL}api/oauth/${auth}`;
   };
   return (
     <Modal isOpen={isOpen} onClickOutside={() => setIsOpen(false)}>
