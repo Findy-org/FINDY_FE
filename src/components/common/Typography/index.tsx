@@ -39,7 +39,6 @@ const Typography = ({
   className,
   ...props
 }: Props & TypographyVariants) => {
-  console.log(variantClasses({ type: 'Title3', weight: 'medium' }));
   return (
     <p className={cn(variantClasses({ type: variant, weight }), className)} {...props}>
       {children}
