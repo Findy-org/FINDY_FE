@@ -33,9 +33,10 @@ export const MapView = () => {
   const [isInputDisabled, setIsInputDisabled] = useState(false);
 
   const handleDataUpdate = useCallback(
-    (newData: Place[], type: BottomSheetType) => {
+    (newData: ExtractResponse | Place[], type: BottomSheetType) => {
       clearMarkers();
-      newData?.forEach(addMarker);
+      if ('places' in newData) newData.places.forEach(addMarker);
+      if (Array.isArray(newData)) newData.forEach((place) => addMarker(place));
       setState({ data: newData, type }, token);
     },
     [clearMarkers, addMarker, setState, token]
@@ -44,7 +45,7 @@ export const MapView = () => {
   useEffect(() => {
     const extractedData = location.state?.data;
     if (extractedData?.places.length) {
-      handleDataUpdate(extractedData.places, 'extract');
+      handleDataUpdate(extractedData, 'extract');
     }
   }, [handleDataUpdate, location.state, setState, token]);
 
