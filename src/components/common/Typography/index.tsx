@@ -4,16 +4,16 @@ import { cn } from '@/lib/core';
 
 import { Props, TypographyVariant } from './Typography.types';
 
-const variantClasses = cva('whitespace-pre-wrap select-none', {
+const variantClasses = cva('whitespace-pre-line select-none', {
   variants: {
     type: {
       Title1: 'text-title1 leading-140',
       Title2: 'text-title2 leading-140',
       Title3: 'text-title3 leading-140',
-      Body1: 'text-body1 leading-140',
-      Body2: 'text-body2 leading-140',
-      Body3: 'text-body3 leading-140',
-      Body4: 'text-title4 leading-140',
+      Body1: 'text-body2 leading-140 xs:text-body1',
+      Body2: 'text-body3 leading-140 xs:text-body2',
+      Body3: 'text-body4 leading-140 xs:text-body3',
+      Body4: 'text-body4 leading-140',
       Caption: 'text-caption leading-140 inline-block',
     },
     weight: {
@@ -39,6 +39,7 @@ const Typography = ({
   className,
   ...props
 }: Props & TypographyVariants) => {
+  console.log(variantClasses({ type: 'Title3', weight: 'medium' }));
   return (
     <p className={cn(variantClasses({ type: variant, weight }), className)} {...props}>
       {children}
