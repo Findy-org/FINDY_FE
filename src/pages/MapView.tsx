@@ -6,6 +6,7 @@ import { SearchInput } from '@/components/common/SearchInput';
 import { SideMenu } from '@/components/common/SideMenu';
 import { BottomSheetContent } from '@/components/features/BottomSheetContent/BottomSheetContent';
 import { NaverMap } from '@/components/features/NaverMap';
+import { BottomSheetType } from '@/contexts/MapAtom';
 import { ExtractResponse } from '@/hooks/api/link/useYoutubePlace';
 import { useNaverSearchResult } from '@/hooks/api/search/useNaverSearchResult';
 import { useAuth } from '@/hooks/auth/useAuth';
@@ -19,43 +20,40 @@ import { Place } from '@/types/naver';
 export const MapView = () => {
   const { token } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const [isInputDisabled, setIsInputDisabled] = useState(false);
   const { state, setState } = useMapData<Place[] | ExtractResponse>();
   const { addMarker, clearMarkers } = useMarkers();
-  const { state: searchValue, onChange, onClickReset } = useInput();
-  const { refetch } = useNaverSearchResult(searchValue);
   const { initialCenter, zoomLevel, isCurrent, updateLocation, resetCurrentLocation } =
     useMapState();
+  const { state: searchValue, onChange, onClickReset } = useInput();
+  const { refetch } = useNaverSearchResult(searchValue);
   useSessionDataLoader(token);
 
-  const location = useLocation();
-  const extractedData = location.state?.data;
+  const [isInputDisabled, setIsInputDisabled] = useState(false);
 
-  const handleMarkers = useCallback(
-    (places: Place[]) => {
+  const handleDataUpdate = useCallback(
+    (newData: Place[], type: BottomSheetType) => {
       clearMarkers();
-      places?.forEach(addMarker);
+      newData?.forEach(addMarker);
+      setState({ data: newData, type }, token);
     },
-    [clearMarkers, addMarker]
+    [clearMarkers, addMarker, setState, token]
   );
 
   useEffect(() => {
+    const extractedData = location.state?.data;
     if (extractedData?.places.length) {
-      handleMarkers(extractedData.places);
-      setState({ data: extractedData, type: 'extract' }, token);
+      handleDataUpdate(extractedData.places, 'extract');
     }
-  }, [extractedData, handleMarkers, location.state, setState, token]);
+  }, [handleDataUpdate, location.state, setState, token]);
 
   const handleSearch = async () => {
     setIsInputDisabled(true);
     resetCurrentLocation();
     const result = await refetch();
-    const newData = result?.data?.items;
-
-    if (newData) {
-      setState({ data: newData, type: 'search' }, token);
-      handleMarkers(newData);
+    if (result?.data?.items) {
+      handleDataUpdate(result.data.items, 'search');
     }
   };
 
@@ -73,11 +71,12 @@ export const MapView = () => {
 
   const handleCurrentLocation = useCallback(() => {
     clearMarkers();
+    setState({ data: null, type: null }, token);
     navigator.geolocation.getCurrentPosition((position) => {
       const { latitude, longitude } = position.coords;
       updateLocation(latitude, longitude, 18);
     });
-  }, [clearMarkers, updateLocation]);
+  }, [clearMarkers, setState, token, updateLocation]);
 
   return (
     <>
@@ -98,7 +97,10 @@ export const MapView = () => {
             <SideMenu
               position="right"
               variant="emptyBookMark"
-              onClick={() => setState({ data: state.data, type: 'list' }, token)}
+              onClick={() => {
+                resetCurrentLocation();
+                setState({ data: state.data, type: 'list' }, token);
+              }}
             />
           </SideMenu.Group>
         </div>

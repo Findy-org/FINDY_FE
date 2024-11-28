@@ -20,6 +20,11 @@ export const currentMarkerToMap = (
   });
 
   currentLocationMarkerRef.current = currentMarker;
-  mapInstance.setCenter(new naver.maps.LatLng(position.lat, position.lng));
-  mapInstance.setZoom(18);
+
+  mapInstance.panTo(new naver.maps.LatLng(position.lat, position.lng), {
+    duration: 500,
+  });
+  naver.maps.Event.once(mapInstance, 'idle', () => {
+    mapInstance.setZoom(18);
+  });
 };

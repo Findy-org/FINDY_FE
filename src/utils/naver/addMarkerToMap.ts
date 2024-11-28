@@ -8,11 +8,9 @@ export const addMarkerToMap = (
   mapInstance: React.MutableRefObject<naver.maps.Map | null>,
   markers: Place[],
   markersRef: React.MutableRefObject<naver.maps.Marker[]>,
-  markerDataRef: React.MutableRefObject<Array<{ title: string; category: string }>>,
-  clearExistingMarkers: () => void
+  markerDataRef: React.MutableRefObject<Array<{ title: string; category: string }>>
 ) => {
   if (mapInstance.current) {
-    clearExistingMarkers();
     const firstMarker = markers[0];
     const initialPosition = new window.naver.maps.LatLng(
       Number(firstMarker.mapy) / 1e7,
@@ -51,6 +49,11 @@ export const addMarkerToMap = (
       bounds.extend(position);
     });
 
-    mapInstance.current.fitBounds(bounds, { left: 10, right: 10, top: 10, bottom: 10 });
+    naver.maps.Event.once(mapInstance.current, 'idle', () => {
+      mapInstance.current?.fitBounds(bounds, { top: 20, right: 20, bottom: 20, left: 20 });
+    });
+
+    const center = bounds.getCenter();
+    mapInstance.current?.panTo(center, { duration: 500, easing: 'easeOutCubic' });
   }
 };

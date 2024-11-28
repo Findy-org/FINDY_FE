@@ -58,13 +58,13 @@ export const NaverMap = memo(
     }, [initialZoom, handleZoomChange, initialCenter.lat, initialCenter.lng]);
 
     useEffect(() => {
+      clearMarkers();
       if (mapInstance.current && markers.length > 0) {
-        addMarkerToMap(mapInstance, markers, markersRef, markerDataRef, clearMarkers);
+        addMarkerToMap(mapInstance, markers, markersRef, markerDataRef);
       }
-      if (mapInstance.current && isCurrent) {
+      if (mapInstance.current && isCurrent && markers.length === 0) {
         currentMarkerToMap(initialCenter, mapInstance.current, currentLocationMarkerRef);
       }
-      return () => clearMarkers();
     }, [clearMarkers, initialCenter, isCurrent, markers]);
 
     return <div id="map" ref={mapRef} style={{ width: '100%', height: '100dvh' }} />;
