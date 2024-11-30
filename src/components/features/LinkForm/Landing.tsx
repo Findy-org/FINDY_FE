@@ -23,7 +23,7 @@ export const Landing = ({ onNext, onHomeClick }: LinkFormProps) => {
         <Body1>핀디와 함께, 특별한 순간을 찾아보세요</Body1>
       </div>
       <div className="absolute bottom-3 w-full max-w-[30rem] px-4 mb-5">
-        <Button variant="primary" size="large" onClick={() => onNext} className="w-full">
+        <Button variant="primary" size="large" onClick={() => onNext()} className="w-full">
           다음
         </Button>
       </div>

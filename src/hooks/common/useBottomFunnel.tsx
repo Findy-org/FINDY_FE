@@ -1,5 +1,6 @@
-import { useCallback, useState } from 'react';
+import { Suspense, useCallback, useState } from 'react';
 
+import { Loading } from '@/components/common/Loading';
 import { BookmarkDetail } from '@/components/features/BookmarkDetail';
 import { BookmarkList } from '@/components/features/BookmarkList';
 import { ExtractedPlacesList } from '@/components/features/ExtractedPlacesList/ExtractedPlacesList';
@@ -7,11 +8,10 @@ import { SearchResultsList } from '@/components/features/SearchResultsList';
 import { BookmarkSelectionList } from '@/components/features/SearchResultsList/BookmarkSelectionList';
 import { FLOW_CONFIGS, FlowType, STEPS, StepType } from '@/constants/funnelStep';
 import { ExtractResponse } from '@/hooks/api/link/useYoutubePlace';
+import { NewMarker } from '@/hooks/api/marker/useNewMarker';
+import { useAuth } from '@/hooks/auth/useAuth';
 import { useFunnel } from '@/hooks/common/useFunnel';
 import { Place } from '@/types/naver';
-
-import { NewMarker } from '../api/marker/useNewMarker';
-import { useAuth } from '../auth/useAuth';
 
 type bottomFunnelProps = {
   type: FlowType;
@@ -77,7 +77,7 @@ export const useBottomFunnel = ({ type, data }: bottomFunnelProps) => {
     <Funnel>
       {flowConfig.steps.map((stepName) => (
         <Step key={stepName} name={stepName}>
-          {stepComponents[stepName]}
+          <Suspense fallback={<Loading />}>{stepComponents[stepName]}</Suspense>
         </Step>
       ))}
     </Funnel>
