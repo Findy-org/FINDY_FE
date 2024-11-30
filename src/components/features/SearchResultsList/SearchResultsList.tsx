@@ -36,9 +36,7 @@ export const SearchResultsList = ({ places, onNext, onSelect }: Props) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Body1 weight="semibold" className="my-3 mx-3">
-        검색 결과
-      </Body1>
+      <Body1 className="mt-2 mx-3">검색 결과</Body1>
       <ListCard>
         {places.map((item, index) => (
           <PlaceItem

@@ -28,6 +28,9 @@ export default {
       zIndex: {
         modal: '100',
       },
+      screens: {
+        xs: '450px',
+      },
     },
   },
   plugins: [],

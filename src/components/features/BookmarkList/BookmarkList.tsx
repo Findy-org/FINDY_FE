@@ -93,18 +93,14 @@ export const BookmarkList = ({ onNext }: Props) => {
 
   return (
     <>
-      <Body1 className="my-4 mx-3" weight="semibold">
-        나의 핀디 리스트
-      </Body1>
+      <Body1 className="my-4 mx-3">나의 핀디 리스트</Body1>
       <ListCard>
         <div
           className="w-full flex flex-row items-center gap-4 pb-4 cursor-pointer"
           onClick={() => setIsNewBookmarkMode(true)}
         >
           <IconButton name="bookMark" />
-          <Body2 weight="medium" className="text-gray-400">
-            새 장소 추가하기
-          </Body2>
+          <Body2 className="text-gray-400">새 장소 추가하기</Body2>
         </div>
         <hr className="border-dashed pt-2" />
         {data?.pages

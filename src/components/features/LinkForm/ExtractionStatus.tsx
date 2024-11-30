@@ -33,15 +33,13 @@ export const ExtractionStatus = ({
   return (
     <div className="flex flex-col items-center justify-between">
       <Header left={<Icon name="home" size={20} onClick={onHomeClick} />} />
-      <div className="w-full flex flex-col items-start gap-12 my-36 px-6 overflow-hidden">
+      <div className="w-full flex flex-col items-start gap-12 my-28 px-6 overflow-hidden xs:my-36">
         <Body1>
-          <Body1>
-            {isLoading
-              ? `현재 장소 정보를 추출 중입니다.\n조금만 더 기다려 주세요, 곧 완료됩니다!`
-              : place?.length > 0
-                ? `장소 정보가 성공적으로 추출되었습니다!\n지금 바로 확인하고, 원하는 장소를 방문해보세요!`
-                : `추출된 장소가 없어요.\n다른 링크를 입력해주시겠어요?`}
-          </Body1>
+          {isLoading
+            ? `현재 장소 정보를 추출 중입니다.\n조금만 더 기다려 주세요, 곧 완료됩니다!`
+            : place?.length > 0
+              ? `장소 정보가 성공적으로 추출되었습니다!\n지금 바로 확인하고, 원하는 장소를 방문해보세요!`
+              : `추출된 장소가 없어요.\n다른 링크를 입력해주시겠어요?`}
         </Body1>
         {videoId ? (
           <m.div
@@ -50,7 +48,7 @@ export const ExtractionStatus = ({
             transition={isLoading ? THUMBNAIL_ANIMATION.transition : undefined}
             className="flex items-center w-full h-2/4 my-3"
           >
-            <img src={thumbnailUrl} alt="YouTube Thumbnail" className="w-full h-full rounded-md" />
+            <img src={thumbnailUrl} alt="YouTubeThumbnail" className="w-full h-full rounded-md" />
           </m.div>
         ) : (
           <m.div

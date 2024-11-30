@@ -64,9 +64,7 @@ export const BookmarkSelectionList = ({ selectedPlace, onNext }: Props) => {
 
   return (
     <div className="flex flex-col gap-4">
-      <Body1 weight="semibold" className="my-3 mx-3">
-        북마크 리스트
-      </Body1>
+      <Body1 className="mt-2 mx-3">북마크 리스트</Body1>
       <ListCard>
         {data?.pages
           .flatMap((page) => page.data)

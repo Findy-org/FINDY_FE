@@ -7,13 +7,13 @@ export const FADE_IN_ANIMATION = {
 export const FIDIES_ANIMATION = {
   initial: { opacity: 1, scale: 1, rotate: 0, y: 0 },
   animate: {
-    scale: [1, 0.95, 1.05, 1],
+    scale: [1, 0.95, 1.1, 1],
     rotate: [0, 5, -5, 0],
-    y: [0, -5, -10, -5, 0],
+    y: [0, -15, -15, 0],
   },
   transition: {
     duration: 3,
-    ease: 'easeInOut',
+    ease: 'linear',
     repeat: Infinity,
     repeatType: 'loop' as const,
   },
@@ -22,13 +22,13 @@ export const FIDIES_ANIMATION = {
 export const THUMBNAIL_ANIMATION = {
   initial: { y: 0 },
   animate: {
-    y: [0, -10, 0, 10, 0],
+    y: [0, -13, 0, 13, 0],
   },
   transition: {
-    duration: 1,
+    duration: 2,
     repeat: Infinity,
-    repeatType: 'mirror' as const,
-    ease: 'easeInOut',
+    repeatType: 'loop' as const,
+    ease: 'linear',
   },
 };
 
