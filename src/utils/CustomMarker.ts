@@ -42,7 +42,7 @@ export const CustomMarker = ({
       <object data="${markerIcon}" type="image/svg+xml" style="width: 37px; height: 47px;"></object>
       <object data="${categoryIcon}" type="image/svg+xml" style="width: 33px; height: 33px; position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%);"></object>
     </button>
-    <span style="display: block; font-size: 12px; font-weight: 400; color: black; text-align: center; white-space: normal; margin-top: 4px;">
+    <span style="display: block; font-size: 12px; font-weight: 600; color: black; text-align: center; white-space: normal; margin-top: 4px;">
       ${shouldShowTitle ? title : ''}
     </span>
   </div>
