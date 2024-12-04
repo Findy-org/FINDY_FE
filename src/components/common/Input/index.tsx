@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { Props } from './Input.types';
 
 import { Icon } from '../Icon';
-import { Body4, Caption } from '../Typography';
+import { Body4 } from '../Typography';
 
 export const Input = forwardRef<HTMLInputElement, Props>(
   ({ value, onClickReset, isValid, errorMessage, ...props }, ref) => {
