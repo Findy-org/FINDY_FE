@@ -7,7 +7,7 @@ export const useInput = (initialValue = '', validation: string[] = ['https', 'ww
 
   const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
     const value = e.target.value;
-    setState(value);
+    setState(value.trim());
   }, []);
 
   const onBlur = useCallback(() => {
