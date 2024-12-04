@@ -25,6 +25,7 @@ export const LinkInput = ({ onNext, onHomeClick, context }: LinkInputProp<string
       <div className="w-full flex flex-col items-start gap-6 my-36 px-6">
         <Body1>{`아래에 링크를 입력해주시면,\n특별한 장소 정보를 추출해드릴게요.`}</Body1>
         <Input
+          autoFocus
           value={inputValue}
           onChange={onChange}
           onBlur={onBlur}
