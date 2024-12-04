@@ -16,6 +16,7 @@ import { useMapState } from '@/hooks/common/useMapState';
 import { useMarkers } from '@/hooks/common/useMarkers';
 import { useSessionDataLoader } from '@/hooks/common/useSessionDataLoader';
 import { Place } from '@/types/naver';
+import { parseSearchResult } from '@/utils/parseSearchResult';
 
 export const MapView = () => {
   const { token } = useAuth();
@@ -54,7 +55,7 @@ export const MapView = () => {
     resetCurrentLocation();
     const result = await refetch();
     if (result?.data?.items) {
-      handleDataUpdate(result.data.items, 'search');
+      handleDataUpdate(parseSearchResult(result.data.items), 'search');
     }
   };
 
