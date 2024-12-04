@@ -3,7 +3,7 @@ import { forwardRef } from 'react';
 import { Props } from './Input.types';
 
 import { Icon } from '../Icon';
-import { Caption } from '../Typography';
+import { Body4, Caption } from '../Typography';
 
 export const Input = forwardRef<HTMLInputElement, Props>(
   ({ value, onClickReset, isValid, errorMessage, ...props }, ref) => {
@@ -29,9 +29,9 @@ export const Input = forwardRef<HTMLInputElement, Props>(
           )}
         </div>
         {helperMessage && (
-          <Caption className="text-primary mt-1">
+          <Body4 className="text-[14px] text-primary mt-1">
             {errorMessage || '유투브 링크 혹은 지도 링크만 가능합니다.'}
-          </Caption>
+          </Body4>
         )}
       </div>
     );
