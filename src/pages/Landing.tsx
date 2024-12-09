@@ -8,7 +8,7 @@ import { Icon } from '@/components/common/Icon';
 import { Body1 } from '@/components/common/Typography';
 import { swiperOptions } from '@/constants/swiperOptions';
 
-const img = ['current', 'extract', 'maker', 'makers', 'youtube'];
+const LANDING_IMAGES = ['current', 'extract', 'maker', 'makers', 'youtube'];
 
 export const Landing = () => {
   const navigate = useNavigate();
@@ -20,9 +20,14 @@ export const Landing = () => {
           <Body1>핀디와 함께, 특별한 순간을 찾아보세요</Body1>
         </div>
         <Swiper {...swiperOptions} className="w-full h-96 max-w-md px-4 my-10 rounded-lg shadow-lg">
-          {img.map((item, index) => (
+          {LANDING_IMAGES.map((item, index) => (
             <SwiperSlide key={index} className="flex justify-center items-center ">
-              <img src={`/landing/${item}.png`} className="w-full h-full object-cover" />
+              <img
+                src={`/landing/${item}.png`}
+                alt={`${item} 이미지`}
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
             </SwiperSlide>
           ))}
         </Swiper>
