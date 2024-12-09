@@ -5954,6 +5954,7 @@ __metadata:
     react-router-dom: "npm:^6.26.2"
     storybook: "npm:^8.3.5"
     storybook-addon-sass-postcss: "npm:^0.3.2"
+    swiper: "npm:^11.1.15"
     tailwind-merge: "npm:^2.5.4"
     tailwindcss: "npm:^3.4.13"
     ts-jest: "npm:^29.2.5"
@@ -10298,6 +10299,13 @@ __metadata:
   version: 2.0.4
   resolution: "svg-parser@npm:2.0.4"
   checksum: 10c0/02f6cb155dd7b63ebc2f44f36365bc294543bebb81b614b7628f1af3c54ab64f7e1cec20f06e252bf95bdde78441ae295a412c68ad1678f16a6907d924512b7a
+  languageName: node
+  linkType: hard
+
+"swiper@npm:^11.1.15":
+  version: 11.1.15
+  resolution: "swiper@npm:11.1.15"
+  checksum: 10c0/3faabc5b33c0663513e8e41c4ef7920d4c9a1ca6b988848f2e51e1db0d01471a1bae22fce3177b9d3ab2c128fc6df23074415ae7957bd0f8542fd7387fa5263d
   languageName: node
   linkType: hard
 

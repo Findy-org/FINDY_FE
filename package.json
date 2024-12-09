@@ -37,6 +37,7 @@
     "react-error-boundary": "^4.0.13",
     "react-router-dom": "^6.26.2",
     "storybook": "^8.3.5",
+    "swiper": "^11.1.15",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.13",
     "vite-plugin-svgr": "^4.2.0"
