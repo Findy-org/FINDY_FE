@@ -7,10 +7,12 @@ export const useInput = (initialValue = '', validation: string[] = ['https', 'ww
 
   const onChange: ChangeEventHandler<HTMLInputElement> = useCallback((e) => {
     const value = e.target.value;
-    setState(value.replace(/^\s+|\s+$/g, ''));
+    setState(value);
   }, []);
 
   const onBlur = useCallback(() => {
+    const trimmedValue = state.trim();
+    setState(trimmedValue);
     if (state.length > 0) {
       setIsValid(validation.some((criteria) => state.includes(criteria)));
     }
