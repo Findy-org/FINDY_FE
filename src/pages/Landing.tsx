@@ -15,7 +15,7 @@ export const Landing = () => {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-between">
-        <div className="flex flex-col items-center justify-center gap-5 mt-20">
+        <div className="flex flex-col items-center justify-center gap-3 xs:gap-5 mt-14 xs:mt-20">
           <Icon name="findyLogo1" className="w-2/3 h-20" />
           <Body1>핀디와 함께, 특별한 순간을 찾아보세요</Body1>
         </div>
