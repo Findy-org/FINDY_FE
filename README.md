@@ -18,10 +18,10 @@
 
 ### 📹 유투브 장소 추출
 <div style="display: flex;" >
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 31 54" src="https://github.com/user-attachments/assets/bb386873-c9d9-4a04-bb46-d4b386a35cda">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 32 33" src="https://github.com/user-attachments/assets/fe7b450f-a149-4e59-9148-cb89120d283a">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 32 36" src="https://github.com/user-attachments/assets/53baf604-e8bb-4242-b478-99c5b4c33376">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 32 39" src="https://github.com/user-attachments/assets/53943ac1-eb7c-46ae-93e6-7cad843cb1e6">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 31 54" src="https://github.com/user-attachments/assets/bb386873-c9d9-4a04-bb46-d4b386a35cda">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 32 33" src="https://github.com/user-attachments/assets/fe7b450f-a149-4e59-9148-cb89120d283a">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 32 36" src="https://github.com/user-attachments/assets/53baf604-e8bb-4242-b478-99c5b4c33376">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 32 39" src="https://github.com/user-attachments/assets/53943ac1-eb7c-46ae-93e6-7cad843cb1e6">
 </div>
 
 ### 📍 장소 마커 저장
@@ -33,10 +33,10 @@
 
 ### 💚 네이버지도 장소 추출
 <div style="display: flex;" >
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 31 54" src="https://github.com/user-attachments/assets/bb386873-c9d9-4a04-bb46-d4b386a35cda">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 37 15" src="https://github.com/user-attachments/assets/9465bc62-6c80-4fd2-b0a5-cc7d80d5ad04">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 37 18" src="https://github.com/user-attachments/assets/1173847e-be1d-49aa-84e2-e1a0fd638051">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 37 49" src="https://github.com/user-attachments/assets/747ef438-a486-40a8-b0a1-c41c6c0ed345">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 31 54" src="https://github.com/user-attachments/assets/bb386873-c9d9-4a04-bb46-d4b386a35cda">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 37 15" src="https://github.com/user-attachments/assets/9465bc62-6c80-4fd2-b0a5-cc7d80d5ad04">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 37 18" src="https://github.com/user-attachments/assets/1173847e-be1d-49aa-84e2-e1a0fd638051">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 37 49" src="https://github.com/user-attachments/assets/747ef438-a486-40a8-b0a1-c41c6c0ed345">
 </div>
 
 ### 🔎 검색 기능
@@ -54,10 +54,10 @@
 
 ### 📝 즐겨 찾기 추가
 <div style="display: flex;" >
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 34 50" src="https://github.com/user-attachments/assets/01dbc6fa-9bc3-4dce-98aa-55afdbcb231c"> 
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 34 55" src="https://github.com/user-attachments/assets/1e8acb79-cccc-4c3e-8308-862b0a31bf23">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 35 18" src="https://github.com/user-attachments/assets/5043af39-0672-4eb5-aca9-f786f50f3d9c">
-  <img width="226" alt="스크린샷 2024-12-11 오후 4 35 08" src="https://github.com/user-attachments/assets/7d5a58ae-a25e-412f-8a0b-8c9388c51026">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 34 50" src="https://github.com/user-attachments/assets/01dbc6fa-9bc3-4dce-98aa-55afdbcb231c"> 
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 34 55" src="https://github.com/user-attachments/assets/1e8acb79-cccc-4c3e-8308-862b0a31bf23">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 35 18" src="https://github.com/user-attachments/assets/5043af39-0672-4eb5-aca9-f786f50f3d9c">
+  <img width="200" alt="스크린샷 2024-12-11 오후 4 35 08" src="https://github.com/user-attachments/assets/7d5a58ae-a25e-412f-8a0b-8c9388c51026">
 </div>
 
 ### 🗑️ 즐겨 찾기 삭제
